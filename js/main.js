@@ -75,7 +75,63 @@ document.addEventListener('DOMContentLoaded', function () {
         rootMargin: "0px 0px -50px 0px"
     });
 
+
     revealElements.forEach(el => revealObserver.observe(el));
+
+    // FAQ Accordion
+    const faqItems = document.querySelectorAll('.faq-item');
+    faqItems.forEach(item => {
+        const question = item.querySelector('.faq-question');
+        if (question) {
+            question.addEventListener('click', () => {
+                const isActive = item.classList.contains('active');
+
+                // Close all other items
+                faqItems.forEach(otherItem => {
+                    otherItem.classList.remove('active');
+                });
+
+                // Toggle current item
+                if (!isActive) {
+                    item.classList.add('active');
+                }
+            });
+        }
+    });
+
+    // Mobile Menu Toggle
+    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    const mainNav = document.getElementById('main-nav');
+    const navOverlay = document.querySelector('.nav-overlay');
+
+    if (mobileMenuBtn && mainNav) {
+        const toggleMenu = () => {
+            const isOpen = mainNav.classList.toggle('active');
+            mobileMenuBtn.classList.toggle('active');
+            if (navOverlay) navOverlay.classList.toggle('active');
+            document.body.style.overflow = isOpen ? 'hidden' : '';
+        };
+
+        mobileMenuBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            toggleMenu();
+        });
+
+        if (navOverlay) {
+            navOverlay.addEventListener('click', toggleMenu);
+        }
+
+        // Close menu when a link is clicked
+        const navLinks = mainNav.querySelectorAll('a');
+        navLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                // Only close if it's a mobile view and menu is active
+                if (window.innerWidth <= 768 && mainNav.classList.contains('active')) {
+                    toggleMenu();
+                }
+            });
+        });
+    }
 });
 
 // Object to store slide indices and intervals for each tour

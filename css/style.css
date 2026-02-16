@@ -1,12 +1,12 @@
 /* ========== FONTS ========== */
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Roboto:wght@300;400;500;700&family=Oswald:wght@400;500;600;700&family=Noto+Sans+Lao:wght@300;400;700&family=Noto+Sans+SC:wght@300;400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Oswald:wght@400;500;600;700&family=Noto+Sans+Lao:wght@300;400;700&family=Noto+Sans+SC:wght@300;400;700&display=swap');
 
 /* ========== VARIABLES & RESET ========== */
 :root {
-    /* Teal - Mekong-inspired, calm & modern */
-    --primary: #006d77;
-    --primary-light: #028391;
-    --primary-dark: #004d54;
+    /* Green Discovery Laos Inspired Colors */
+    --primary: #005b35;
+    /* Deep Forest Green */
+    --primary-light: #007a48;
     /* Lighter Green for hovers */
     --secondary: #fcb900;
     /* Vibrant Yellow/Orange Accent */
@@ -15,7 +15,6 @@
     --bg-light: #F4F5F7;
     /* Very light grey for backgrounds */
     --bg-white: #FFFFFF;
-    --white: #FFFFFF;
     --bg-dark: #1a1a1a;
     /* Dark, almost black */
 
@@ -81,7 +80,8 @@ h3,
 h4,
 h5,
 h6 {
-    font-family: 'Playfair Display', serif;
+    font-family: 'Oswald', sans-serif;
+    /* Strong, condensed heading font like GDL */
     color: var(--primary);
     /* Headings in Green */
     line-height: 1.2;
@@ -264,36 +264,21 @@ body.zh-font {
     align-items: center;
     justify-content: space-between;
     padding: 0 24px;
-    min-height: var(--header-height);
+    height: var(--header-height);
     max-width: var(--container-width);
     margin: 0 auto;
 }
 
-.logo-block {
-    flex-shrink: 0;
-}
-
 .logo {
-    display: flex;
-    align-items: center;
-    padding: 4px 0;
     font-size: 1.8rem;
     font-weight: 700;
     color: var(--primary);
+    display: flex;
+    align-items: center;
+    gap: 10px;
     letter-spacing: -0.5px;
     font-family: 'Oswald', sans-serif;
     text-transform: uppercase;
-}
-
-.logo img,
-.logo-img {
-    height: 65px;
-    width: auto;
-    max-width: 280px;
-    min-height: 40px;
-    object-fit: contain;
-    display: block;
-    vertical-align: middle;
 }
 
 .logo span {
@@ -625,7 +610,7 @@ body.zh-font {
     position: absolute;
     bottom: 15px;
     right: 15px;
-    background: rgba(0, 109, 119, 0.9);
+    background: rgba(0, 91, 53, 0.9);
     /* Primary color background */
     color: white;
     padding: 6px 12px;
@@ -822,7 +807,7 @@ footer a:hover {
     color: var(--white);
     margin-bottom: 1.5rem;
     font-weight: 700;
-    font-family: 'Playfair Display', serif;
+    font-family: 'Oswald', sans-serif;
     letter-spacing: 1px;
     text-transform: uppercase;
     font-size: 1.2rem;
@@ -834,17 +819,17 @@ footer a:hover {
 @keyframes pulse-green {
     0% {
         transform: scale(1);
-        box-shadow: 0 0 0 0 rgba(0, 109, 119, 0.7);
+        box-shadow: 0 0 0 0 rgba(0, 91, 53, 0.7);
     }
 
     70% {
         transform: scale(1.1);
-        box-shadow: 0 0 0 15px rgba(0, 109, 119, 0);
+        box-shadow: 0 0 0 15px rgba(0, 91, 53, 0);
     }
 
     100% {
         transform: scale(1);
-        box-shadow: 0 0 0 0 rgba(0, 109, 119, 0);
+        box-shadow: 0 0 0 0 rgba(0, 91, 53, 0);
     }
 }
 
@@ -1052,7 +1037,6 @@ footer a:hover {
     color: var(--primary);
     margin-bottom: 20px;
     font-weight: 700;
-    font-family: 'Playfair Display', serif;
     text-transform: uppercase;
     text-align: center;
 }
@@ -1435,10 +1419,8 @@ footer a:hover {
         font-size: 2.22rem;
     }
 
-    .logo img,
-    .logo-img {
-        height: 52px;
-        max-width: 200px;
+    .logo {
+        font-size: 1.4rem;
     }
 
     .btn {
@@ -1467,7 +1449,6 @@ footer a:hover {
     color: var(--primary);
     font-size: 2.2rem;
     margin-bottom: 1rem;
-    font-family: 'Playfair Display', serif;
     text-align: center;
 }
 
@@ -1520,7 +1501,7 @@ footer a:hover {
     outline: none;
     border-color: var(--primary);
     background: var(--bg-white);
-    box-shadow: 0 0 0 4px rgba(0, 109, 119, 0.1);
+    box-shadow: 0 0 0 4px rgba(0, 91, 53, 0.1);
 }
 
 .plan-form__field input[readonly] {
@@ -1560,7 +1541,7 @@ footer a:hover {
 .booking-sidebar input:focus {
     outline: none;
     border-color: var(--primary);
-    box-shadow: 0 0 0 3px rgba(0, 109, 119, 0.1);
+    box-shadow: 0 0 0 3px rgba(0, 91, 53, 0.1);
 }
 
 /* Responsive Form */

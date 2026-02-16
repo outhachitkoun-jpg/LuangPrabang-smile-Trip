@@ -4,14 +4,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Adventure Tours in Laos | Laos Dream Destination</title>
+    <title>Adventure Tours in Laos | LuangPrabang smile Trip</title>
     <meta name="description"
-        content="Discover our carefully crafted adventure tours, cultural experiences, and guided day trips throughout Laos with Laos Dream Destination.">
+        content="Discover our carefully crafted adventure tours, cultural experiences, and guided day trips throughout Laos with LuangPrabang smile Trip.">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="tours.html">
     <meta property="og:type" content="website">
-    <meta property="og:site_name" content="Laos Dream Destination">
-    <meta property="og:title" content="Adventure Tours in Laos | Laos Dream Destination">
+    <meta property="og:site_name" content="LuangPrabang smile Trip">
+    <meta property="og:title" content="Adventure Tours in Laos | LuangPrabang smile Trip">
     <meta property="og:url" content="tours.html">
     <meta property="og:image" content="">
     <meta name="theme-color" content="#0b1a23">
@@ -20,7 +20,7 @@
     {
         "@context": "https://schema.org",
         "@type": "TravelAgency",
-        "name": "Laos Dream Destination",
+        "name": "LuangPrabang smile Trip",
         "telephone": "+8562098457614",
         "email": "koun506@gmail.com",
         "url": "https://www.laodiscoverytour.com/"
@@ -59,30 +59,43 @@
                     </svg>
                     <a href="mailto:koun506@gmail.com"><span class="contact-value">koun506@gmail.com</span></a>
                 </div>
+                <div class="lang-switcher">
+                    <a href="#" class="lang-btn active" id="lang-en">EN</a>
+                    <a href="#" class="lang-btn" id="lang-lo">ລາວ</a>
+                    <a href="#" class="lang-btn" id="lang-zh">CN</a>
+                </div>
             </div>
         </div>
         <div class="container nav-bar">
             <a href="index.html" class="logo">Laos Dream <span>Destination</span></a>
-            <nav class="main-nav">
+            <a href="#main-nav" class="menu-toggle" id="mobile-menu-btn" aria-label="Toggle Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </a>
+            <nav class="main-nav" id="main-nav">
                 <ul>
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="tours.html">Tours</a></li>
-                    <li><a href="packages.html">Packages</a></li>
-                    <li><a href="tickets.html">Tickets</a></li>
-                    <li><a href="about.html">About</a></li>
-
-                    <li><a href="index.html#contact">Contact</a></li>
+                    <li><a href="index.html" data-i18n="nav_home">Home</a></li>
+                    <li><a href="tours.html" class="active" data-i18n="nav_tours">Tours</a></li>
+                    <li><a href="packages.html" data-i18n="nav_packages">Packages</a></li>
+                    <li><a href="tickets.html" data-i18n="nav_tickets">Tickets</a></li>
+                    <li><a href="about.html" data-i18n="nav_about">About</a></li>
+                    <li><a href="index.html#support" data-i18n="nav_support">Support</a></li>
+                    <li><a href="index.html#contact" data-i18n="nav_contact">Contact</a></li>
                 </ul>
             </nav>
         </div>
     </header>
+    <div class="nav-overlay"></div>
 
     <main>
         <section class="featured-tours" style="padding: 4rem 0;">
             <div class="container reveal">
-                <h1 style="text-align: center; font-size: 2.2rem; margin-bottom: 1rem; color: #2c3e50;">Adventure Tours
+                <h1 style="text-align: center; font-size: 2.2rem; margin-bottom: 1rem; color: #2c3e50;"
+                    data-i18n="tours_title">Adventure Tours
                     in Laos</h1>
-                <p style="text-align: center; color: #666; max-width: 800px; margin: 0 auto 3rem;">Explore the wonders
+                <p style="text-align: center; color: #666; max-width: 800px; margin: 0 auto 3rem;"
+                    data-i18n="tours_subtitle">Explore the wonders
                     of Laos with our carefully curated adventure tours. From spiritual temples to thrilling outdoor
                     experiences, each tour is designed to create unforgettable memories.</p>
                 <h2 class="section-title" style="margin-top: 0;">Explore Our Tour Packages</h2>
@@ -91,13 +104,13 @@
                     <article class="tour-card reveal reveal-delay-1">
                         <div class="tour-img-wrapper">
                             <div class="tour-slider" id="slider-therock">
-                                <img src="images/20250515093616_Pha-Daeng-Peak-Viewpoint-2.jpg"
-                                    class="slider-img active" onclick="openGallery('therock')" alt="The Rock Viewpoint">
-                                <img src="images/20250513000725_Nong-Khiaw-1.jpg" class="slider-img"
+                                <img src="images/tours/therock/1.jpg" class="slider-img active"
+                                    onclick="openGallery('therock')" alt="The Rock Viewpoint">
+                                <img src="images/tours/therock/2.jpg" class="slider-img"
                                     onclick="openGallery('therock')" alt="Action">
-                                <img src="images/20250515093616_Nong-Khiaw-Viewpoint-4.jpg" class="slider-img"
+                                <img src="images/tours/therock/3.jpg" class="slider-img"
                                     onclick="openGallery('therock')" alt="Scenery">
-                                <img src="images/20250515091420_Vang-Vieng-View-Point.jpg" class="slider-img"
+                                <img src="images/tours/therock/4.jpg" class="slider-img"
                                     onclick="openGallery('therock')" alt="Adventure">
                                 <button class="slider-btn slider-prev" onclick="moveSlide(-1, 'therock')">❮</button>
                                 <button class="slider-btn slider-next" onclick="moveSlide(1, 'therock')">❯</button>
@@ -105,18 +118,18 @@
                             <div class="gallery-indicator">📷 4 Photos</div>
                         </div>
                         <div class="tour-thumbnails">
-                            <a href="images/20250515093616_Pha-Daeng-Peak-Viewpoint-2.jpg" data-lightbox="therock"
-                                data-title="The Rock Viewpoint - Panorama"><img
-                                    src="images/20250515093616_Pha-Daeng-Peak-Viewpoint-2.jpg" alt="Thumbnail"></a>
-                            <a href="images/20250513000725_Nong-Khiaw-1.jpg" data-lightbox="therock"
-                                data-title="The Rock Viewpoint - Action"><img
-                                    src="images/20250513000725_Nong-Khiaw-1.jpg" alt="Thumbnail"></a>
-                            <a href="images/20250515093616_Nong-Khiaw-Viewpoint-4.jpg" data-lightbox="therock"
-                                data-title="The Rock Viewpoint - Scenery"><img
-                                    src="images/20250515093616_Nong-Khiaw-Viewpoint-4.jpg" alt="Thumbnail"></a>
-                            <a href="images/20250515091420_Vang-Vieng-View-Point.jpg" data-lightbox="therock"
-                                data-title="The Rock Viewpoint - Adventure"><img
-                                    src="images/20250515091420_Vang-Vieng-View-Point.jpg" alt="Thumbnail"></a>
+                            <a href="images/tours/therock/1.jpg" data-lightbox="therock"
+                                data-title="The Rock Viewpoint - Panorama"><img src="images/tours/therock/1.jpg"
+                                    alt="Thumbnail"></a>
+                            <a href="images/tours/therock/2.jpg" data-lightbox="therock"
+                                data-title="The Rock Viewpoint - Action"><img src="images/tours/therock/2.jpg"
+                                    alt="Thumbnail"></a>
+                            <a href="images/tours/therock/3.jpg" data-lightbox="therock"
+                                data-title="The Rock Viewpoint - Scenery"><img src="images/tours/therock/3.jpg"
+                                    alt="Thumbnail"></a>
+                            <a href="images/tours/therock/4.jpg" data-lightbox="therock"
+                                data-title="The Rock Viewpoint - Adventure"><img src="images/tours/therock/4.jpg"
+                                    alt="Thumbnail"></a>
                         </div>
                         <div class="tour-body">
                             <h3>The Rock Viewpoint Challenge</h3>
@@ -126,7 +139,7 @@
                                 <li>Breathtaking panoramic views of the Phou Hin Boun NBCA</li>
                                 <li>Adrenaline-pumping adventure in Khammouane province</li>
                             </ul>
-                            <div class="tour-meta">⏱️ Full
+                            <div style="font-size: 0.9rem; color: #25D366; font-weight: 600; margin-top: 10px;">⏱️ Full
                                 Day • 🧗 Extreme Adventure • 📍 Thakhek</div>
                             <a href="tour-rock-viewpoint.html" class="btn-tour">View Tour Details</a>
                         </div>
@@ -136,13 +149,13 @@
                     <article class="tour-card reveal reveal-delay-2">
                         <div class="tour-img-wrapper">
                             <div class="tour-slider" id="slider-konglor">
-                                <img src="images/20250515093616_Pathet_Lao_Caves.jpg" class="slider-img active"
+                                <img src="images/tours/konglor/1.jpg" class="slider-img active"
                                     onclick="openGallery('konglor')" alt="Kong Lor Cave">
-                                <img src="images/20250515093616_Pathet_Lao_Caves_1.jpg" class="slider-img"
+                                <img src="images/tours/konglor/2.jpg" class="slider-img"
                                     onclick="openGallery('konglor')" alt="Boat Ride">
-                                <img src="images/20250515091420_Pak-ou-caves.jpg" class="slider-img"
+                                <img src="images/tours/konglor/3.jpg" class="slider-img"
                                     onclick="openGallery('konglor')" alt="Formation">
-                                <img src="images/20250515092028_Pak-Ou-Caves-3.jpg" class="slider-img"
+                                <img src="images/tours/konglor/4.jpg" class="slider-img"
                                     onclick="openGallery('konglor')" alt="Village">
                                 <button class="slider-btn slider-prev" onclick="moveSlide(-1, 'konglor')">❮</button>
                                 <button class="slider-btn slider-next" onclick="moveSlide(1, 'konglor')">❯</button>
@@ -150,18 +163,18 @@
                             <div class="gallery-indicator">📷 4 Photos</div>
                         </div>
                         <div class="tour-thumbnails">
-                            <a href="images/20250515093616_Pathet_Lao_Caves.jpg" data-lightbox="konglor"
-                                data-title="Kong Lor Cave - Entrance"><img
-                                    src="images/20250515093616_Pathet_Lao_Caves.jpg" alt="Thumbnail"></a>
-                            <a href="images/20250515093616_Pathet_Lao_Caves_1.jpg" data-lightbox="konglor"
-                                data-title="Kong Lor Cave - Boat Ride"><img
-                                    src="images/20250515093616_Pathet_Lao_Caves_1.jpg" alt="Thumbnail"></a>
-                            <a href="images/20250515091420_Pak-ou-caves.jpg" data-lightbox="konglor"
-                                data-title="Kong Lor Cave - Formation"><img
-                                    src="images/20250515091420_Pak-ou-caves.jpg" alt="Thumbnail"></a>
-                            <a href="images/20250515092028_Pak-Ou-Caves-3.jpg" data-lightbox="konglor"
-                                data-title="Kong Lor Cave - Village"><img
-                                    src="images/20250515092028_Pak-Ou-Caves-3.jpg" alt="Thumbnail"></a>
+                            <a href="images/tours/konglor/1.jpg" data-lightbox="konglor"
+                                data-title="Kong Lor Cave - Entrance"><img src="images/tours/konglor/1.jpg"
+                                    alt="Thumbnail"></a>
+                            <a href="images/tours/konglor/2.jpg" data-lightbox="konglor"
+                                data-title="Kong Lor Cave - Boat Ride"><img src="images/tours/konglor/2.jpg"
+                                    alt="Thumbnail"></a>
+                            <a href="images/tours/konglor/3.jpg" data-lightbox="konglor"
+                                data-title="Kong Lor Cave - Formation"><img src="images/tours/konglor/3.jpg"
+                                    alt="Thumbnail"></a>
+                            <a href="images/tours/konglor/4.jpg" data-lightbox="konglor"
+                                data-title="Kong Lor Cave - Village"><img src="images/tours/konglor/4.jpg"
+                                    alt="Thumbnail"></a>
                         </div>
                         <div class="tour-body">
                             <h3>Kong Lor Cave Expedition</h3>
@@ -171,7 +184,7 @@
                                 <li>Walk through the illuminated "beauty section"</li>
                                 <li>Visit a remote village on the other side of the tunnel</li>
                             </ul>
-                            <div class="tour-meta">⏱️ Full
+                            <div style="font-size: 0.9rem; color: #25D366; font-weight: 600; margin-top: 10px;">⏱️ Full
                                 Day • 🛶 Cave Boat • 📍 Kong Lor</div>
                             <a href="tour-kong-lor.html" class="btn-tour">View Tour Details</a>
                         </div>
@@ -181,13 +194,13 @@
                     <article class="tour-card reveal reveal-delay-3">
                         <div class="tour-img-wrapper">
                             <div class="tour-slider" id="slider-treetop">
-                                <img src="images/20250515093616_Nam_Et_Phou_Bungalows.jpg" class="slider-img active"
+                                <img src="images/tours/treetop/1.jpg" class="slider-img active"
                                     onclick="openGallery('treetop')" alt="Tree Top Explorer">
-                                <img src="images/20250515093616_wildlife-along-the-nam.jpg" class="slider-img"
+                                <img src="images/tours/treetop/2.jpg" class="slider-img"
                                     onclick="openGallery('treetop')" alt="Zipline">
-                                <img src="images/20250515095204_Trekking-To-Tribe-village.jpg" class="slider-img"
+                                <img src="images/tours/treetop/3.jpg" class="slider-img"
                                     onclick="openGallery('treetop')" alt="Waterfall">
-                                <img src="images/20250515093616_village-in-nam-et-phou.jpg" class="slider-img"
+                                <img src="images/tours/treetop/4.jpg" class="slider-img"
                                     onclick="openGallery('treetop')" alt="Jungle">
                                 <button class="slider-btn slider-prev" onclick="moveSlide(-1, 'treetop')">❮</button>
                                 <button class="slider-btn slider-next" onclick="moveSlide(1, 'treetop')">❯</button>
@@ -195,18 +208,18 @@
                             <div class="gallery-indicator">📷 4 Photos</div>
                         </div>
                         <div class="tour-thumbnails">
-                            <a href="images/20250515093616_Nam_Et_Phou_Bungalows.jpg" data-lightbox="treetop"
-                                data-title="Tree Top Explorer - Canopy"><img
-                                    src="images/20250515093616_Nam_Et_Phou_Bungalows.jpg" alt="Thumbnail"></a>
-                            <a href="images/20250515093616_wildlife-along-the-nam.jpg" data-lightbox="treetop"
-                                data-title="Tree Top Explorer - Zipline"><img
-                                    src="images/20250515093616_wildlife-along-the-nam.jpg" alt="Thumbnail"></a>
-                            <a href="images/20250515095204_Trekking-To-Tribe-village.jpg" data-lightbox="treetop"
-                                data-title="Tree Top Explorer - Waterfall"><img
-                                    src="images/20250515095204_Trekking-To-Tribe-village.jpg" alt="Thumbnail"></a>
-                            <a href="images/20250515093616_village-in-nam-et-phou.jpg" data-lightbox="treetop"
-                                data-title="Tree Top Explorer - Jungle"><img
-                                    src="images/20250515093616_village-in-nam-et-phou.jpg" alt="Thumbnail"></a>
+                            <a href="images/tours/treetop/1.jpg" data-lightbox="treetop"
+                                data-title="Tree Top Explorer - Canopy"><img src="images/tours/treetop/1.jpg"
+                                    alt="Thumbnail"></a>
+                            <a href="images/tours/treetop/2.jpg" data-lightbox="treetop"
+                                data-title="Tree Top Explorer - Zipline"><img src="images/tours/treetop/2.jpg"
+                                    alt="Thumbnail"></a>
+                            <a href="images/tours/treetop/3.jpg" data-lightbox="treetop"
+                                data-title="Tree Top Explorer - Waterfall"><img src="images/tours/treetop/3.jpg"
+                                    alt="Thumbnail"></a>
+                            <a href="images/tours/treetop/4.jpg" data-lightbox="treetop"
+                                data-title="Tree Top Explorer - Jungle"><img src="images/tours/treetop/4.jpg"
+                                    alt="Thumbnail"></a>
                         </div>
                         <div class="tour-body">
                             <h3>Jungle Tree Top Explorer</h3>
@@ -216,7 +229,7 @@
                                 <li>Trek through protected national biodiversity areas</li>
                                 <li>Spot wild gibbons and exotic birdlife</li>
                             </ul>
-                            <div class="tour-meta">⏱️ 2
+                            <div style="font-size: 0.9rem; color: #25D366; font-weight: 600; margin-top: 10px;">⏱️ 2
                                 Days / 1 Night • 🌳 Jungle Stay • 📍 Champasak</div>
                             <a href="tour-jungle-explorer.html" class="btn-tour">View Tour Details</a>
                         </div>
@@ -229,11 +242,11 @@
                                 <img src="images/tours/heritage/20250513001704_Featured-image-Royal-Palace-Museum-in-Luang-Prabang-Laos.jpg"
                                     class="slider-img active" onclick="openGallery('heritage')"
                                     alt="Luang Prabang Heritage Tour">
-                                <img src="images/20250515092516_Kuang_Si_Waterfall_10.jpg" class="slider-img"
+                                <img src="images/tours/kuangsi waterfall/1.jpg" class="slider-img"
                                     onclick="openGallery('heritage')" alt="Kuang Si Falls">
-                                <img src="images/20250515092516_Wat-Xieng-Thong-Temple-1_2.jpg" class="slider-img"
-                                    onclick="openGallery('heritage')" alt="Local Culture">
-                                <img src="images/20250515092516_alms-giving-ceremony-luang-prabang-2.jpg"
+                                <img src="images/tours/heritage/20250515092516_wat-xieng-thong-luang-prabang-2.jpg"
+                                    class="slider-img" onclick="openGallery('heritage')" alt="Local Culture">
+                                <img src="images/tours/heritage/20250512234502_Luang-Prabang-city-1.jpg"
                                     class="slider-img" onclick="openGallery('heritage')" alt="River Views">
                                 <button class="slider-btn slider-prev" onclick="moveSlide(-1, 'heritage')">❮</button>
                                 <button class="slider-btn slider-next" onclick="moveSlide(1, 'heritage')">❯</button>
@@ -241,19 +254,20 @@
                             <div class="gallery-indicator">📷 4 Photos</div>
                         </div>
                         <div class="tour-thumbnails">
-                            <a href="images/20250513001704_Featured-image-Royal-Palace-Museum-in-Luang-Prabang-Laos.jpg"
+                            <a href="images/tours/heritage/20250513001704_Featured-image-Royal-Palace-Museum-in-Luang-Prabang-Laos.jpg"
                                 data-lightbox="heritage" data-title="Heritage & Waterfalls - Temple"><img
                                     src="images/tours/heritage/20250513001704_Featured-image-Royal-Palace-Museum-in-Luang-Prabang-Laos.jpg"
                                     alt="Thumbnail"></a>
-                            <a href="images/20250515092516_Kuang_Si_Waterfall_10.jpg" data-lightbox="heritage"
+                            <a href="images/tours/kuangsi waterfall/1.jpg" data-lightbox="heritage"
                                 data-title="Heritage & Waterfalls - Kuang Si Falls"><img
-                                    src="images/20250515092516_Kuang_Si_Waterfall_10.jpg" alt="Thumbnail"></a>
-                            <a href="images/20250515092516_Wat-Xieng-Thong-Temple-1_2.jpg" data-lightbox="heritage"
-                                data-title="Heritage & Waterfalls - Local Culture"><img
-                                    src="images/20250515092516_Wat-Xieng-Thong-Temple-1_2.jpg" alt="Thumbnail"></a>
-                            <a href="images/20250515092516_alms-giving-ceremony-luang-prabang-2.jpg"
+                                    src="images/tours/kuangsi waterfall/1.jpg" alt="Thumbnail"></a>
+                            <a href="images/tours/heritage/20250515092516_wat-xieng-thong-luang-prabang-2.jpg"
+                                data-lightbox="heritage" data-title="Heritage & Waterfalls - Local Culture"><img
+                                    src="images/tours/heritage/20250515092516_wat-xieng-thong-luang-prabang-2.jpg"
+                                    alt="Thumbnail"></a>
+                            <a href="images/tours/heritage/20250512234502_Luang-Prabang-city-1.jpg"
                                 data-lightbox="heritage" data-title="Heritage & Waterfalls - River Views"><img
-                                    src="images/20250515092516_alms-giving-ceremony-luang-prabang-2.jpg"
+                                    src="images/tours/heritage/20250512234502_Luang-Prabang-city-1.jpg"
                                     alt="Thumbnail"></a>
                         </div>
                         <div class="tour-body">
@@ -264,7 +278,7 @@
                                 <li>Experience local culture and traditions</li>
                                 <li>Full-day immersive experience with guide</li>
                             </ul>
-                            <div class="tour-meta">⏱️ 8
+                            <div style="font-size: 0.9rem; color: #25D366; font-weight: 600; margin-top: 10px;">⏱️ 8
                                 hours • 🚗 All included • 📍 Luang Prabang</div>
                             <a href="tour-heritage-waterfalls.html" class="btn-tour">View Tour Details</a>
                         </div>
@@ -275,31 +289,33 @@
                                 <img src="images/tours/vangvieng/20250512234456_Featured-image-Nam-Song-River-in-Vang-Vieng-Laos.jpg"
                                     class="slider-img active" onclick="openGallery('vangvieng')"
                                     alt="Vang Vieng Adventure Tour">
-                                <img src="images/20250515092028_Kayaking-in-Vang-Vieng_1.jpg" class="slider-img"
+                                <img src="images/tours/vangvieng/23.jpg" class="slider-img"
                                     onclick="openGallery('vangvieng')" alt="Limestone Karsts">
-                                <img src="images/20250515092028_Vang-Vieng-Blue-Lagoon-3a.jpg" class="slider-img"
-                                    onclick="openGallery('vangvieng')" alt="Cave Exploration">
-                                <img src="images/20250515092516_Vang-Vieng-Hot-Air-Balloon4.jpg" class="slider-img"
-                                    onclick="openGallery('vangvieng')" alt="River Adventure">
+                                <img src="images/tours/vangvieng/20250515092516_Blue-lagoon-Vang-Vieng-1_1.jpg"
+                                    class="slider-img" onclick="openGallery('vangvieng')" alt="Cave Exploration">
+                                <img src="images/tours/vangvieng/20250515092939_Vang-Vieng-Hot-Air-Balloon4_1.jpg"
+                                    class="slider-img" onclick="openGallery('vangvieng')" alt="River Adventure">
                                 <button class="slider-btn slider-prev" onclick="moveSlide(-1, 'vangvieng')">❮</button>
                                 <button class="slider-btn slider-next" onclick="moveSlide(1, 'vangvieng')">❯</button>
                             </div>
                             <div class="gallery-indicator">📷 4 Photos</div>
                         </div>
                         <div class="tour-thumbnails">
-                            <a href="images/20250512234456_Featured-image-Nam-Song-River-in-Vang-Vieng-Laos.jpg"
+                            <a href="images/tours/vangvieng/20250512234456_Featured-image-Nam-Song-River-in-Vang-Vieng-Laos.jpg"
                                 data-lightbox="vangvieng" data-title="Vang Vieng - Kayaking"><img
                                     src="images/tours/vangvieng/20250512234456_Featured-image-Nam-Song-River-in-Vang-Vieng-Laos.jpg"
                                     alt="Thumbnail"></a>
-                            <a href="images/20250515092028_Kayaking-in-Vang-Vieng_1.jpg" data-lightbox="vangvieng"
-                                data-title="Vang Vieng - Limestone Karsts"><img
-                                    src="images/20250515092028_Kayaking-in-Vang-Vieng_1.jpg" alt="Thumbnail"></a>
-                            <a href="images/20250515092028_Vang-Vieng-Blue-Lagoon-3a.jpg" data-lightbox="vangvieng"
-                                data-title="Vang Vieng - Cave Exploration"><img
-                                    src="images/20250515092028_Vang-Vieng-Blue-Lagoon-3a.jpg" alt="Thumbnail"></a>
-                            <a href="images/20250515092516_Vang-Vieng-Hot-Air-Balloon4.jpg" data-lightbox="vangvieng"
-                                data-title="Vang Vieng - River Adventure"><img
-                                    src="images/20250515092516_Vang-Vieng-Hot-Air-Balloon4.jpg" alt="Thumbnail"></a>
+                            <a href="images/tours/vangvieng/23.jpg" data-lightbox="vangvieng"
+                                data-title="Vang Vieng - Limestone Karsts"><img src="images/tours/vangvieng/23.jpg"
+                                    alt="Thumbnail"></a>
+                            <a href="images/tours/vangvieng/20250515092516_Blue-lagoon-Vang-Vieng-1_1.jpg"
+                                data-lightbox="vangvieng" data-title="Vang Vieng - Cave Exploration"><img
+                                    src="images/tours/vangvieng/20250515092516_Blue-lagoon-Vang-Vieng-1_1.jpg"
+                                    alt="Thumbnail"></a>
+                            <a href="images/tours/vangvieng/20250515092939_Vang-Vieng-Hot-Air-Balloon4_1.jpg"
+                                data-lightbox="vangvieng" data-title="Vang Vieng - River Adventure"><img
+                                    src="images/tours/vangvieng/20250515092939_Vang-Vieng-Hot-Air-Balloon4_1.jpg"
+                                    alt="Thumbnail"></a>
                         </div>
                         <div class="tour-body">
                             <h3>Vang Vieng Adventure</h3>
@@ -309,7 +325,7 @@
                                 <li>Experience the adventure capital of Laos</li>
                                 <li>Full-day guided adventure with safety equipment</li>
                             </ul>
-                            <div class="tour-meta">⏱️ Full
+                            <div style="font-size: 0.9rem; color: #25D366; font-weight: 600; margin-top: 10px;">⏱️ Full
                                 Day • 🚗 All included • 📍 Vang Vieng</div>
                             <a href="tour-vang-vieng.html" class="btn-tour">View Tour Details</a>
                         </div>
@@ -317,39 +333,43 @@
                     <article class="tour-card reveal reveal-delay-3">
                         <div class="tour-img-wrapper">
                             <div class="tour-slider" id="slider-islands">
-                                <img src="images/Khone-Phapheng-Waterfall.jpg" class="slider-img active"
+                                <img src="images/tours/islands/4.jpg" class="slider-img active"
                                     onclick="openGallery('islands')" alt="4000 Islands Adventure">
-                                <img src="images/20250515095204_Pakse-7.jpg" class="slider-img"
+                                <img src="images/tours/islands/4000_Islands2-.jpg" class="slider-img"
+                                    onclick="openGallery('islands')" alt="Panoramic View">
+                                <img src="images/tours/islands/Don-Det-Laos-A-Complete-Guide-5.jpg" class="slider-img"
+                                    onclick="openGallery('islands')" alt="Don Det">
+                                <img src="images/tours/islands/Laos_-_4000_Islands_24754876062.jpg" class="slider-img"
+                                    onclick="openGallery('islands')" alt="Mekong River">
+                                <img src="images/tours/islands/1.jpg" class="slider-img"
                                     onclick="openGallery('islands')" alt="River View">
-                                <img src="images/20250515095204_pakse-2.jpg" class="slider-img"
+                                <img src="images/tours/islands/2.jpg" class="slider-img"
                                     onclick="openGallery('islands')" alt="Boat Tour">
-                                <img src="images/20250513001453_depositphotos10801544xl-1715654440971.jpg"
-                                    class="slider-img" onclick="openGallery('islands')" alt="River Views">
-                                <img src="images/20250515095204_Pakse-5.jpg" class="slider-img"
-                                    onclick="openGallery('islands')" alt="Dolphins">
+                                <img src="images/tours/islands/3.jpg" class="slider-img"
+                                    onclick="openGallery('islands')" alt="River Views">
                                 <button class="slider-btn slider-prev" onclick="moveSlide(-1, 'islands')">❮</button>
                                 <button class="slider-btn slider-next" onclick="moveSlide(1, 'islands')">❯</button>
                             </div>
-                            <div class="gallery-indicator">📷 5 Photos</div>
+                            <div class="gallery-indicator">📷 7 Photos</div>
                         </div>
                         <div class="tour-thumbnails">
-                            <a href="images/Khone-Phapheng-Waterfall.jpg" data-lightbox="islands"
-                                data-title="4000 Islands - Island Explorer"><img
-                                    src="images/Khone-Phapheng-Waterfall.jpg" alt="Thumbnail"></a>
-                            <a href="images/20250515095204_Pakse-7.jpg" data-lightbox="islands"
-                                data-title="4000 Islands - River View"><img src="images/20250515095204_Pakse-7.jpg"
+                            <a href="images/tours/islands/4.jpg" data-lightbox="islands"
+                                data-title="4000 Islands - Island Explorer"><img src="images/tours/islands/4.jpg"
                                     alt="Thumbnail"></a>
-                            <a href="images/20250515095204_pakse-2.jpg" data-lightbox="islands"
-                                data-title="4000 Islands - Boat Tour"><img src="images/20250515095204_pakse-2.jpg"
-                                    alt="Thumbnail"></a>
-                            <a href="images/20250513001453_depositphotos10801544xl-1715654440971.jpg"
-                                data-lightbox="islands" data-title="4000 Islands - Sunset"><img
-                                    src="images/20250513001453_depositphotos10801544xl-1715654440971.jpg"
-                                    alt="Thumbnail"></a>
+                            <a href="images/tours/islands/4000_Islands2-.jpg" data-lightbox="islands"
+                                data-title="4000 Islands - Panoramic View"><img
+                                    src="images/tours/islands/4000_Islands2-.jpg" alt="Thumbnail"></a>
+                            <a href="images/tours/islands/Don-Det-Laos-A-Complete-Guide-5.jpg" data-lightbox="islands"
+                                data-title="4000 Islands - Don Det"><img
+                                    src="images/tours/islands/Don-Det-Laos-A-Complete-Guide-5.jpg" alt="Thumbnail"></a>
+                            <a href="images/tours/islands/Laos_-_4000_Islands_24754876062.jpg" data-lightbox="islands"
+                                data-title="4000 Islands - Mekong River"><img
+                                    src="images/tours/islands/Laos_-_4000_Islands_24754876062.jpg" alt="Thumbnail"></a>
+                            <!-- Extra hidden images for lightbox -->
+                            <a href="images/tours/islands/1.jpg" data-lightbox="islands" style="display:none;"></a>
+                            <a href="images/tours/islands/2.jpg" data-lightbox="islands" style="display:none;"></a>
+                            <a href="images/tours/islands/3.jpg" data-lightbox="islands" style="display:none;"></a>
                         </div>
-                        <!-- Extra hidden image -->
-                        <a href="images/20250515095204_Pakse-5.jpg" class="tour-gallery-hidden" data-lightbox="islands"
-                            data-title="4000 Islands - Dolphins"></a>
                         <div class="tour-body">
                             <h3>4000 Islands Explorer</h3>
                             <ul class="tour-highlights">
@@ -358,7 +378,7 @@
                                 <li>Explore Liphi Waterfall and island villages</li>
                                 <li>Overnight stay with scenic boat journeys</li>
                             </ul>
-                            <div class="tour-meta">⏱️ 2
+                            <div style="font-size: 0.9rem; color: #25D366; font-weight: 600; margin-top: 10px;">⏱️ 2
                                 Days • 🚗 All included • 📍 Pakse</div>
                             <a href="tour-4000-islands.html" class="btn-tour">View Tour Details</a>
                         </div>
@@ -366,32 +386,28 @@
                     <article class="tour-card reveal reveal-delay-1">
                         <div class="tour-img-wrapper">
                             <div class="tour-slider" id="slider-mekong">
-                                <img src="images/20250513001258_Overview_5_RT-1.jpg" class="slider-img active"
+                                <img src="images/tours/jungle/1.jpg" class="slider-img active"
                                     onclick="openGallery('mekong')" alt="Slow Boat Mekong">
-                                <img src="images/20250515091420_Slow-Boat-Tour.jpg" class="slider-img"
-                                    onclick="openGallery('mekong')" alt="Mekong River">
-                                <img src="images/20250515090422_Long-Tails-Boat.jpg" class="slider-img"
-                                    onclick="openGallery('mekong')" alt="Local Life">
-                                <img src="images/20250515091420_Pak-ou-caves.jpg" class="slider-img"
-                                    onclick="openGallery('mekong')" alt="Sunset Views">
+                                <img src="images/tours/jungle/2.jpg" class="slider-img" onclick="openGallery('mekong')"
+                                    alt="Mekong River">
+                                <img src="images/tours/jungle/3.jpg" class="slider-img" onclick="openGallery('mekong')"
+                                    alt="Local Life">
+                                <img src="images/tours/jungle/4.jpg" class="slider-img" onclick="openGallery('mekong')"
+                                    alt="Sunset Views">
                                 <button class="slider-btn slider-prev" onclick="moveSlide(-1, 'mekong')">❮</button>
                                 <button class="slider-btn slider-next" onclick="moveSlide(1, 'mekong')">❯</button>
                             </div>
                             <div class="gallery-indicator">📷 4 Photos</div>
                         </div>
                         <div class="tour-thumbnails">
-                            <a href="images/20250513001258_Overview_5_RT-1.jpg" data-lightbox="mekong"
-                                data-title="Mekong Slow Boat"><img src="images/20250513001258_Overview_5_RT-1.jpg"
-                                    alt="Thumbnail"></a>
-                            <a href="images/20250515091420_Slow-Boat-Tour.jpg" data-lightbox="mekong"
-                                data-title="Mekong River"><img src="images/20250515091420_Slow-Boat-Tour.jpg"
-                                    alt="Thumbnail"></a>
-                            <a href="images/20250515090422_Long-Tails-Boat.jpg" data-lightbox="mekong"
-                                data-title="Local Life"><img src="images/20250515090422_Long-Tails-Boat.jpg"
-                                    alt="Thumbnail"></a>
-                            <a href="images/20250515091420_Pak-ou-caves.jpg" data-lightbox="mekong"
-                                data-title="Sunset Views"><img src="images/20250515091420_Pak-ou-caves.jpg"
-                                    alt="Thumbnail"></a>
+                            <a href="images/tours/jungle/1.jpg" data-lightbox="mekong"
+                                data-title="Mekong Slow Boat"><img src="images/tours/jungle/1.jpg" alt="Thumbnail"></a>
+                            <a href="images/tours/jungle/2.jpg" data-lightbox="mekong" data-title="Mekong River"><img
+                                    src="images/tours/jungle/2.jpg" alt="Thumbnail"></a>
+                            <a href="images/tours/jungle/3.jpg" data-lightbox="mekong" data-title="Local Life"><img
+                                    src="images/tours/jungle/3.jpg" alt="Thumbnail"></a>
+                            <a href="images/tours/jungle/4.jpg" data-lightbox="mekong" data-title="Sunset Views"><img
+                                    src="images/tours/jungle/4.jpg" alt="Thumbnail"></a>
                         </div>
                         <div class="tour-body">
                             <h3>Mekong Slow Boat</h3>
@@ -401,7 +417,7 @@
                                 <li>Overnight accommodation in charming towns</li>
                                 <li>Intimate experience with stunning river views</li>
                             </ul>
-                            <div class="tour-meta">⏱️ 2
+                            <div style="font-size: 0.9rem; color: #25D366; font-weight: 600; margin-top: 10px;">⏱️ 2
                                 Days • 🚗 All included • 📍 Huay Xai to LP</div>
                             <a href="tour-mekong-slowboat.html" class="btn-tour">View Tour Details</a>
                         </div>
@@ -409,38 +425,38 @@
                     <article class="tour-card reveal reveal-delay-2">
                         <div class="tour-img-wrapper">
                             <div class="tour-slider" id="slider-jungle">
-                                <img src="images/20250513000725_Nong-Khiaw-1.jpg" class="slider-img active"
+                                <img src="images/tours/jungle/1.jpg" class="slider-img active"
                                     onclick="openGallery('jungle')" alt="Jungle Trek">
-                                <img src="images/20250515093616_Nong-Khiaw-Trekking-9.jpg" class="slider-img"
-                                    onclick="openGallery('jungle')" alt="Forest View">
-                                <img src="images/20250515093616_Nong-Khiaw-Trekking-1.jpg" class="slider-img"
-                                    onclick="openGallery('jungle')" alt="Guides">
-                                <img src="images/20250515093616_Kayaking-Nong-Khiaw-1.jpg" class="slider-img"
-                                    onclick="openGallery('jungle')" alt="Homestay">
-                                <img src="images/20250515093616_Nong-Khiaw-Viewpoint-4.jpg" class="slider-img"
-                                    onclick="openGallery('jungle')" alt="Village Life">
+                                <img src="images/tours/jungle/2.jpg" class="slider-img" onclick="openGallery('jungle')"
+                                    alt="Forest View">
+                                <img src="images/tours/jungle/3.jpg" class="slider-img" onclick="openGallery('jungle')"
+                                    alt="Guides">
+                                <img src="images/tours/jungle/4.jpg" class="slider-img" onclick="openGallery('jungle')"
+                                    alt="Homestay">
+                                <img src="images/tours/jungle/5.jpg" class="slider-img" onclick="openGallery('jungle')"
+                                    alt="Village Life">
                                 <button class="slider-btn slider-prev" onclick="moveSlide(-1, 'jungle')">❮</button>
                                 <button class="slider-btn slider-next" onclick="moveSlide(1, 'jungle')">❯</button>
                             </div>
                             <div class="gallery-indicator">📷 5 Photos</div>
                         </div>
                         <div class="tour-thumbnails">
-                            <a href="images/20250513000725_Nong-Khiaw-1.jpg" data-lightbox="jungle"
-                                data-title="Northern Trek - Jungle Path"><img
-                                    src="images/20250513000725_Nong-Khiaw-1.jpg" alt="Thumbnail"></a>
-                            <a href="images/20250515093616_Nong-Khiaw-Trekking-9.jpg" data-lightbox="jungle"
-                                data-title="Northern Trek - Forest View"><img
-                                    src="images/20250515093616_Nong-Khiaw-Trekking-9.jpg" alt="Thumbnail"></a>
-                            <a href="images/20250515093616_Nong-Khiaw-Trekking-1.jpg" data-lightbox="jungle"
-                                data-title="Northern Trek - Guides"><img
-                                    src="images/20250515093616_Nong-Khiaw-Trekking-1.jpg" alt="Thumbnail"></a>
-                            <a href="images/20250515093616_Kayaking-Nong-Khiaw-1.jpg" data-lightbox="jungle"
-                                data-title="Northern Trek - Homestay"><img
-                                    src="images/20250515093616_Kayaking-Nong-Khiaw-1.jpg" alt="Thumbnail"></a>
+                            <a href="images/tours/jungle/1.jpg" data-lightbox="jungle"
+                                data-title="Northern Trek - Jungle Path"><img src="images/tours/jungle/1.jpg"
+                                    alt="Thumbnail"></a>
+                            <a href="images/tours/treetop/1.jpg" data-lightbox="jungle"
+                                data-title="Northern Trek - Forest View"><img src="images/tours/treetop/1.jpg"
+                                    alt="Thumbnail"></a>
+                            <a href="images/tours/treetop/2.jpg" data-lightbox="jungle"
+                                data-title="Northern Trek - Guides"><img src="images/tours/treetop/2.jpg"
+                                    alt="Thumbnail"></a>
+                            <a href="images/tours/treetop/3.jpg" data-lightbox="jungle"
+                                data-title="Northern Trek - Homestay"><img src="images/tours/treetop/3.jpg"
+                                    alt="Thumbnail"></a>
                         </div>
                         <!-- Extra hidden image -->
-                        <a href="images/20250515093616_Nong-Khiaw-Viewpoint-4.jpg" class="tour-gallery-hidden"
-                            data-lightbox="jungle" data-title="Northern Trek - Village Life"></a>
+                        <a href="images/tours/jungle/5.jpg" class="tour-gallery-hidden" data-lightbox="jungle"
+                            data-title="Northern Trek - Village Life"></a>
                         <div class="tour-body">
                             <h3>Northern Jungle Trek</h3>
                             <ul class="tour-highlights">
@@ -449,7 +465,7 @@
                                 <li>Meet local ethnic communities</li>
                                 <li>Multi-day immersive cultural experience</li>
                             </ul>
-                            <div class="tour-meta">⏱️ 3
+                            <div style="font-size: 0.9rem; color: #25D366; font-weight: 600; margin-top: 10px;">⏱️ 3
                                 Days • 🚗 All included • 📍 Luang Namtha</div>
                             <a href="tour-northern-adventure.html" class="btn-tour">View Tour Details</a>
                         </div>
@@ -457,13 +473,13 @@
                     <article class="tour-card reveal reveal-delay-3">
                         <div class="tour-img-wrapper">
                             <div class="tour-slider" id="slider-culinary">
-                                <img src="images/20250515092939_Vientiane_Cooking_Class_2.jpg"
-                                    class="slider-img active" onclick="openGallery('culinary')" alt="Culinary Tour">
-                                <img src="images/caption.jpg" class="slider-img" onclick="openGallery('culinary')"
-                                    alt="Market Tour">
-                                <img src="images/20250515091420_luang_Prabang-Night-Market-2.jpg" class="slider-img"
+                                <img src="images/tours/heritage/1.jpg" class="slider-img active"
+                                    onclick="openGallery('culinary')" alt="Culinary Tour">
+                                <img src="images/tours/heritage/2.jpg" class="slider-img"
+                                    onclick="openGallery('culinary')" alt="Market Tour">
+                                <img src="images/tours/heritage/3.jpg" class="slider-img"
                                     onclick="openGallery('culinary')" alt="Local Dishes">
-                                <img src="images/20250515090422_Vientiane-Night-Market1.jpg" class="slider-img"
+                                <img src="images/tours/heritage/4.jpg" class="slider-img"
                                     onclick="openGallery('culinary')" alt="Dining Experience">
                                 <button class="slider-btn slider-prev" onclick="moveSlide(-1, 'culinary')">❮</button>
                                 <button class="slider-btn slider-next" onclick="moveSlide(1, 'culinary')">❯</button>
@@ -471,17 +487,18 @@
                             <div class="gallery-indicator">📷 4 Photos</div>
                         </div>
                         <div class="tour-thumbnails">
-                            <a href="images/20250515092939_Vientiane_Cooking_Class_2.jpg" data-lightbox="culinary"
-                                data-title="Culinary - Cooking Class"><img
-                                    src="images/20250515092939_Vientiane_Cooking_Class_2.jpg" alt="Thumbnail"></a>
-                            <a href="images/caption.jpg" data-lightbox="culinary"
-                                data-title="Culinary - Market Tour"><img src="images/caption.jpg" alt="Thumbnail"></a>
-                            <a href="images/20250515091420_luang_Prabang-Night-Market-2.jpg" data-lightbox="culinary"
-                                data-title="Culinary - Local Dishes"><img
-                                    src="images/20250515091420_luang_Prabang-Night-Market-2.jpg" alt="Thumbnail"></a>
-                            <a href="images/20250515090422_Vientiane-Night-Market1.jpg" data-lightbox="culinary"
-                                data-title="Culinary - Dining Experience"><img
-                                    src="images/20250515090422_Vientiane-Night-Market1.jpg" alt="Thumbnail"></a>
+                            <a href="images/tours/heritage/1.jpg" data-lightbox="culinary"
+                                data-title="Culinary - Cooking Class"><img src="images/tours/heritage/1.jpg"
+                                    alt="Thumbnail"></a>
+                            <a href="images/tours/heritage/2.jpg" data-lightbox="culinary"
+                                data-title="Culinary - Market Tour"><img src="images/tours/heritage/2.jpg"
+                                    alt="Thumbnail"></a>
+                            <a href="images/tours/heritage/3.jpg" data-lightbox="culinary"
+                                data-title="Culinary - Local Dishes"><img src="images/tours/heritage/3.jpg"
+                                    alt="Thumbnail"></a>
+                            <a href="images/tours/heritage/4.jpg" data-lightbox="culinary"
+                                data-title="Culinary - Dining Experience"><img src="images/tours/heritage/4.jpg"
+                                    alt="Thumbnail"></a>
                         </div>
                         <div class="tour-body">
                             <h3>Lao Culinary Journey</h3>
@@ -491,7 +508,7 @@
                                 <li>Dine at family-run restaurants and street stalls</li>
                                 <li>Discover the secrets of authentic Lao cuisine</li>
                             </ul>
-                            <div class="tour-meta">⏱️ Full
+                            <div style="font-size: 0.9rem; color: #25D366; font-weight: 600; margin-top: 10px;">⏱️ Full
                                 Day • 🍽️ Meals included • 📍 Luang Prabang</div>
                             <a href="tour-culinary.html" class="btn-tour">View Tour Details</a>
                         </div>
@@ -504,14 +521,27 @@
     <footer>
         <div class="container footer-grid">
             <div class="footer-col">
-                <h3>Laos Dream Destination</h3>
-                <p>Trusted local tour operator and accommodation specialist in Laos.</p>
+                <h3>LuangPrabang smile Trip</h3>
+                <p>Your trusted local partner for unforgettable Asian adventures. Based in Luang Prabang.</p>
             </div>
             <div class="footer-col">
-                <h3>Contact</h3>
-                <p>Email: koun506@gmail.com</p>
-                <p>Phone: +856 20 9845 7614</p>
+                <h3>Quick Links</h3>
+                <p><a href="index.html">Home</a></p>
+                <p><a href="tours.html">Our Tours</a></p>
+                <p><a href="packages.html">Tour Packages</a></p>
+                <p><a href="tickets.html">Book Tickets</a></p>
+                <p><a href="index.html#support">Support Center</a></p>
             </div>
+            <div class="footer-col">
+                <h3>Support</h3>
+                <p>Phone: +856 20 9845 7614</p>
+                <p>Email: koun506@gmail.com</p>
+                <p>Location: Luang Prabang, Laos</p>
+            </div>
+        </div>
+        <div class="footer-bottom"
+            style="text-align: center; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.1); margin-top: 2rem;">
+            <p>&copy; 2026 LuangPrabang smile Trip. All rights reserved.</p>
         </div>
     </footer>
 
@@ -523,6 +553,7 @@
         </svg>
     </a>
 
+    <script src="js/translations.js"></script>
     <script src="js/main.js"></script>
 </body>
 
