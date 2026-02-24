@@ -1,39 +1,61 @@
 @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,700;1,400&family=Outfit:wght@300;400;500;600;700&display=swap');
 
-/* ========== MODERN VIBRANT THEME ========== */
+/* ========== 🌴 TROPICAL VIBRANT THEME — ALIVE & COLORFUL ========== */
 :root {
-    /* Tropical & Premium Palette */
-    --primary: #064e40;
-    /* Deep Jungle */
-    --primary-soft: #0f766e;
+    /* 🌿 Tropical & Premium Palette */
+    --primary: #065f46;
+    /* Jungle Emerald */
+    --primary-soft: #0d9488;
     /* Lush Teal */
-    --primary-light: #f0fdfa;
-    /* Mint Mist */
+    --primary-light: #ecfdf5;
+    /* Soft Mint */
     --secondary: #f97316;
     /* Sunset Orange */
     --secondary-hover: #ea580c;
     --accent: #fbbf24;
     /* Golden Hour */
+    --accent-warm: #f59e0b;
+    /* Warm Amber */
+    --coral: #fb7185;
+    /* Tropical Coral */
+    --orchid: #a78bfa;
+    /* Orchid Purple */
+    --sky: #38bdf8;
+    /* Tropical Sky */
+    --lime: #84cc16;
+    /* Fresh Lime */
 
     /* Neutrals */
-    --bg-main: #f8fafc;
-    /* Soft Pearl */
+    --bg-main: #fafcff;
+    /* Crystal White */
     --surface: #ffffff;
     --text-main: #1e293b;
-    /* Dark Slate (Clear Readability) */
     --text-muted: #64748b;
-    /* Calm Slate */
     --dark: #0f172a;
 
-    /* Smooth Shadows */
-    --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
-    --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
-    --shadow-lg: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
-    --shadow-xl: 0 25px 50px -12px rgb(0 0 0 / 0.25);
+    /* ✨ Vibrant Gradients */
+    --gradient-sunset: linear-gradient(135deg, #f97316, #fb923c, #fbbf24);
+    --gradient-tropical: linear-gradient(135deg, #065f46, #0d9488, #14b8a6);
+    --gradient-warm: linear-gradient(135deg, #f97316, #fb7185);
+    --gradient-ocean: linear-gradient(135deg, #065f46 0%, #0d4f4f 50%, #134e4a 100%);
+    --gradient-sky: linear-gradient(135deg, #38bdf8, #a78bfa);
+    --gradient-forest: linear-gradient(135deg, #065f46, #14532d);
+    --gradient-glow: linear-gradient(135deg, #fbbf24, #f97316, #fb7185);
+    --gradient-accent: linear-gradient(135deg, #f97316, #f59e0b);
+
+    /* 🌟 Colorful Shadows */
+    --shadow-sm: 0 1px 3px rgb(0 0 0 / 0.06), 0 1px 2px rgb(0 0 0 / 0.04);
+    --shadow-md: 0 4px 14px -2px rgb(0 0 0 / 0.08), 0 2px 6px -2px rgb(0 0 0 / 0.06);
+    --shadow-lg: 0 20px 40px -8px rgb(6 95 70 / 0.12), 0 8px 16px -6px rgb(0 0 0 / 0.08);
+    --shadow-xl: 0 25px 60px -12px rgb(6 95 70 / 0.2);
+    --shadow-glow-orange: 0 8px 30px rgba(249, 115, 22, 0.25);
+    --shadow-glow-teal: 0 8px 30px rgba(13, 148, 136, 0.2);
+    --shadow-glow-coral: 0 8px 30px rgba(251, 113, 133, 0.2);
+    --shadow-soft: 0 4px 20px rgba(0, 0, 0, 0.06);
 
     /* Surfaces */
-    --glass: rgba(255, 255, 255, 0.7);
-    --glass-border: rgba(255, 255, 255, 0.4);
+    --glass: rgba(255, 255, 255, 0.75);
+    --glass-border: rgba(255, 255, 255, 0.5);
     --radius-sm: 8px;
     --radius-md: 16px;
     --radius-lg: 24px;
@@ -43,6 +65,7 @@
     /* Transitions */
     --ease-out: cubic-bezier(0.33, 1, 0.68, 1);
     --transition-smooth: all 0.4s var(--ease-out);
+    --transition: all 0.3s ease;
 }
 
 * {
@@ -63,6 +86,55 @@ body {
     background: var(--bg-main);
     overflow-x: hidden;
     -webkit-font-smoothing: antialiased;
+    position: relative;
+}
+
+/* 🌈 Animated floating color blobs for a vibrant, alive feel */
+body::before,
+body::after {
+    content: '';
+    position: fixed;
+    border-radius: 50%;
+    filter: blur(120px);
+    opacity: 0.08;
+    z-index: -1;
+    pointer-events: none;
+    animation: floatBlob 20s ease-in-out infinite alternate;
+}
+
+body::before {
+    width: 600px;
+    height: 600px;
+    background: var(--coral);
+    top: -200px;
+    right: -150px;
+}
+
+body::after {
+    width: 500px;
+    height: 500px;
+    background: var(--sky);
+    bottom: -200px;
+    left: -150px;
+    animation-delay: -10s;
+}
+
+@keyframes floatBlob {
+    0% {
+        transform: translate(0, 0) scale(1);
+    }
+
+    33% {
+        transform: translate(40px, -30px) scale(1.1);
+    }
+
+    66% {
+        transform: translate(-20px, 20px) scale(0.95);
+    }
+
+    100% {
+        transform: translate(30px, -10px) scale(1.05);
+    }
 }
 
 p {
@@ -135,15 +207,16 @@ h6 {
 
 h1 {
     font-size: clamp(2.5rem, 8vw, 4.5rem);
-    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-soft) 50%, var(--secondary) 100%);
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
-    filter: drop-shadow(0 4px 8px rgba(240, 235, 235, 0.05));
+    filter: drop-shadow(0 4px 12px rgba(6, 95, 70, 0.15));
 }
 
 section {
     padding: 120px 0;
+    position: relative;
 }
 
 .section-accent {
@@ -157,11 +230,25 @@ section {
     position: absolute;
     top: -100px;
     right: -100px;
-    width: 300px;
-    height: 300px;
-    background: radial-gradient(circle, var(--accent) 0%, transparent 70%);
-    opacity: 0.2;
-    filter: blur(40px);
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, var(--accent) 0%, var(--coral) 50%, transparent 70%);
+    opacity: 0.15;
+    filter: blur(60px);
+    animation: floatBlob 15s ease-in-out infinite alternate;
+}
+
+.section-accent::after {
+    content: '';
+    position: absolute;
+    bottom: -80px;
+    left: -80px;
+    width: 350px;
+    height: 350px;
+    background: radial-gradient(circle, var(--sky) 0%, transparent 70%);
+    opacity: 0.1;
+    filter: blur(50px);
+    animation: floatBlob 18s ease-in-out infinite alternate-reverse;
 }
 
 /* ========== BUTTONS ========== */
@@ -220,12 +307,12 @@ section {
     -webkit-backdrop-filter: blur(12px);
     border-bottom: 1px solid var(--glass-border);
     transition: var(--transition-smooth);
-    padding: 10px 0;
+    padding: 8px 0;
 }
 
 .site-header.scrolled {
     background: rgba(255, 255, 255, 0.95);
-    padding: 5px 0;
+    padding: 4px 0;
     box-shadow: var(--shadow-md);
 }
 
@@ -233,6 +320,7 @@ section {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    min-height: 56px;
 }
 
 /* ========== UTILITY CLASSES (For Tour Details) ========== */
@@ -401,7 +489,7 @@ body.lao-font {
     display: block;
     width: 28px;
     height: 3px;
-    background: #ffffff;
+    background: var(--dark);
     border-radius: 4px;
     transition: var(--transition);
 }
@@ -2199,6 +2287,7 @@ footer {
     font-size: 0.8rem;
     opacity: 0.8;
 }
+
 /* ========================================
    2026 ESSENTIAL TRAVELER INFO SECTION
    ======================================== */
@@ -2262,7 +2351,7 @@ footer {
     overflow-x: auto;
     margin-top: 1.5rem;
     border-radius: 12px;
-    box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
 }
 
 .festival-table {
@@ -2323,7 +2412,7 @@ footer {
     border-left: 5px solid var(--primary);
     border-radius: 16px;
     padding: 2rem 2.5rem;
-    box-shadow: 0 8px 24px rgba(0,0,0,0.06);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
 }
 
 .pro-tip-box blockquote {
@@ -2340,6 +2429,7 @@ footer {
 }
 
 @media (max-width: 768px) {
+
     .festival-table th,
     .festival-table td {
         padding: 0.75rem 0.8rem;
@@ -2372,7 +2462,7 @@ footer {
     background: white;
     padding: 2.5rem;
     border-radius: 20px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.04);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
     transition: transform 0.3s ease;
     border: 1px solid #f1f5f9;
 }
@@ -2390,7 +2480,7 @@ footer {
     background: white;
     border-radius: 30px;
     padding: 3rem;
-    box-shadow: 0 20px 50px rgba(0,0,0,0.06);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.06);
     border: 1px solid #f1f5f9;
 }
 
