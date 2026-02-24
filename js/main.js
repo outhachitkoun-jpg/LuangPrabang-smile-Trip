@@ -133,6 +133,71 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
+    // Review Stars Interaction
+    const starBtns = document.querySelectorAll('.star-btn');
+    let selectedRating = 5;
+
+    starBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            selectedRating = parseInt(btn.getAttribute('data-rating'));
+            starBtns.forEach((s, index) => {
+                if (index < selectedRating) {
+                    s.classList.add('active');
+                } else {
+                    s.classList.remove('active');
+                }
+            });
+        });
+        // Set default 5 stars
+        if (btn.getAttribute('data-rating') === "5") btn.click();
+    });
+
+    // Review Form Submission
+    const reviewForm = document.getElementById('guest-review-form');
+    if (reviewForm) {
+        reviewForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const name = document.getElementById('review-name').value;
+            const tour = document.getElementById('review-tour-select').value;
+            const msg = document.getElementById('review-message').value;
+            
+            // Create New Review Card
+            const grid = document.getElementById('reviews-grid');
+            const card = document.createElement('div');
+            card.className = 'review-card reveal active';
+            card.style.borderLeft = '4px solid var(--secondary)';
+
+            const initials = name.split(' ').map(n => n[0]).join('').toUpperCase().substring(0, 2);
+            const today = new Date();
+            const month = today.toLocaleString('default', { month: 'long' });
+            const year = today.getFullYear();
+
+            card.innerHTML = `
+                <div class="review-header">
+                    <div class="review-avatar" style="background: var(--gradient-sunset);">${initials}</div>
+                    <div class="review-meta">
+                        <h4>${name}</h4>
+                        <span class="review-tour">📍 ${tour}</span>
+                    </div>
+                </div>
+                <div class="review-stars">${'★'.repeat(selectedRating)}${'☆'.repeat(5-selectedRating)}</div>
+                <p class="review-text">"${msg}"</p>
+                <span class="review-date">🗓️ ${month} ${year}</span>
+            `;
+
+            grid.prepend(card);
+            
+            // Feedback
+            document.getElementById('review-success').style.display = 'block';
+            reviewForm.reset();
+            starBtns.forEach(s => s.classList.remove('active'));
+            selectedRating = 0;
+            
+            // Scroll to the new review
+            card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        });
+    }
+
     // Header Scroll Effect
     const siteHeader = document.querySelector('.site-header');
     if (siteHeader) {
