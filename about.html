@@ -8,18 +8,72 @@
     <meta name="description"
         content="Learn more about Laos Smile Trip, your trusted local tour operator and accommodation specialist in Luang Prabang, Laos.">
     <link rel="stylesheet" href="css/style.css">
+    <style>
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 4rem;
+        }
+
+        .value-card {
+            background: white;
+            padding: 3rem;
+            border-radius: 30px;
+            box-shadow: var(--shadow-lg);
+            text-align: center;
+            transition: var(--transition-smooth);
+            border-bottom: 4px solid transparent;
+        }
+
+        .value-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--primary);
+        }
+
+        .value-icon {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            display: block;
+        }
+
+        .about-image-stack {
+            position: relative;
+            padding-bottom: 40px;
+        }
+
+        .about-image-main {
+            width: 100%;
+            border-radius: 30px;
+            box-shadow: var(--shadow-xl);
+        }
+
+        .about-image-sub {
+            position: absolute;
+            bottom: 0;
+            right: -20px;
+            width: 60%;
+            border-radius: 20px;
+            border: 8px solid white;
+            box-shadow: var(--shadow-lg);
+        }
+
+        @media (max-width: 768px) {
+            .about-image-sub {
+                position: static;
+                width: 100%;
+                border: none;
+                margin-top: 1rem;
+            }
+
+            .about-image-stack {
+                padding-bottom: 0;
+            }
+        }
+    </style>
 </head>
 
-
 <body>
-
-    <a class="whatsapp-float" href="https://wa.me/8562098457614" target="_blank" rel="noopener">
-        <svg width="32" height="32" viewBox="0 0 32 32" fill="white">
-            <path
-                d="M16.003 2.667c-7.363 0-13.333 5.97-13.333 13.333 0 2.35.613 4.646 1.781 6.674L2.667 29.333l6.84-1.76c1.96 1.07 4.17 1.63 6.493 1.63 7.364 0 13.333-5.97 13.333-13.333s-5.969-13.333-13.333-13.333zm0 24c-2.073 0-4.1-.523-5.897-1.514l-.423-.239-4.06 1.046 1.083-3.951-.275-.406c-1.112-1.646-1.699-3.563-1.699-5.478 0-5.546 4.514-10.06 10.06-10.06s10.06 4.514 10.06 10.06-4.514 10.06-10.06 10.06zm5.523-7.526c-.302-.151-1.79-.883-2.068-.984-.278-.101-.48-.151-.681.151-.201.302-.782.984-.959 1.186-.177.201-.353.227-.655.076-.302-.151-1.275-.471-2.429-1.503-.898-.8-1.503-1.789-1.68-2.091-.177-.302-.019-.466.133-.617.137-.136.302-.353.453-.53.151-.177.201-.302.302-.504.101-.201.051-.378-.025-.529-.076-.151-.681-1.64-.933-2.247-.245-.587-.494-.508-.681-.517-.176-.008-.378-.01-.58-.01-.201 0-.53.076-.806.378-.277.302-1.057 1.032-1.057 2.515 0 1.483 1.081 2.914 1.232 3.117.151.201 2.129 3.252 5.164 4.558.722.312 1.284.498 1.722.639.723.23 1.38.197 1.9.119.579-.086 1.79-.731 2.043-1.437.252-.706.252-1.31.176-1.437-.076-.126-.277-.201-.58-.353z" />
-        </svg>
-    </a>
-
     <header class="site-header">
         <div class="container nav-bar">
             <a href="index.html" class="logo">
@@ -36,7 +90,7 @@
                     <li><a href="tours.html" data-i18n="nav_tours">Tours</a></li>
                     <li><a href="rentals.html" data-i18n="nav_rentals">Rentals</a></li>
                     <li><a href="laos.html" data-i18n="nav_laos">Laos</a></li>
-
+                    <li><a href="eco-dyeing.html" data-i18n="nav_eco_dyeing">Eco-Dyeing</a></li>
                     <li><a href="index.html#contact" data-i18n="nav_contact">Contact</a></li>
                     <li><a href="about.html" class="active" data-i18n="nav_about">About</a></li>
                 </ul>
@@ -47,34 +101,62 @@
 
     <section class="about-hero">
         <div class="container reveal">
-            <h1 class="section-title" style="color: white;">Our Story</h1>
-            <p style="font-size: 1.25rem; opacity: 0.9;">Your Local Experts in Luang Prabang</p>
+            <h1 class="section-title" style="color: white;" data-i18n="nav_about">About Us</h1>
+            <p style="font-size: 1.25rem; opacity: 0.9;" data-i18n="about_intro_title">Experience Authentic Laos with
+                Local Experts</p>
         </div>
     </section>
 
-    <main class="container about-section">
+    <main class="container about-section" style="padding: 6rem 0;">
         <div class="about-grid reveal">
             <div class="about-text">
-                <h2>Why Choose Laos Smile Trip?</h2>
-                <p>Based in the beautiful UNESCO World Heritage town of Luang Prabang, Laos Smile Trip is a
-                    team
-                    of
-                    local
-                    experts dedicated to showing you the true heart of Laos. With over a decade of experience in hotel
-                    management and tourism, we understand exactly what makes a journey unforgettable.</p>
-                <p style="margin-top: 1rem;">Whether you are staying at our <strong>Villa Kingkham Riverside</strong> or
-                    exploring remote villages with our guides, we guarantee authentic experiences and personal service.
+                <h2 data-i18n="workshop_story">Our Story</h2>
+                <p data-i18n="about_intro_para">Based in the beautiful UNESCO World Heritage town of Luang Prabang, Laos
+                    Smile Trip is a team of local experts dedicated to showing you the true heart of Laos. With over a
+                    decade of experience, we transform journeys into lifelong memories.</p>
+
+                <p style="margin-top: 1.5rem;" data-i18n="about_team_para">From our family-run Villa Kingkham Riverside
+                    to our expert-led jungle tours, we provide a deeply personal touch that only true locals can offer.
                 </p>
-                <div style="margin-top: 2rem; display: flex; gap: 1rem; flex-wrap: wrap;">
-                    <a href="tours.html" class="btn">Explore Our Tours</a>
-                    <a href="laos.html" class="btn btn-outline">Information on Laos</a>
+
+                <div style="margin-top: 2.5rem; display: flex; gap: 1rem; flex-wrap: wrap;">
+                    <a href="tours.html" class="btn" data-i18n="nav_tours">Explore Our Tours</a>
+                    <a href="eco-dyeing.html" class="btn btn-outline" data-i18n="nav_eco_dyeing">Eco-Dyeing Workshop</a>
                 </div>
             </div>
-            <div class="about-image">
-                <img src="images/tours/heritage/1.jpg" alt="Luang Prabang Heritage"
-                    style="border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
+            <div class="about-image-stack">
+                <img src="images/tours/heritage/1.jpg" alt="Luang Prabang Heritage" class="about-image-main">
+                <img src="images/tours/Eco-Dyeing/s.jpeg" alt="Eco-Printing Art" class="about-image-sub">
             </div>
         </div>
+
+        <section class="values-section" style="margin-top: 8rem;">
+            <div style="text-align: center; max-width: 700px; margin: 0 auto;">
+                <h2 class="section-title" data-i18n="about_mission_title">Our Mission</h2>
+                <p data-i18n="about_mission_para">We believe in sustainable, community-based tourism that respects local
+                    traditions while providing unforgettable, high-quality experiences for our guests.</p>
+            </div>
+
+            <div class="values-grid">
+                <div class="value-card">
+                    <span class="value-icon">🤝</span>
+                    <h3 data-i18n="about_team_title">Local Hospitality</h3>
+                    <p>We treat every guest like family, sharing the hidden spots and stories that only locals know.</p>
+                </div>
+                <div class="value-card">
+                    <span class="value-icon">🌿</span>
+                    <h3 data-i18n="about_workshop_title">Artisan Commitment</h3>
+                    <p data-i18n="about_workshop_para">Our new Eco-Printing workshop in Ban Pongvan Village is part of
+                        our dedication to preserving Lao heritage and supporting rural artisan communities.</p>
+                </div>
+                <div class="value-card">
+                    <span class="value-icon">🐘</span>
+                    <h3>Ethical Adventures</h3>
+                    <p>From sunset cruises to jungle treks, we ensure our activities are respectful to nature and local
+                        wildlife.</p>
+                </div>
+            </div>
+        </section>
     </main>
 
     <footer>
@@ -89,7 +171,7 @@
                 <p><a href="index.html">Home</a></p>
                 <p><a href="tours.html">Our Tours</a></p>
                 <p><a href="rentals.html">Rentals</a></p>
-                <p><a href="about.html">About</a></p>
+                <p><a href="eco-dyeing.html">Eco-Dyeing</a></p>
             </div>
             <div class="footer-col">
                 <h3>Contact Us</h3>
@@ -102,13 +184,7 @@
         </div>
     </footer>
 
-    <!-- WhatsApp Float -->
-    <a class="whatsapp-float" href="https://wa.me/8562098457614" target="_blank" rel="noopener">
-        <svg width="32" height="32" viewBox="0 0 32 32" fill="white">
-            <path
-                d="M16.003 2.667c-7.363 0-13.333 5.97-13.333 13.333 0 2.35.613 4.646 1.781 6.674L2.667 29.333l6.84-1.76c1.96 1.07 4.17 1.63 6.493 1.63 7.364 0 13.333-5.97 13.333-13.333s-5.969-13.333-13.333-13.333zm0 24c-2.073 0-4.1-.523-5.897-1.514l-.423-.239-4.06 1.046 1.083-3.951-.275-.406c-1.112-1.646-1.699-3.563-1.699-5.478 0-5.546 4.514-10.06 10.06-10.06s10.06 4.514 10.06 10.06-4.514 10.06-10.06 10.06zm5.523-7.526c-.302-.151-1.79-.883-2.068-.984-.278-.101-.48-.151-.681.151-.201.302-.782.984-.959 1.186-.177.201-.353.227-.655.076-.302-.151-1.275-.471-2.429-1.503-.898-.8-1.503-1.789-1.68-2.091-.177-.302-.019-.466.133-.617.137-.136.302-.353.453-.53.151-.177.201-.302.302-.504.101-.201.051-.378-.025-.529-.076-.151-.681-1.64-.933-2.247-.245-.587-.494-.508-.681-.517-.176-.008-.378-.01-.58-.01-.201 0-.53.076-.806.378-.277.302-1.057 1.032-1.057 2.515 0 1.483 1.081 2.914 1.232 3.117.151.201 2.129 3.252 5.164 4.558.722.312 1.284.498 1.722.639.723.23 1.38.197 1.9.119.579-.086 1.79-.731 2.043-1.437.252-.706.252-1.31.176-1.437-.076-.126-.277-.201-.58-.353z" />
-        </svg>
-    </a>
+    <script src="js/translations.js"></script>
     <script src="js/main.js"></script>
 </body>
 
