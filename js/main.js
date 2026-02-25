@@ -247,27 +247,47 @@ document.addEventListener('DOMContentLoaded', function () {
 
         document.body.appendChild(botContainer);
 
-        // Show bot after 4 seconds
+        // Show bot after 5 seconds
         setTimeout(() => {
             botContainer.classList.add('active');
 
-            // Add typing indicator
             const botBody = botContainer.querySelector('.bot-body');
-            const typing = document.createElement('div');
-            typing.className = 'bot-bubble typing';
-            typing.innerHTML = '<span></span><span></span><span></span>';
-            botBody.appendChild(typing);
 
-            // Replace with actual message after 2s
+            function addMessage(text, isTyping = true, delay = 1000) {
+                if (isTyping) {
+                    const typing = document.createElement('div');
+                    typing.className = 'bot-bubble typing';
+                    typing.innerHTML = '<span></span><span></span><span></span>';
+                    botBody.appendChild(typing);
+                    botBody.scrollTop = botBody.scrollHeight;
+
+                    setTimeout(() => {
+                        typing.remove();
+                        const bubble = document.createElement('div');
+                        bubble.className = 'bot-bubble';
+                        bubble.textContent = text;
+                        botBody.appendChild(bubble);
+                        botBody.scrollTop = botBody.scrollHeight;
+                    }, delay);
+                } else {
+                    const bubble = document.createElement('div');
+                    bubble.className = 'bot-bubble';
+                    bubble.textContent = text;
+                    botBody.appendChild(bubble);
+                    botBody.scrollTop = botBody.scrollHeight;
+                }
+            }
+
+            // First message
+            addMessage(greeting, true, 1500);
+
+            // Second message after 4 seconds
             setTimeout(() => {
-                typing.remove();
-                const bubble = document.createElement('div');
-                bubble.className = 'bot-bubble';
-                bubble.setAttribute('data-i18n', 'bot_greeting');
-                bubble.textContent = greeting;
-                botBody.appendChild(bubble);
-            }, 2000);
-        }, 4000);
+                const secondMsg = currentLang === 'lo' ? "ພວກເຮົາພ້ອມໃຫ້ຄຳປຶກສາການທ່ອງທ່ຽວຕະຫຼອດ 24 ຊົ່ວໂມງ!" : "We're here to help you plan your perfect Laos trip 24/7!";
+                addMessage(secondMsg, true, 1500);
+            }, 4000);
+
+        }, 5000);
 
         // Close logic
         document.getElementById('bot-close').addEventListener('click', () => {
@@ -276,6 +296,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     initWhatsAppBot();
+
 });
 
 // Object to store slide indices and intervals for each tour
