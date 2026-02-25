@@ -1,36 +1,51 @@
-// Google Translate Initialization
+// Google Translate Initialization & Persistence
 window.googleTranslateElementInit = function () {
+    if (window.googleTranslateElementInitDone) return;
     new google.translate.TranslateElement({
         pageLanguage: 'en',
         includedLanguages: 'en,lo,th,fr,ja',
         layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
         autoDisplay: false
     }, 'google_translate_element');
+    window.googleTranslateElementInitDone = true;
 };
 
 window.translateLanguage = function (lang) {
+    if (!lang) return;
     console.log("Translation requested for:", lang);
+
+    // Save preference
+    localStorage.setItem('preferredLanguage', lang);
+
     const selectElement = document.querySelector('.goog-te-combo');
     if (selectElement) {
         selectElement.value = lang;
+        // Standard change event
         selectElement.dispatchEvent(new Event('change', { bubbles: true }));
-        // Some versions of Google Translate might need an extra trigger
-        setTimeout(() => {
-            selectElement.dispatchEvent(new Event('click', { bubbles: true }));
-        }, 100);
+
+        // Brute force triggers for different Google Translate implementations
+        ['change', 'click', 'input', 'blur'].forEach(evtName => {
+            const event = new Event(evtName, { bubbles: true });
+            selectElement.dispatchEvent(event);
+        });
+
+        console.log("Events dispatched for:", lang);
     } else {
-        // If the widget isn't ready, try to load the script if it's missing
+        // Load Google Translate script if it's not present
         if (!document.querySelector('script[src*="translate_a/element.js"]')) {
             const script = document.createElement('script');
+            script.type = 'text/javascript';
             script.src = "//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit";
             document.body.appendChild(script);
         }
+
+        // Wait and retry
         setTimeout(() => window.translateLanguage(lang), 500);
     }
 }
 
 document.addEventListener('DOMContentLoaded', function () {
-    // Language Flag Click Handler
+    // Language Flag Click Handler (Dropdown)
     const langFlags = document.querySelectorAll('.lang-flag');
     langFlags.forEach(flag => {
         flag.addEventListener('click', function (e) {
@@ -48,6 +63,13 @@ document.addEventListener('DOMContentLoaded', function () {
             window.translateLanguage(lang);
         });
     });
+
+    // Auto-apply saved language
+    const savedLang = localStorage.getItem('preferredLanguage');
+    if (savedLang && savedLang !== 'en') {
+        // Wait a bit for everything to settle
+        setTimeout(() => window.translateLanguage(savedLang), 1000);
+    }
 
     // Initialize specific tour if needed (optional)
     // Initialize Hero Slider

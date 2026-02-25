@@ -684,6 +684,22 @@ body.lao-font {
     transform: translateY(0);
 }
 
+/* Add bridge to prevent hover loss between button and menu */
+.nav-translate::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 100%;
+    height: 100px;
+    z-index: 2900;
+    display: none;
+}
+
+.nav-translate:hover::after {
+    display: block;
+}
+
 .lang-flag {
     display: flex !important;
     align-items: center;
