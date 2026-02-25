@@ -160,7 +160,7 @@ document.addEventListener('DOMContentLoaded', function () {
             const name = document.getElementById('review-name').value;
             const tour = document.getElementById('review-tour-select').value;
             const msg = document.getElementById('review-message').value;
-            
+
             // Create New Review Card
             const grid = document.getElementById('reviews-grid');
             const card = document.createElement('div');
@@ -180,19 +180,19 @@ document.addEventListener('DOMContentLoaded', function () {
                         <span class="review-tour">📍 ${tour}</span>
                     </div>
                 </div>
-                <div class="review-stars">${'★'.repeat(selectedRating)}${'☆'.repeat(5-selectedRating)}</div>
+                <div class="review-stars">${'★'.repeat(selectedRating)}${'☆'.repeat(5 - selectedRating)}</div>
                 <p class="review-text">"${msg}"</p>
                 <span class="review-date">🗓️ ${month} ${year}</span>
             `;
 
             grid.prepend(card);
-            
+
             // Feedback
             document.getElementById('review-success').style.display = 'block';
             reviewForm.reset();
             starBtns.forEach(s => s.classList.remove('active'));
             selectedRating = 0;
-            
+
             // Scroll to the new review
             card.scrollIntoView({ behavior: 'smooth', block: 'center' });
         });
@@ -209,6 +209,73 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         });
     }
+
+    // Initialize WhatsApp Bot
+    function initWhatsAppBot() {
+        if (document.getElementById('whatsapp-bot')) return;
+
+        const botContainer = document.createElement('div');
+        botContainer.className = 'whatsapp-bot-container';
+        botContainer.id = 'whatsapp-bot';
+
+        const currentLang = localStorage.getItem('preferredLanguage') || 'en';
+        const greeting = (typeof translations !== 'undefined' && translations[currentLang]) ? translations[currentLang].bot_greeting : "Sabaidee! 🙏 How can I help you today?";
+        const status = (typeof translations !== 'undefined' && translations[currentLang]) ? translations[currentLang].bot_status : "Online";
+        const btnText = (typeof translations !== 'undefined' && translations[currentLang]) ? translations[currentLang].bot_button : "Chat on WhatsApp";
+
+        botContainer.innerHTML = `
+            <div class="bot-header">
+                <div class="bot-avatar">🤖</div>
+                <div class="bot-info">
+                    <h4>Smile Bot</h4>
+                    <span data-i18n="bot_status">${status}</span>
+                </div>
+                <button class="bot-close" id="bot-close">&times;</button>
+            </div>
+            <div class="bot-body" id="bot-body">
+                <!-- Message will be injected here -->
+            </div>
+            <div class="bot-footer">
+                <a href="https://wa.me/8562098457614" target="_blank" class="bot-chat-btn">
+                    <svg width="20" height="20" viewBox="0 0 32 32" fill="white">
+                        <path d="M16.003 2.667c-7.363 0-13.333 5.97-13.333 13.333 0 2.35.613 4.646 1.781 6.674L2.667 29.333l6.84-1.76c1.96 1.07 4.17 1.63 6.493 1.63 7.364 0 13.333-5.97 13.333-13.333s-5.969-13.333-13.333-13.333zm0 24c-2.073 0-4.1-.523-5.897-1.514l-.423-.239-4.06 1.046 1.083-3.951-.275-.406c-1.112-1.646-1.699-3.563-1.699-5.478 0-5.546 4.514-10.06 10.06-10.06s10.06 4.514 10.06 10.06-4.514 10.06-10.06 10.06zm5.523-7.526c-.302-.151-1.79-.883-2.068-.984-.278-.101-.48-.151-.681.151-.201.302-.782.984-.959 1.186-.177.201-.353.227-.655.076-.302-.151-1.275-.471-2.429-1.503-.898-.8-1.503-1.789-1.68-2.091-.177-.302-.019-.466.133-.617.137-.136.302-.353.453-.53.151-.177.201-.302.302-.504.101-.201.051-.378-.025-.529-.076-.151-.681-1.64-.933-2.247-.245-.587-.494-.508-.681-.517-.176-.008-.378-.01-.58-.01-.201 0-.53.076-.806.378-.277.302-1.057 1.032-1.057 2.515 0 1.483 1.081 2.914 1.232 3.117.151.201 2.129 3.252 5.164 4.558.722.312 1.284.498 1.722.639.723.23 1.38.197 1.9.119.579-.086 1.79-.731 2.043-1.437.252-.706.252-1.31.176-1.437-.076-.126-.277-.201-.58-.353z" />
+                    </svg>
+                    <span data-i18n="bot_button">${btnText}</span>
+                </a>
+            </div>
+        `;
+
+        document.body.appendChild(botContainer);
+
+        // Show bot after 4 seconds
+        setTimeout(() => {
+            botContainer.classList.add('active');
+
+            // Add typing indicator
+            const botBody = botContainer.querySelector('.bot-body');
+            const typing = document.createElement('div');
+            typing.className = 'bot-bubble typing';
+            typing.innerHTML = '<span></span><span></span><span></span>';
+            botBody.appendChild(typing);
+
+            // Replace with actual message after 2s
+            setTimeout(() => {
+                typing.remove();
+                const bubble = document.createElement('div');
+                bubble.className = 'bot-bubble';
+                bubble.setAttribute('data-i18n', 'bot_greeting');
+                bubble.textContent = greeting;
+                botBody.appendChild(bubble);
+            }, 2000);
+        }, 4000);
+
+        // Close logic
+        document.getElementById('bot-close').addEventListener('click', () => {
+            botContainer.classList.remove('active');
+        });
+    }
+
+    initWhatsAppBot();
 });
 
 // Object to store slide indices and intervals for each tour

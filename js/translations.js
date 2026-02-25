@@ -50,7 +50,10 @@ const translations = {
         "special_requests": "Special Requests / Notes",
         "request_booking": "Request Booking",
         "inquire_now": "Inquire Now",
-        "chat_to_book": "Chat to Book"
+        "chat_to_book": "Chat to Book",
+        "bot_greeting": "Sabaidee! 🙏 Welcome to Laos Smile Trip. How can I help you today?",
+        "bot_status": "Online",
+        "bot_button": "Chat on WhatsApp"
     },
     lo: {
         "nav_home": "ໜ້າທຳອິດ",
@@ -103,7 +106,10 @@ const translations = {
         "special_requests": "ຄຳຮ້ອງຂໍເພີ່ມເຕີມ / ໝາຍເຫດ",
         "request_booking": "ຮ້ອງຂໍການຈອງ",
         "inquire_now": "ສອບຖາມຕອນນີ້",
-        "chat_to_book": "ສົນທະນາເພື່ອຈອງ"
+        "chat_to_book": "ສົນທະນາເພື່ອຈອງ",
+        "bot_greeting": "ສະບາຍດີ! 🙏 ຍິນດີຕ້ອນຮັບສູ່ Laos Smile Trip. ມີຫຍັງໃຫ້ພວກເຮົາຊ່ວຍບໍ່?",
+        "bot_status": "ອອນໄລນ໌",
+        "bot_button": "ລົມຜ່ານ WhatsApp"
     }
 };
 

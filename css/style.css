@@ -1497,18 +1497,34 @@ footer {
 
 .whatsapp-float {
     position: fixed;
-    bottom: 40px;
-    right: 40px;
-    width: 65px;
-    height: 65px;
+    bottom: 30px;
+    right: 30px;
+    width: 60px;
+    height: 60px;
     background: #25d366;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    box-shadow: 0 10px 25px rgba(37, 211, 102, 0.3);
-    z-index: 1000;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    z-index: 9999;
     transition: all 0.3s ease;
+    text-decoration: none;
+    animation: pulse-whatsapp 2s infinite;
+}
+
+@keyframes pulse-whatsapp {
+    0% {
+        box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7);
+    }
+
+    70% {
+        box-shadow: 0 0 0 15px rgba(37, 211, 102, 0);
+    }
+
+    100% {
+        box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
+    }
 }
 
 .whatsapp-float:hover {
@@ -1765,6 +1781,18 @@ footer {
     .plan-form {
         padding: 2rem;
     }
+
+    .whatsapp-float {
+        bottom: calc(20px + env(safe-area-inset-bottom, 0px));
+        right: 20px;
+        width: 55px;
+        height: 55px;
+    }
+
+    .whatsapp-float svg {
+        width: 25px;
+        height: 25px;
+    }
 }
 
 @media (max-width: 480px) {
@@ -1819,6 +1847,15 @@ footer {
 
 ::-webkit-scrollbar-track {
     background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--primary);
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--dark);
 }
 
 /* ========== RAILWAY & LAOS GUIDE PAGES ========== */
@@ -2175,16 +2212,6 @@ footer {
     border-radius: 2px;
 }
 
-
-::-webkit-scrollbar-thumb {
-    background: var(--primary);
-    border-radius: 10px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-    background: var(--dark);
-}
-
 /* ========== LAOS GUIDE STYLES ========== */
 .laos-hero {
     height: 60vh;
@@ -2207,93 +2234,174 @@ footer {
     text-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
 }
 
-.travel-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-    gap: 2rem;
-    margin: 4rem 0;
-}
-
-.travel-point {
-    background: var(--surface);
-    padding: 2.5rem;
-    border-radius: var(--radius-lg);
-    box-shadow: var(--shadow-md);
-    border: 1px solid rgba(226, 232, 240, 0.8);
-    transition: var(--transition-smooth);
-    position: relative;
+/* ========== WHATSAPP BOT POPUP ========== */
+.whatsapp-bot-container {
+    position: fixed;
+    bottom: 110px;
+    right: 30px;
+    width: 320px;
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 15px 50px rgba(0, 0, 0, 0.15);
+    z-index: 9998;
     overflow: hidden;
+    display: none;
+    transform: translateY(20px);
+    opacity: 0;
+    transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
-.travel-point:hover {
-    transform: translateY(-8px);
-    box-shadow: var(--shadow-lg);
-    border-color: var(--primary-soft);
-}
-
-.point-number {
-    font-size: 3.5rem;
-    font-weight: 900;
-    color: var(--primary);
-    opacity: 0.1;
-    position: absolute;
-    top: 1rem;
-    right: 1.5rem;
-}
-
-.visual-img {
-    border-radius: var(--radius-md);
-    margin: 1.5rem 0;
-    box-shadow: var(--shadow-sm);
-}
-
-.fact-bubble {
-    display: inline-block;
-    background: var(--primary-light);
-    color: var(--primary);
-    padding: 0.5rem 1rem;
-    border-radius: var(--radius-full);
-    font-weight: 700;
-    font-size: 0.9rem;
-    margin-bottom: 1rem;
-}
-
-.national-data {
-    background: var(--primary);
-    color: white;
-    padding: 6rem 0;
-    border-radius: var(--radius-xl);
-    margin: 4rem 0;
-    text-align: center;
-}
-
-.national-data-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-    gap: 3rem;
-    margin-top: 3rem;
-}
-
-.data-item .val {
-    font-size: 3rem;
-    font-weight: 800;
-    color: var(--accent);
+.whatsapp-bot-container.active {
     display: block;
+    opacity: 1;
+    transform: translateY(0);
 }
 
-.data-item .label {
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    font-size: 0.8rem;
+.bot-header {
+    background: #075e54;
+    color: white;
+    padding: 15px 20px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.bot-avatar {
+    width: 40px;
+    height: 40px;
+    background: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.bot-info h4 {
+    margin: 0;
+    font-size: 1rem;
+    font-weight: 700;
+}
+
+.bot-info span {
+    font-size: 0.75rem;
     opacity: 0.8;
 }
 
-/* ========================================
-   2026 ESSENTIAL TRAVELER INFO SECTION
-   ======================================== */
+.bot-close {
+    margin-left: auto;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.5rem;
+    cursor: pointer;
+    line-height: 1;
+    padding: 5px;
+}
 
-.update-2026-section {
+.bot-body {
+    padding: 20px;
+    background: #e5ddd5;
+    background-image: url('https://user-images.githubusercontent.com/15075759/28719144-86dc0f70-73b1-11e7-911d-60d70fcded21.png');
+    background-repeat: repeat;
+    max-height: 300px;
+}
+
+.bot-bubble {
+    background: white;
+    padding: 12px 15px;
+    border-radius: 0 15px 15px 15px;
+    font-size: 0.95rem;
+    line-height: 1.4;
+    max-width: 90%;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    margin-bottom: 10px;
     position: relative;
+    animation: bubbleSlide 0.4s ease-out;
+}
+
+@keyframes bubbleSlide {
+    from {
+        opacity: 0;
+        transform: translateX(-10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.bot-bubble.typing {
+    display: flex;
+    gap: 3px;
+    padding: 10px 15px;
+    width: fit-content;
+}
+
+.bot-bubble.typing span {
+    width: 6px;
+    height: 6px;
+    background: #999;
+    border-radius: 50%;
+    animation: botTyping 1.4s infinite ease-in-out;
+}
+
+.bot-bubble.typing span:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.bot-bubble.typing span:nth-child(3) {
+    animation-delay: 0.4s;
+}
+
+@keyframes botTyping {
+
+    0%,
+    100% {
+        transform: translateY(0);
+        opacity: 0.3;
+    }
+
+    50% {
+        transform: translateY(-4px);
+        opacity: 1;
+    }
+}
+
+.bot-footer {
+    padding: 15px 20px;
+    background: white;
+    text-align: center;
+}
+
+.bot-chat-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    background: #25d366;
+    color: white;
+    padding: 12px 20px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+}
+
+.bot-chat-btn:hover {
+    background: #128c7e;
+    transform: scale(1.05);
+}
+
+@media (max-width: 768px) {
+    .whatsapp-bot-container {
+        width: calc(100% - 40px);
+        right: 20px;
+        bottom: 95px;
+    }
 }
 
 .update-badge {
