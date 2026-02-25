@@ -1,4 +1,45 @@
+// Google Translate Initialization
+window.googleTranslateElementInit = function () {
+    new google.translate.TranslateElement({
+        pageLanguage: 'en',
+        includedLanguages: 'en,lo,th,fr,ja',
+        layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
+        autoDisplay: false
+    }, 'google_translate_element');
+};
+
+window.translateLanguage = function (lang) {
+    console.log("Translation requested for:", lang);
+    const selectElement = document.querySelector('.goog-te-combo');
+    if (selectElement) {
+        selectElement.value = lang;
+        selectElement.dispatchEvent(new Event('change', { bubbles: true }));
+        // Some versions of Google Translate might need an extra trigger
+        setTimeout(() => {
+            selectElement.dispatchEvent(new Event('click', { bubbles: true }));
+        }, 100);
+    } else {
+        // If the widget isn't ready, try to load the script if it's missing
+        if (!document.querySelector('script[src*="translate_a/element.js"]')) {
+            const script = document.createElement('script');
+            script.src = "//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit";
+            document.body.appendChild(script);
+        }
+        setTimeout(() => window.translateLanguage(lang), 500);
+    }
+}
+
 document.addEventListener('DOMContentLoaded', function () {
+    // Language Flag Click Handler
+    const langFlags = document.querySelectorAll('.lang-flag');
+    langFlags.forEach(flag => {
+        flag.addEventListener('click', function (e) {
+            e.preventDefault();
+            const lang = this.getAttribute('data-lang');
+            window.translateLanguage(lang);
+        });
+    });
+
     // Initialize specific tour if needed (optional)
     // Initialize Hero Slider
     const heroSlides = document.querySelectorAll('.hero-bg-img');

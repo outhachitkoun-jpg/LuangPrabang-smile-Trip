@@ -609,45 +609,45 @@ body.lao-font {
     width: 100%;
 }
 
-/* ========== 🚩 PREMIUM LANGUAGE SWITCHER ========== */
-.lang-switcher {
+/* ========== 🚩 PREMIUM FLAG SWITCHER ========== */
+.nav-translate {
     display: flex;
     align-items: center;
-    gap: 12px;
-    margin-left: 2rem;
-    padding-left: 2rem;
-    border-left: 1px solid var(--glass-border);
+    z-index: 2100;
 }
 
-.lang-btn {
+.lang-flags {
     display: flex;
+    gap: 10px;
     align-items: center;
-    gap: 6px;
-    background: white;
-    border: 1px solid #e2e8f0;
-    padding: 6px 12px;
-    border-radius: 100px;
-    cursor: pointer;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    font-family: 'Outfit', sans-serif;
-    font-weight: 600;
-    font-size: 0.85rem;
-    color: var(--text-main);
+    position: relative;
+    z-index: 2101;
+}
+
+.lang-flags a {
+    display: flex;
+    transition: var(--transition-smooth);
+    border-radius: 4px;
+    overflow: hidden;
+    border: 2px solid transparent;
     box-shadow: var(--shadow-sm);
+    line-height: 0;
+    cursor: pointer !important;
+    position: relative;
+    z-index: 2102;
+    -webkit-tap-highlight-color: transparent;
 }
 
-.lang-btn img {
-    width: 22px;
-    height: 15px;
+.lang-flags a img {
+    width: 28px;
+    height: 18px;
     object-fit: cover;
-    border-radius: 2px;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
-.lang-btn:hover {
-    transform: translateY(-2px);
+.lang-flags a:hover {
+    transform: translateY(-3px) scale(1.1);
+    border-color: var(--secondary);
     box-shadow: var(--shadow-md);
-    border-color: var(--primary-soft);
 }
 
 .lang-btn.active {
@@ -661,29 +661,43 @@ body.lao-font {
 }
 
 @media (max-width: 1024px) {
-    .lang-switcher {
+    .nav-translate {
         margin-left: 1rem;
-        padding-left: 1rem;
     }
 }
 
+
+#google_translate_element {
+    position: fixed !important;
+    bottom: 0 !important;
+    right: 0 !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
+    z-index: -1000 !important;
+}
+
+/* Hide Google branding and artifacts without breaking functionality */
+.goog-te-banner-frame.skiptranslate,
+#goog-gt-tt,
+.goog-te-balloon-frame {
+    display: none !important;
+}
+
+body {
+    top: 0 !important;
+}
+
 @media (max-width: 768px) {
-    .lang-switcher {
-        margin-left: 0;
-        padding-left: 0;
-        border-left: none;
-        order: -1;
-        /* Place before hamburger but after logo if needed */
-        margin-right: 15px;
+    .nav-translate {
+        margin-top: 1rem;
+        width: 100%;
+        display: flex;
+        justify-content: center;
     }
 
-    .lang-btn span {
-        display: none;
-        /* Hide text on mobile flags */
-    }
-
-    .lang-btn {
-        padding: 6px;
+    .goog-te-gadget .goog-te-combo {
+        width: 180px !important;
+        text-align: center;
     }
 }
 
