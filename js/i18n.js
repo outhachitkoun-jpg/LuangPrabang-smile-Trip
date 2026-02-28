@@ -855,6 +855,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // Hide the dropdown list after selection
             const langList = document.querySelector('.lang-list');
+            const langDropdown = document.querySelector('.lang-dropdown');
+            if (langDropdown) langDropdown.classList.remove('active');
+
             if (langList) {
                 // Use a temporary class to hide and then remove it so hover works again later
                 langList.style.opacity = '0';
@@ -877,9 +880,11 @@ document.addEventListener('DOMContentLoaded', () => {
         link.addEventListener('click', () => {
             const nav = document.getElementById('main-nav');
             const menuToggle = document.getElementById('mobile-menu-btn');
+            const overlay = document.querySelector('.nav-overlay');
             if (nav && nav.classList.contains('active')) {
                 nav.classList.remove('active');
                 menuToggle.classList.remove('active');
+                if (overlay) overlay.classList.remove('active');
                 document.body.style.overflow = '';
             }
         });

@@ -18,13 +18,43 @@ document.addEventListener('DOMContentLoaded', () => {
     const menuToggle = document.getElementById('mobile-menu-btn');
     const nav = document.getElementById('main-nav');
 
+    // Create overlay if it doesn't exist
+    let overlay = document.querySelector('.nav-overlay');
+    if (!overlay) {
+        overlay = document.createElement('div');
+        overlay.className = 'nav-overlay';
+        document.body.appendChild(overlay);
+    }
+
+    const toggleMenu = () => {
+        nav.classList.toggle('active');
+        menuToggle.classList.toggle('active');
+        overlay.classList.toggle('active');
+        document.body.style.overflow = nav.classList.contains('active') ? 'hidden' : '';
+    };
+
     if (menuToggle && nav) {
-        menuToggle.addEventListener('click', () => {
-            nav.classList.toggle('active');
-            menuToggle.classList.toggle('active');
-            document.body.style.overflow = nav.classList.contains('active') ? 'hidden' : '';
+        menuToggle.addEventListener('click', toggleMenu);
+        overlay.addEventListener('click', toggleMenu);
+    }
+
+    // ========== 🌍 LANGUAGE PICKER ==========
+    const langDropdown = document.querySelector('.lang-dropdown');
+    if (langDropdown) {
+        langDropdown.addEventListener('click', (e) => {
+            // Only toggle if we're not clicking a specific language button
+            if (!e.target.closest('.lang-btn')) {
+                langDropdown.classList.toggle('active');
+            }
         });
     }
+
+    // Close dropdowns when clicking outside
+    document.addEventListener('click', (e) => {
+        if (langDropdown && !langDropdown.contains(e.target)) {
+            langDropdown.classList.remove('active');
+        }
+    });
 
     // ========== 🌊 SCROLL REVEAL (Intersection Observer) ==========
     const revealElements = document.querySelectorAll('.reveal');
