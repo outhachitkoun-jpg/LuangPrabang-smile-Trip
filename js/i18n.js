@@ -325,7 +325,7 @@ const translations = {
         "eco_method_steam_text": "Envelopper des éléments botaniques et les passer à la vapeur pour révéler des silhouettes éthérées et détaillées de la forêt.",
         "eco_pack_title": "Packs d'Atelier"
     },
-    lo: {
+    la: {
         "nav_home": "ໜ້າຫຼັກ",
         "nav_tours": "ລາຍການທ່ອງທ່ຽວ",
         "nav_rentals": "ລົດເຊົ່າ",
@@ -807,13 +807,13 @@ function updateLanguage(lang) {
     const currentLangFlag = document.getElementById('current-lang-flag');
 
     if (currentLangText) {
-        currentLangText.textContent = lang === 'lo' ? 'La' : lang.toUpperCase();
+        currentLangText.textContent = lang === 'la' ? 'La' : lang.toUpperCase();
     }
 
     const flags = {
         'en': '🇺🇸',
         'fr': '🇫🇷',
-        'lo': '🇱🇦',
+        'la': '🇱🇦',
         'ja': '🇯🇵',
         'th': '🇹🇭'
     };
@@ -831,7 +831,7 @@ function updateLanguage(lang) {
     });
 
     // Body font class for Lao
-    if (lang === 'lo') {
+    if (lang === 'la') {
         document.body.classList.add('lao-font');
     } else {
         document.body.classList.remove('lao-font');
