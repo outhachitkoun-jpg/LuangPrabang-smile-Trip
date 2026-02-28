@@ -352,10 +352,12 @@ img {
     width: 140px;
 }
 
-.lang-dropdown:hover .lang-list {
-    opacity: 1;
-    visibility: visible;
-    transform: translateY(0);
+@media (hover: hover) {
+    .lang-dropdown:hover .lang-list {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+    }
 }
 
 .lang-btn {
@@ -380,6 +382,13 @@ img {
     opacity: 1;
     visibility: visible;
     transform: translateY(0);
+}
+
+.lang-dropdown.force-hidden .lang-list {
+    opacity: 0 !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+    transform: translateY(10px) !important;
 }
 
 /* Mobile Menu Toggle */

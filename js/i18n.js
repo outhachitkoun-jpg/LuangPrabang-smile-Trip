@@ -853,24 +853,16 @@ document.addEventListener('DOMContentLoaded', () => {
             const lang = langBtn.getAttribute('data-lang');
             updateLanguage(lang);
 
-            // Hide the dropdown list after selection
-            const langList = document.querySelector('.lang-list');
+            // Force-hide the dropdown to prevent hover sticky issues on mobile and desktop
             const langDropdown = document.querySelector('.lang-dropdown');
-            if (langDropdown) langDropdown.classList.remove('active');
+            if (langDropdown) {
+                langDropdown.classList.remove('active');
+                langDropdown.classList.add('force-hidden');
 
-            if (langList) {
-                // Use a temporary class to hide and then remove it so hover works again later
-                langList.style.opacity = '0';
-                langList.style.visibility = 'hidden';
-                langList.style.pointerEvents = 'none';
-                langList.style.transform = 'translateY(10px)';
-
+                // Allow it to be opened again after a short delay
                 setTimeout(() => {
-                    langList.style.opacity = '';
-                    langList.style.visibility = '';
-                    langList.style.pointerEvents = '';
-                    langList.style.transform = '';
-                }, 400);
+                    langDropdown.classList.remove('force-hidden');
+                }, 500);
             }
         }
     });
