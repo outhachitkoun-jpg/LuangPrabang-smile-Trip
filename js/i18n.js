@@ -807,7 +807,7 @@ function updateLanguage(lang) {
     const currentLangFlag = document.getElementById('current-lang-flag');
 
     if (currentLangText) {
-        currentLangText.textContent = lang.toUpperCase();
+        currentLangText.textContent = lang === 'lo' ? 'La' : lang.toUpperCase();
     }
 
     const flags = {
