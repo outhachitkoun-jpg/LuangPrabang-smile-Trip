@@ -160,7 +160,37 @@ const translations = {
         "eco_method_hammer_text": "An ancient technique to release vibrant plant pigments directly into natural fibers. Instant magic.",
         "eco_method_steam_title": "Steaming Method",
         "eco_method_steam_text": "Bundling botanical elements and steaming them to reveal ethereal, detailed silhouettes of the forest.",
-        "eco_pack_title": "Workshop Packs"
+        "eco_pack_title": "Workshop Packs",
+
+        // Checkout Page
+        "checkout_title": "Complete Your Booking",
+        "checkout_summary": "Booking Summary",
+        "checkout_details": "Journey Details",
+        "checkout_payment_method": "Select Payment Method",
+        "checkout_bcel_one": "Pay with BCEL One (Local QR)",
+        "checkout_cards": "Credit / Debit Card",
+        "checkout_paypal": "PayPal",
+        "checkout_confirm": "Secure Checkout",
+        "checkout_total": "Total Amount",
+        "checkout_bcel_badge": "Best Rate / No Fees",
+        "checkout_secure_notice": "Your payment is processed through secure Lao banking systems.",
+
+        // FAQ Section
+        "faq_title": "Got Questions?",
+        "faq_subtitle": "Everything you need to know before your adventure.",
+        "q1": "Is hotel pickup included?",
+        "a1": "Yes! We provide complimentary pickup and drop-off from all hotels in the town center for most tours.",
+        "q2": "What is the cancellation policy?",
+        "a2": "Full refund if cancelled 24 hours before the tour starts. Same-day cancellations may incur small fees.",
+        "q3": "Are drinks/lunch provided?",
+        "a3": "Water is provided on all tours. Most full-day tours include a delicious local lunch.",
+
+        // Success Page
+        "success_title": "Booking Confirmed!",
+        "success_subtitle": "Thank you for choosing Laos Smile Trip.",
+        "success_msg": "Your journey is being prepared. Our team will contact you shortly via WhatsApp or email to finalize the details.",
+        "success_home_btn": "Back to Home",
+        "success_whatsapp_btn": "Message us on WhatsApp"
     },
     fr: {
         "nav_home": "Accueil",
@@ -323,7 +353,37 @@ const translations = {
         "eco_method_hammer_text": "Une technique ancestrale pour libérer les pigments végétaux vibrants directement dans les fibres naturelles. Magie instantanée.",
         "eco_method_steam_title": "Méthode à la Vapeur",
         "eco_method_steam_text": "Envelopper des éléments botaniques et les passer à la vapeur pour révéler des silhouettes éthérées et détaillées de la forêt.",
-        "eco_pack_title": "Packs d'Atelier"
+        "eco_pack_title": "Packs d'Atelier",
+
+        // Checkout Page
+        "checkout_title": "Finaliser votre réservation",
+        "checkout_summary": "Résumé de la réservation",
+        "checkout_details": "Détails du voyage",
+        "checkout_payment_method": "Choisir le mode de paiement",
+        "checkout_bcel_one": "Payer avec BCEL One (QR local)",
+        "checkout_cards": "Carte de crédit / débit",
+        "checkout_paypal": "PayPal",
+        "checkout_confirm": "Paiement sécurisé",
+        "checkout_total": "Montant total",
+        "checkout_bcel_badge": "Meilleur tarif / Sans frais",
+        "checkout_secure_notice": "Votre paiement est traité via des systèmes bancaires lao sécurisés.",
+
+        // FAQ Section
+        "faq_title": "Des questions ?",
+        "faq_subtitle": "Tout ce que vous devez savoir avant votre aventure.",
+        "q1": "La prise en charge à l'hôtel est-elle incluse ?",
+        "a1": "Oui ! Nous proposons une prise en charge et un retour gratuits depuis tous les hôtels du centre-ville pour la plupart des circuits.",
+        "q2": "Quelle est la politique d'annulation ?",
+        "a2": "Remboursement complet si annulé 24 heures avant le début du circuit.",
+        "q3": "Les boissons et le déjeuner sont-ils fournis ?",
+        "a3": "De l'eau est fournie pour tous les circuits. La plupart des circuits d'une journée incluent un délicieux déjeuner local.",
+
+        // Success Page
+        "success_title": "Réservation Confirmée !",
+        "success_subtitle": "Merci d'avoir choisi Laos Smile Trip.",
+        "success_msg": "Votre voyage est en cours de préparation. Notre équipe vous contactera prochainement par WhatsApp ou e-mail pour finaliser les détails.",
+        "success_home_btn": "Retour à l'accueil",
+        "success_whatsapp_btn": "Contactez-nous sur WhatsApp"
     },
     la: {
         "nav_home": "ໜ້າຫຼັກ",
@@ -474,7 +534,37 @@ const translations = {
         "eco_method_hammer_text": "ເຕັກນິກການທຸບໃບໄມ້ເພື່ອໃຫ້ສີທຳມະຊາດຊຶມເຂົ້າໄປໃນເສັ້ນໃຍຜ້າ.",
         "eco_method_steam_title": "ການໜຶ້ງ",
         "eco_method_steam_text": "ການຫໍ່ໃບໄມ້ໄວ້ໃນຜ້າແລ້ວນຳໄປໜຶ້ງເພື່ອໃຫ້ເກີດລວດລາຍທີ່ສວຍງາມ.",
-        "eco_pack_title": "ແພັກເກັດກິດຈະກຳ"
+        "eco_pack_title": "ແພັກເກັດກິດຈະກຳ",
+
+        // Checkout Page
+        "checkout_title": "ຢືນຢັນການຈອງຂອງທ່ານ",
+        "checkout_summary": "ສະຫຼຸບການຈອງ",
+        "checkout_details": "ລາຍລະອຽດການເດີນທາງ",
+        "checkout_payment_method": "ເລືອກຊ່ອງທາງການຊຳລະ",
+        "checkout_bcel_one": "ຊຳລະຜ່ານ BCEL One (QR code)",
+        "checkout_cards": "ບັດເຄຣດິດ / ເດບິດ",
+        "checkout_paypal": "PayPal",
+        "checkout_confirm": "ຊຳລະເງິນຢ່າງປອດໄພ",
+        "checkout_total": "ຍອດລວມທັງໝົດ",
+        "checkout_bcel_badge": "ອັດຕາທີ່ດີທີ່ສຸດ / ບໍ່ມີຄ່າທຳນຽມ",
+        "checkout_secure_notice": "ການຊຳລະເງິນຂອງທ່ານຖືກດຳເນີນການຜ່ານລະບົບທະນາຄານລາວທີ່ມີຄວາມປອດໄພ.",
+
+        // FAQ Section
+        "faq_title": "ມີຄຳຖາມບໍ?",
+        "faq_subtitle": "ທຸກຢ່າງທີ່ທ່ານຄວນຮູ້ກ່ອນເລີ່ມການເດີນທາງ.",
+        "q1": "ມີບໍລິການຮັບ-ສົ່ງຢູ່ໂຮງແຮມບໍ?",
+        "a1": "ມີ! ພວກເຮົາຮັບ-ສົ່ງຟຣີຈາກໂຮງແຮມທັງໝົດໃນໃຈກາງເມືອງ.",
+        "q2": "ນະໂຍບາຍການຍົກເລີກແມ່ນຫຍານ?",
+        "a2": "ຄືນເງິນເຕັມຈຳນວນຖ່າຍົກເລີກກ່ອນ 24 ຊົ່ວໂມງ.",
+        "q3": "ມີນ້ຳດື່ມ ຫຼື ອາຫານສວາຍໃຫ້ບໍ?",
+        "a3": "ພວກເຮົາມີນ້ຳດື່ມໃຫ້ທຸກທົວ. ສ່ວນທົວເຕັມມື້ແມ່ນລວມອາຫານສວາຍ.",
+
+        // Success Page
+        "success_title": "ການຈອງຂອງທ່ານສຳເລັດແລ້ວ!",
+        "success_subtitle": "ຂອບໃຈທີ່ເລືອກໃຊ້ບໍລິການ Laos Smile Trip.",
+        "success_msg": "ພວກເຮົາກຳລັງກຽມການເດີນທາງໃຫ້ທ່ານ. ທີມງານຂອງພວກເຮົາຈະຕິດຕໍ່ຫາທ່ານຜ່ານ WhatsApp ຫຼື ອີເມວ ໃນໄວໆນີ້ເພື່ອຢືນຢັນລາຍລະອຽດ.",
+        "success_home_btn": "ກັບຄືນໜ້າຫຼັກ",
+        "success_whatsapp_btn": "ຕິດຕໍ່ພວກເຮົາຜ່ານ WhatsApp"
     },
     ja: {
         // Navigation
@@ -618,7 +708,27 @@ const translations = {
         "eco_method_hammer_text": "植物の鮮やかな色素を天然繊維に直接放出させる古代の技法。瞬時の魔法です。",
         "eco_method_steam_title": "蒸し染め法",
         "eco_method_steam_text": "植物要素を束ねて蒸し、森の空気のような詳細なシルエットを浮かび上がらせます。",
-        "eco_pack_title": "ワークショップパック"
+        "eco_pack_title": "ワークショップパック",
+
+        // Checkout Page
+        "checkout_title": "ご予約の完了",
+        "checkout_summary": "予約内容の確認",
+        "checkout_details": "旅行の詳細",
+        "checkout_payment_method": "支払い方法の選択",
+        "checkout_bcel_one": "BCEL One で支払う (地元 QR)",
+        "checkout_cards": "クレジットカード / デビットカード",
+        "checkout_paypal": "PayPal",
+        "checkout_confirm": "安全にチェックアウト",
+        "checkout_total": "合計金額",
+        "checkout_bcel_badge": "最良レート / 手数料無料",
+        "checkout_secure_notice": "お支払いは、安全なラオスの銀行システムを通じて処理されます。",
+
+        // Success Page
+        "success_title": "予約が確定しました！",
+        "success_subtitle": "Laos Smile Trip をご利用いただきありがとうございます。",
+        "success_msg": "旅行の準備を進めております。詳細を確認するため、まもなく担当者より WhatsApp またはメールでご連絡いたします。",
+        "success_home_btn": "ホームに戻る",
+        "success_whatsapp_btn": "WhatsApp でメッセージを送る"
     },
     th: {
         // Navigation
@@ -783,7 +893,27 @@ const translations = {
         "eco_method_hammer_text": "เทคนิคโบราณในการทุบใบไม้เพื่อให้สีธรรมชาติซึมเข้าสู่เส้นใยผ้าทันที",
         "eco_method_steam_title": "การนึ่ง",
         "eco_method_steam_text": "การห่อพืชพรรณไว้ในผ้าแล้วนำไปนึ่งเพื่อเผยให้เห็นลวดลายที่ละเอียดอ่อนของป่า",
-        "eco_pack_title": "แพ็กเกจเวิร์กชอป"
+        "eco_pack_title": "แพ็กเกจเวิร์กชอป",
+
+        // Checkout Page
+        "checkout_title": "ยืนยันการจองของคุณ",
+        "checkout_summary": "สรุปรายละเอียดการจอง",
+        "checkout_details": "ข้อมูลการเดินทาง",
+        "checkout_payment_method": "เลือกวิธีการชำระเงิน",
+        "checkout_bcel_one": "ชำระผ่าน BCEL One (QR Code)",
+        "checkout_cards": "บัตรเครดิต / เดบิต",
+        "checkout_paypal": "PayPal",
+        "checkout_confirm": "ชำระเงินอย่างปลอดภัย",
+        "checkout_total": "ยอดชำระรวม",
+        "checkout_bcel_badge": "เรทดีที่สุด / ไม่มีค่าธรรมเนียม",
+        "checkout_secure_notice": "การชำระเงินของคุณได้รับการประมวลผลผ่านระบบธนาคารของลาวที่มีความปลอดภัยสูง",
+
+        // Success Page
+        "success_title": "ยืนยันการจองสำเร็จ!",
+        "success_subtitle": "ขอบคุณที่เลือกใช้บริการ Laos Smile Trip",
+        "success_msg": "เรากำลังเตรียมการเดินทางสำหรับคุณ ทีมงานของเราจะติดต่อกลับผ่าน WhatsApp หรืออีเมลในเร็วๆ นี้เพื่อยืนยันรายละเอียดทั้งหมด",
+        "success_home_btn": "กลับสู่หน้าหลัก",
+        "success_whatsapp_btn": "ติดต่อเราทาง WhatsApp"
     }
 };
 

@@ -34,7 +34,7 @@
                     <li><a href="car-rentals.html" class="active" data-i18n="nav_rentals">Rentals</a></li>
                     <li><a href="destinations.html" data-i18n="nav_destinations">Destinations</a></li>
                     <li><a href="about.html" data-i18n="nav_about">About</a></li>
-                    <li><a href="#booking-form" class="btn btn-primary btn-sm" data-i18n="nav_book">Book Now</a></li>
+                    <li><a href="checkout.html" class="btn btn-primary btn-sm" data-i18n="nav_book">Book Now</a></li>
                 </ul>
             </nav>
 
@@ -117,8 +117,12 @@
                                     style="font-size: 0.8rem; background: var(--bg-alt); padding: 4px 10px; border-radius: 4px;">⛽
                                     <span data-i18n="rental_feature_fuel">Fuel Included</span></span>
                             </div>
-                            <button onclick="selectCar('Premium SUV - 1.8M KIP')" class="btn btn-outline btn-sm"
-                                style="width: 100%;" data-i18n="rental_btn_select">Select Vehicle</button>
+                            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+                                <button onclick="selectCar('Premium SUV - 1.8M KIP')" class="btn btn-outline btn-sm"
+                                    data-i18n="rental_btn_select">Select Vehicle</button>
+                                <button onclick="bookCarOnline('Premium SUV (4-Seater)', '1.8M KIP')"
+                                    class="btn btn-primary btn-sm">Book Online</button>
+                            </div>
                         </div>
                     </div>
 
@@ -148,8 +152,12 @@
                                     style="font-size: 0.8rem; background: var(--bg-alt); padding: 4px 10px; border-radius: 4px;">⛽
                                     <span data-i18n="rental_feature_fuel">Fuel Included</span></span>
                             </div>
-                            <button onclick="selectCar('Comfort Minivan - 1.5M KIP')" class="btn btn-outline btn-sm"
-                                style="width: 100%;" data-i18n="rental_btn_select">Select Vehicle</button>
+                            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+                                <button onclick="selectCar('Comfort Minivan - 1.5M KIP')" class="btn btn-outline btn-sm"
+                                    data-i18n="rental_btn_select">Select Vehicle</button>
+                                <button onclick="bookCarOnline('Comfort Minivan (12-Seater)', '1.5M KIP')"
+                                    class="btn btn-primary btn-sm">Book Online</button>
+                            </div>
                         </div>
                     </div>
 
@@ -180,8 +188,12 @@
                                     style="font-size: 0.8rem; background: var(--bg-alt); padding: 4px 10px; border-radius: 4px;">⛽
                                     <span data-i18n="rental_feature_fuel">Fuel Included</span></span>
                             </div>
-                            <button onclick="selectCar('Luxury Minivan - 2.5M KIP')" class="btn btn-outline btn-sm"
-                                style="width: 100%;" data-i18n="rental_btn_select">Select Vehicle</button>
+                            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+                                <button onclick="selectCar('Luxury Minivan - 2.5M KIP')" class="btn btn-outline btn-sm"
+                                    data-i18n="rental_btn_select">Select Vehicle</button>
+                                <button onclick="bookCarOnline('Luxury Minivan (12-Seater)', '2.5M KIP')"
+                                    class="btn btn-primary btn-sm">Book Online</button>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -325,6 +337,17 @@
             const text = `Sabaidee! 🙏 I want to book a Premium Car Rental:%0A%0A🚗 Vehicle: ${encodeURIComponent(car)}%0A📅 Date: ${encodeURIComponent(date)}%0A⏱️ Days: ${encodeURIComponent(days)}%0A%0A👤 Contact Info:%0AName: ${encodeURIComponent(name)}%0APhone: ${encodeURIComponent(phone)}%0A📝 Notes: ${encodeURIComponent(msg)}`;
 
             window.open(`https://wa.me/8562098457614?text=${text}`, '_blank');
+        }
+
+        function bookCarOnline(name, price) {
+            // Use the global bookProduct function from main.js
+            if (typeof bookProduct === 'function') {
+                bookProduct(name, price);
+            } else {
+                localStorage.setItem('selected_product_name', name);
+                localStorage.setItem('selected_product_price', price);
+                window.location.href = 'checkout.html';
+            }
         }
     </script>
 </body>

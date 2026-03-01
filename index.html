@@ -40,7 +40,7 @@
                     <li><a href="car-rentals.html" data-i18n="nav_rentals">Rentals</a></li>
                     <li><a href="destinations.html" data-i18n="nav_destinations">Destinations</a></li>
                     <li><a href="about.html" data-i18n="nav_about">About</a></li>
-                    <li><a href="#contact" class="btn btn-primary btn-sm" data-i18n="nav_book">Book Now</a></li>
+                    <li><a href="checkout.html" class="btn btn-primary btn-sm" data-i18n="nav_book">Book Now</a></li>
                 </ul>
             </nav>
 
@@ -146,7 +146,8 @@
                             <p data-i18n="tour_heritage_tagline">Discover the spiritual heart of Luang Prabang and the
                                 turquoise Kuang Si Falls.</p>
                             <div class="tour-footer">
-                                <span class="duration">⏱️ 1 Day</span>
+                                <a href="javascript:void(0)" onclick="bookProduct('Heritage & Waterfalls', '$45')"
+                                    class="btn btn-primary btn-sm">Book</a>
                                 <a href="tour-heritage-waterfalls.html" class="link-arrow">Details <i
                                         class="fas fa-arrow-right"></i></a>
                             </div>
@@ -168,7 +169,8 @@
                             <p data-i18n="tour_elephant_tagline">An intimate, respectful journey with these majestic
                                 giants in their natural home.</p>
                             <div class="tour-footer">
-                                <span class="duration">⏱️ 1 Day</span>
+                                <a href="javascript:void(0)" onclick="bookProduct('Elephant Connection', '$85')"
+                                    class="btn btn-primary btn-sm">Book</a>
                                 <a href="tour-elephant-adventure.html" class="link-arrow">Details <i
                                         class="fas fa-arrow-right"></i></a>
                             </div>
@@ -190,7 +192,8 @@
                             <p data-i18n="tour_mekong_tagline">A two-day slow boat odyssey through the emerald canyons
                                 of the upper Mekong.</p>
                             <div class="tour-footer">
-                                <span class="duration">⏱️ 2 Days</span>
+                                <a href="javascript:void(0)" onclick="bookProduct('Mekong River Cruise', '$120')"
+                                    class="btn btn-primary btn-sm">Book</a>
                                 <a href="tour-mekong-cruise-2day.html" class="link-arrow">Details <i
                                         class="fas fa-arrow-right"></i></a>
                             </div>
@@ -286,7 +289,50 @@
                     </div>
                 </div>
             </div>
-        </section>
+            <!-- ========== ❓ FAQ SECTION ========== -->
+            <section class="section-padding" style="background: var(--bg-alt);">
+                <div class="container">
+                    <div class="text-center mb-60">
+                        <span class="section-tag" data-i18n="faq_title">Got Questions?</span>
+                        <h2 class="section-title" data-i18n="faq_subtitle">Everything you need to know</h2>
+                    </div>
+
+                    <div class="faq-grid">
+                        <div class="faq-item reveal">
+                            <div class="faq-question">
+                                <span data-i18n="q1">Is hotel pickup included?</span>
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                            <div class="faq-answer">
+                                <p data-i18n="a1">Yes! We provide complimentary pickup and drop-off from all hotels in
+                                    the town center for most tours.</p>
+                            </div>
+                        </div>
+
+                        <div class="faq-item reveal" style="transition-delay: 0.1s;">
+                            <div class="faq-question">
+                                <span data-i18n="q2">What is the cancellation policy?</span>
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                            <div class="faq-answer">
+                                <p data-i18n="a2">Full refund if cancelled 24 hours before the tour starts. Same-day
+                                    cancellations may incur small fees.</p>
+                            </div>
+                        </div>
+
+                        <div class="faq-item reveal" style="transition-delay: 0.2s;">
+                            <div class="faq-question">
+                                <span data-i18n="q3">Are drinks/lunch provided?</span>
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                            <div class="faq-answer">
+                                <p data-i18n="a3">Water is provided on all tours. Most full-day tours include a
+                                    delicious local lunch.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
     </main>
 
     <!-- ========== 🦶 FOOTER ========== -->
@@ -336,14 +382,8 @@
         </div>
     </footer>
 
-    <!-- Floating Tools -->
-    <a href="https://wa.me/8562098457614" class="whatsapp-float">
-        <i class="fab fa-whatsapp"></i>
-    </a>
-
     <!-- Scripts -->
     <script src="js/main.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox.min.js"></script>
 </body>
 
 </html>

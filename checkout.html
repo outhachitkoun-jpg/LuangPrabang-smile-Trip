@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout | Laos Smile Trip</title>
+
+    <!-- Fonts & Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Custom Style -->
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/i18n.js" defer></script>
+
+    <!-- PayPal Live Integration -->
+    <script
+        src="https://www.paypal.com/sdk/js?client-id=Afmh7JRqp_D_6qUQKDevMwp_8c9AXz4e7_ns1goOIT0ED1sKwLTiGRMND_a95FG-MzA1X1G9lPJMH8iu&merchant-id=9M3QNDXJ6NAS2&currency=USD"></script>
+
+    <style>
+        .checkout-container {
+            padding-top: 140px;
+            padding-bottom: 100px;
+            background: #f8fafc;
+            min-height: 100vh;
+        }
+
+        .checkout-grid {
+            display: grid;
+            grid-template-columns: 1fr 400px;
+            gap: 40px;
+            align-items: start;
+        }
+
+        .checkout-main,
+        .checkout-sidebar {
+            background: white;
+            border-radius: var(--radius-lg);
+            padding: 40px;
+            box-shadow: var(--shadow-md);
+        }
+
+        .payment-methods {
+            display: grid;
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .payment-option {
+            border: 2px solid #e2e8f0;
+            border-radius: var(--radius-md);
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            cursor: pointer;
+            transition: var(--transition-base);
+            position: relative;
+        }
+
+        .payment-option:hover {
+            border-color: var(--primary-soft);
+            background: var(--primary-light);
+        }
+
+        .payment-option.active {
+            border-color: var(--primary);
+            background: var(--primary-light);
+        }
+
+        .payment-option input {
+            position: absolute;
+            opacity: 0;
+        }
+
+        .payment-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--bg-alt);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: var(--primary);
+        }
+
+        .payment-info h4 {
+            margin: 0;
+            font-size: 1.1rem;
+            font-family: 'Outfit', sans-serif;
+        }
+
+        .payment-info p {
+            margin: 5px 0 0;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        .summary-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #f1f5f9;
+        }
+
+        .summary-total {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--primary);
+        }
+
+        .qr-placeholder {
+            margin-top: 30px;
+            padding: 30px;
+            background: white;
+            border: 2px dashed var(--primary-soft);
+            border-radius: var(--radius-md);
+            text-align: center;
+            display: none;
+        }
+
+        .qr-placeholder.active {
+            display: block;
+        }
+
+        .qr-image {
+            width: 200px;
+            height: 200px;
+            margin: 0 auto 20px;
+            background: #eee;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 10px;
+        }
+
+        .paypal-button-container {
+            margin-top: 30px;
+            display: none;
+        }
+
+        .paypal-button-container.active {
+            display: block;
+        }
+
+        .secure-badge {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: #059669;
+            font-size: 0.85rem;
+            margin-top: 20px;
+            font-weight: 600;
+        }
+
+        @media (max-width: 991px) {
+            .checkout-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body class="premium-theme">
+
+    <header class="site-header scrolled">
+        <div class="container nav-bar">
+            <div class="logo-block">
+                <a href="index.html" class="logo">
+                    <img src="images/logo93.png" alt="Laos Smile Trip" class="logo-img">
+                </a>
+            </div>
+
+            <nav class="main-nav" id="main-nav">
+                <ul>
+                    <li><a href="index.html" data-i18n="nav_home">Home</a></li>
+                    <li><a href="tours.html" data-i18n="nav_tours">Tours</a></li>
+                    <li><a href="car-rentals.html" data-i18n="nav_rentals">Rentals</a></li>
+                </ul>
+            </nav>
+
+            <div class="lang-switcher">
+                <div class="lang-dropdown">
+                    <div class="lang-current">
+                        <span id="current-lang-flag">🇺🇸</span>
+                        <span id="current-lang-text">EN</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="lang-list">
+                        <button class="lang-btn active" data-lang="en">🇺🇸 EN</button>
+                        <button class="lang-btn" data-lang="la">🇱🇦 La</button>
+                        <button class="lang-btn" data-lang="fr">🇫🇷 FR</button>
+                        <button class="lang-btn" data-lang="ja">🇯🇵 JA</button>
+                        <button class="lang-btn" data-lang="th">🇹🇭 TH</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="checkout-container">
+        <div class="container">
+            <h1 class="mb-40" data-i18n="checkout_title">Complete Your Booking</h1>
+
+            <div class="checkout-grid">
+                <div class="checkout-main">
+                    <h3 class="mb-30" data-i18n="checkout_payment_method">Select Payment Method</h3>
+
+                    <div class="payment-methods">
+                        <label class="payment-option active" data-method="bcel">
+                            <input type="radio" name="payment" value="bcel" checked>
+                            <div class="payment-icon"><i class="fas fa-qrcode"></i></div>
+                            <div class="payment-info">
+                                <div style="display: flex; align-items: center; gap: 10px;">
+                                    <h4 data-i18n="checkout_bcel_one">BCEL One QR</h4>
+                                    <span data-i18n="checkout_bcel_badge"
+                                        style="background: #10b981; color: white; font-size: 0.65rem; padding: 2px 8px; border-radius: 20px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px;">Best
+                                        Rate</span>
+                                </div>
+                                <p>Standard in Laos. Instant confirmation.</p>
+                            </div>
+                        </label>
+
+
+
+                        <label class="payment-option" data-method="paypal">
+                            <input type="radio" name="payment" value="paypal">
+                            <div class="payment-icon"><i class="fab fa-paypal"></i></div>
+                            <div class="payment-info">
+                                <h4 data-i18n="checkout_paypal">PayPal</h4>
+                                <p>Pay securely with your PayPal account.</p>
+                            </div>
+                        </label>
+                    </div>
+
+                    <!-- BCEL QR Preview -->
+                    <div id="qr-section" class="qr-placeholder active">
+                        <div class="qr-image" style="width: 250px; height: auto; border: none;">
+                            <img src="images/becel-one -qr.jpeg" alt="BCEL One QR"
+                                style="width: 100%; height: auto; border-radius: 8px;">
+                        </div>
+                        <p><strong>Scan this QR code with your BCEL One app</strong></p>
+                        <p class="text-muted" style="font-size: 0.8rem;">Merchant: KOUN OUTHACHITH MR</p>
+                        <p class="text-muted" style="font-size: 0.8rem;">After payment, our team will confirm your
+                            booking via WhatsApp.</p>
+                    </div>
+
+
+
+                    <!-- Real PayPal Buttons Container -->
+                    <div id="paypal-section" class="paypal-button-container">
+                        <div id="paypal-button-root"></div>
+                    </div>
+
+                    <button id="main-checkout-btn" class="btn btn-primary btn-xl" style="width: 100%; margin-top: 40px;"
+                        data-i18n="checkout_confirm">Secure Checkout</button>
+
+                    <div class="secure-badge">
+                        <i class="fas fa-lock"></i>
+                        <span data-i18n="checkout_secure_notice">Your payment is processed through secure Lao banking
+                            systems.</span>
+                    </div>
+                </div>
+
+                <div class="checkout-sidebar">
+                    <h3 class="mb-30" data-i18n="checkout_summary">Booking Summary</h3>
+
+                    <div class="summary-item">
+                        <span id="summary-product-name" data-i18n="tour_heritage_title">Heritage & Waterfalls</span>
+                        <strong id="summary-product-price">$45.00</strong>
+                    </div>
+                    <div class="summary-item">
+                        <span>Participants (1)</span>
+                        <strong>x1</strong>
+                    </div>
+                    <div class="summary-item">
+                        <span>Booking Fee</span>
+                        <strong>$0.00</strong>
+                    </div>
+
+                    <div class="summary-total">
+                        <span data-i18n="checkout_total">Total Amount</span>
+                        <span id="summary-total-price">$45.00</span>
+                    </div>
+
+                    <p style="margin-top: 30px; font-size: 0.85rem; color: var(--text-muted);">
+                        * Prices are in USD and include all local taxes.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="js/main.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Load selected product info from localStorage
+            const selectedName = localStorage.getItem('selected_product_name');
+            const selectedPrice = localStorage.getItem('selected_product_price');
+
+            if (selectedName && selectedPrice) {
+                const nameEl = document.getElementById('summary-product-name');
+                const priceEl = document.getElementById('summary-product-price');
+                const totalEl = document.getElementById('summary-total-price');
+
+                if (nameEl) {
+                    nameEl.textContent = selectedName;
+                    nameEl.removeAttribute('data-i18n'); // Override i18n
+                }
+                if (priceEl) priceEl.textContent = selectedPrice;
+                if (totalEl) totalEl.textContent = selectedPrice;
+            }
+
+            const options = document.querySelectorAll('.payment-option');
+            const qrSection = document.getElementById('qr-section');
+            const cardSection = document.getElementById('card-section');
+            const paypalSection = document.getElementById('paypal-section');
+            const mainCheckoutBtn = document.getElementById('main-checkout-btn');
+
+            options.forEach(option => {
+                option.addEventListener('click', () => {
+                    // Remove active class from all
+                    options.forEach(opt => opt.classList.remove('active'));
+                    // Add to clicked
+                    option.classList.add('active');
+
+                    const method = option.getAttribute('data-method');
+
+                    // Toggle sections
+                    qrSection.classList.toggle('active', method === 'bcel');
+                    paypalSection.classList.toggle('active', method === 'paypal');
+
+                    // Hide main button if PayPal is active (PayPal has its own buttons)
+                    mainCheckoutBtn.style.display = (method === 'paypal') ? 'none' : 'block';
+                });
+            });
+
+            // Handle BCEL / Card Simulated Checkout
+            mainCheckoutBtn.addEventListener('click', () => {
+                // Here you would normally validate inputs or send to a server
+                // For now, we simulate success
+                window.location.href = 'success.html';
+            });
+
+            // PayPal Button Initialization
+            if (window.paypal) {
+                paypal.Buttons({
+                    createOrder: function (data, actions) {
+                        // Use the price from localStorage, remove the '$' sign
+                        let finalAmount = localStorage.getItem('selected_product_price') || '45.00';
+                        finalAmount = finalAmount.replace('$', '').replace('M KIP', '');
+
+                        // Note: PayPal expects a number string. If it's KIP, you'd need a conversion.
+                        // Assuming your shop uses USD for PayPal.
+
+                        return actions.order.create({
+                            purchase_units: [{
+                                amount: {
+                                    value: finalAmount
+                                }
+                            }]
+                        });
+                    },
+                    onApprove: function (data, actions) {
+                        return actions.order.capture().then(function (details) {
+                            // Redirect to success page after successful capture
+                            window.location.href = 'success.html';
+                        });
+                    }
+                }).render('#paypal-button-root');
+            }
+        });
+    </script>
+</body>
+
+</html>

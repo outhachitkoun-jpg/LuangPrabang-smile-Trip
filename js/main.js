@@ -92,6 +92,38 @@ document.addEventListener('DOMContentLoaded', () => {
                 });
             }
         });
+
     });
 
+    // ========== 💬 INJECT FLOATING WHATSAPP ==========
+    const waButton = document.createElement('a');
+    waButton.href = 'https://wa.me/8562098457614';
+    waButton.className = 'whatsapp-float';
+    waButton.target = '_blank';
+    waButton.innerHTML = '<i class="fab fa-whatsapp"></i>';
+    document.body.appendChild(waButton);
+
+    // ========== ❓ FAQ ACCORDION ==========
+    const faqItems = document.querySelectorAll('.faq-item');
+    if (faqItems) {
+        faqItems.forEach(item => {
+            const question = item.querySelector('.faq-question');
+            if (question) {
+                question.addEventListener('click', () => {
+                    item.classList.toggle('active');
+                    // Optional: Close others
+                    faqItems.forEach(other => {
+                        if (other !== item) other.classList.remove('active');
+                    });
+                });
+            }
+        });
+    }
 });
+
+// ========== 🛒 CHECKOUT LOGIC ==========
+function bookProduct(name, price) {
+    localStorage.setItem('selected_product_name', name);
+    localStorage.setItem('selected_product_price', price);
+    window.location.href = 'checkout.html';
+}
