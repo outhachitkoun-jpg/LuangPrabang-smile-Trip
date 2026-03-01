@@ -141,9 +141,27 @@
                 details.
             </p>
 
+            <div class="booking-details-box"
+                style="background: #f1f5f9; padding: 25px; border-radius: 12px; margin-bottom: 40px; text-align: left;">
+                <div
+                    style="display: flex; justify-content: space-between; margin-bottom: 10px; border-bottom: 1px solid #cbd5e1; padding-bottom: 10px;">
+                    <span style="font-weight: 600; color: var(--text-main);" data-i18n="success_booking_id">Booking
+                        ID</span>
+                    <strong id="display-booking-id" style="color: var(--secondary);">LST-2026-XXXX</strong>
+                </div>
+                <div style="display: flex; justify-content: space-between; margin-top: 10px; font-size: 0.95rem;">
+                    <span data-i18n="success_summary">Booking Summary</span>
+                    <span id="display-product-name" style="font-weight: 600;">-</span>
+                </div>
+                <div style="display: flex; justify-content: space-between; margin-top: 5px; font-size: 0.95rem;">
+                    <span data-i18n="checkout_total">Total Amount</span>
+                    <span id="display-product-price" style="font-weight: 700; color: var(--primary);">-</span>
+                </div>
+            </div>
+
             <div class="success-actions">
                 <a href="index.html" class="btn btn-primary btn-xl" data-i18n="success_home_btn">Back to Home</a>
-                <a href="https://wa.me/8562098457614" class="btn btn-outline btn-xl">
+                <a href="#" id="whatsapp-confirm-btn" class="btn btn-outline btn-xl">
                     <i class="fab fa-whatsapp"></i> <span data-i18n="success_whatsapp_btn">Message us on WhatsApp</span>
                 </a>
             </div>
@@ -151,6 +169,29 @@
     </main>
 
     <script src="js/main.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // 1. Generate a random Booking ID
+            const randomID = 'LST-' + Math.floor(1000 + Math.random() * 9000);
+            document.getElementById('display-booking-id').textContent = randomID;
+
+            // 2. Load the booked product info
+            const name = localStorage.getItem('selected_product_name') || 'Tailor-made Tour';
+            const price = localStorage.getItem('selected_product_price') || 'Contact for Price';
+
+            document.getElementById('display-product-name').textContent = name;
+            document.getElementById('display-product-price').textContent = price;
+
+            // 3. Update WhatsApp button to include the ID automatically
+            const waBtn = document.getElementById('whatsapp-confirm-btn');
+            const message = `Sabaidee! 🙏 My Booking ID is: ${randomID}. I just completed a booking for: ${name} (${price}). Please confirm my details.`;
+            waBtn.href = `https://wa.me/8562098457614?text=${encodeURIComponent(message)}`;
+
+            // 4. Optional: Clear localStorage so they don't see the same booking twice
+            // localStorage.removeItem('selected_product_name');
+            // localStorage.removeItem('selected_product_price');
+        });
+    </script>
 </body>
 
 </html>

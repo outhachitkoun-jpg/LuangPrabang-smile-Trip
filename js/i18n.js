@@ -190,7 +190,9 @@ const translations = {
         "success_subtitle": "Thank you for choosing Laos Smile Trip.",
         "success_msg": "Your journey is being prepared. Our team will contact you shortly via WhatsApp or email to finalize the details.",
         "success_home_btn": "Back to Home",
-        "success_whatsapp_btn": "Message us on WhatsApp"
+        "success_whatsapp_btn": "Message us on WhatsApp",
+        "success_booking_id": "Booking ID",
+        "success_summary": "Booking Summary"
     },
     fr: {
         "nav_home": "Accueil",
@@ -383,7 +385,9 @@ const translations = {
         "success_subtitle": "Merci d'avoir choisi Laos Smile Trip.",
         "success_msg": "Votre voyage est en cours de préparation. Notre équipe vous contactera prochainement par WhatsApp ou e-mail pour finaliser les détails.",
         "success_home_btn": "Retour à l'accueil",
-        "success_whatsapp_btn": "Contactez-nous sur WhatsApp"
+        "success_whatsapp_btn": "Contactez-nous sur WhatsApp",
+        "success_booking_id": "Identifiant de réservation",
+        "success_summary": "Résumé de la réservation"
     },
     la: {
         "nav_home": "ໜ້າຫຼັກ",
@@ -563,8 +567,10 @@ const translations = {
         "success_title": "ການຈອງຂອງທ່ານສຳເລັດແລ້ວ!",
         "success_subtitle": "ຂອບໃຈທີ່ເລືອກໃຊ້ບໍລິການ Laos Smile Trip.",
         "success_msg": "ພວກເຮົາກຳລັງກຽມການເດີນທາງໃຫ້ທ່ານ. ທີມງານຂອງພວກເຮົາຈະຕິດຕໍ່ຫາທ່ານຜ່ານ WhatsApp ຫຼື ອີເມວ ໃນໄວໆນີ້ເພື່ອຢືນຢັນລາຍລະອຽດ.",
-        "success_home_btn": "ກັບຄືນໜ້າຫຼັກ",
-        "success_whatsapp_btn": "ຕິດຕໍ່ພວກເຮົາຜ່ານ WhatsApp"
+        "success_home_btn": "ກັບໄປໜ້າຫຼັກ",
+        "success_whatsapp_btn": "ຕິດຕໍ່ຜ່ານ WhatsApp",
+        "success_booking_id": "ລະຫັດການຈອງ",
+        "success_summary": "ລາຍລະອຽດການຈອງ"
     },
     ja: {
         // Navigation
