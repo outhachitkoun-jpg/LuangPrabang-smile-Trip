@@ -351,26 +351,46 @@
             if (window.paypal) {
                 paypal.Buttons({
                     createOrder: function (data, actions) {
-                        // Use the price from localStorage, remove the '$' sign
-                        let finalAmount = localStorage.getItem('selected_product_price') || '45.00';
-                        finalAmount = finalAmount.replace('$', '').replace('M KIP', '');
+                        // 1. Get raw price from localStorage
+                        let rawPrice = localStorage.getItem('selected_product_price') || '45';
 
-                        // Note: PayPal expects a number string. If it's KIP, you'd need a conversion.
-                        // Assuming your shop uses USD for PayPal.
+                        // 2. Extract numeric value (remove $, M, KIP, and spaces)
+                        let cleanPrice = rawPrice.replace(/[$\s]|M|KIP/g, '');
+                        let finalAmount = parseFloat(cleanPrice);
+
+                        // 3. Handle Currency Conversion (Estimate)
+                        // PayPal doesn't do Lao Kip. We convert to USD for payment.
+                        if (rawPrice.toLowerCase().includes('kip') || finalAmount > 1000) {
+                            if (finalAmount <= 2.5) {
+                                // Handles formats like "1.5M KIP"
+                                if (finalAmount === 1.5) finalAmount = 70.00;
+                                else if (finalAmount === 1.8) finalAmount = 85.00;
+                                else if (finalAmount === 2.5) finalAmount = 115.00;
+                            } else if (finalAmount > 1000) {
+                                // Handles raw KIP if passed as "1500000"
+                                finalAmount = finalAmount / 21000;
+                            }
+                        }
+
+                        // 4. Verify we have a safe number
+                        if (isNaN(finalAmount) || finalAmount <= 0) finalAmount = 45.00;
 
                         return actions.order.create({
                             purchase_units: [{
                                 amount: {
-                                    value: finalAmount
+                                    currency_code: 'USD',
+                                    value: finalAmount.toFixed(2)
                                 }
                             }]
                         });
                     },
                     onApprove: function (data, actions) {
                         return actions.order.capture().then(function (details) {
-                            // Redirect to success page after successful capture
                             window.location.href = 'success.html';
                         });
+                    },
+                    onError: function (err) {
+                        console.error('PayPal Error:', err);
                     }
                 }).render('#paypal-button-root');
             }
