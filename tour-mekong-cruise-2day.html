@@ -137,6 +137,47 @@
                     slow-paced, immersive way to witness the stunning landscapes and remote communities that line the
                     riverbanks.</p>
 
+                <section style="margin-bottom: 50px;">
+                    <div class="grid grid--2-col" style="gap: 30px;">
+                        <div
+                            style="background: white; padding: 25px; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.05);">
+                            <h3
+                                style="margin-top: 0; color: var(--primary); display: flex; align-items: center; gap: 10px;">
+                                <i class="fas fa-info-circle"></i> Quick Info
+                            </h3>
+                            <ul style="list-style: none; padding: 0;">
+                                <li style="margin-bottom: 12px; display: flex; align-items: center; gap: 10px;">
+                                    <i class="fas fa-clock" style="color: #64748b;"></i>
+                                    <span><strong>Duration:</strong> 2 Days, 1 Night</span>
+                                </li>
+                                <li style="margin-bottom: 12px; display: flex; align-items: center; gap: 10px;">
+                                    <i class="fas fa-map-marker-alt" style="color: #64748b;"></i>
+                                    <span><strong>Route:</strong> Houay Xai → Luang Prabang</span>
+                                </li>
+                                <li style="margin-bottom: 12px; display: flex; align-items: center; gap: 10px;">
+                                    <i class="fas fa-users" style="color: #64748b;"></i> <span><strong>Max
+                                            People:</strong> 15 Guests (Boutique environment)</span>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div
+                            style="background: white; padding: 25px; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.05);">
+                            <h3 style="margin-top: 0; color: #f59e0b; display: flex; align-items: center; gap: 10px;">
+                                <i class="fas fa-suitcase"></i> What to Bring
+                            </h3>
+                            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; font-size: 0.9rem;">
+                                <span>🧥 Light jacket (for mornings)</span>
+                                <span>👟 Comfortable shoes</span>
+                                <span>🕶️ Sunglasses & Sunblock</span>
+                                <span>📷 Camera & Powerbank</span>
+                                <span>🧴 Mosquito Repellent</span>
+                                <span>🎫 Passport & Lao Visa</span>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
                 <h2 style="margin-top: 40px;">Pricing & Details</h2>
                 <p style="margin-bottom: 15px; font-weight: 600;">Cruise Only Price:</p>
                 <div style="overflow-x: auto; margin-bottom: 30px;">
@@ -272,7 +313,17 @@
                         <input type="number" id="book-guests" min="1" value="1" required
                             style="width: 100%; padding: 10px; border-radius: 5px; border: 1px solid #ddd;">
                     </div>
-                    <button type="submit" class="btn" style="width: 100%; margin-top: 15px;">Inquire Now</button>
+                    <button type="submit" class="btn" style="width: 100%; margin-top: 15px;">Inquiry & Book</button>
+
+                    <div style="text-align: center; margin-top: 15px;">
+                        <span style="font-size: 0.8rem; color: #64748b; display: block; margin-bottom: 10px;">— OR
+                            —</span>
+                        <a href="https://wa.me/8562098457614?text=Sabaidee! 👋 I am interested in the Mekong 2-Day Cruise. Can you please help me with more information?"
+                            target="_blank" class="btn btn-outline"
+                            style="width: 100%; border-color: #25D366; color: #25D366; display: flex; align-items: center; justify-content: center; gap: 8px;">
+                            <i class="fab fa-whatsapp"></i> Inquiry via WhatsApp
+                        </a>
+                    </div>
                 </form>
 
                 <div
@@ -321,12 +372,15 @@
     <script>
         document.getElementById('booking-form').addEventListener('submit', function (e) {
             e.preventDefault();
-            const name = document.getElementById('book-name').value;
             const date = document.getElementById('book-date').value;
-            const package = document.getElementById('book-package').value;
+            const packageVal = document.getElementById('book-package').value;
             const guests = document.getElementById('book-guests').value;
-            const text = `Hello Laos Smile Trip,%0A%0AI am interested in the "Slow Boat Mekong 2-Day Up Cruise".%0A%0AName: ${name}%0ADate: ${date}%0APackage: ${package}%0AGuests: ${guests}%0A%0APlease provide availability.`;
-            window.open(`https://wa.me/8562098457614?text=${text}`, '_blank');
+
+            let price = '$159';
+            if (packageVal === 'Standard Package') price = '$179';
+            if (packageVal === 'Premium Package') price = '$209';
+
+            bookProduct(`Mekong 2-Day Cruise (${packageVal})`, price, date, guests);
         });
     </script>
 </body>

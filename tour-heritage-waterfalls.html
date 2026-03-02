@@ -100,7 +100,80 @@
                     Mekong River to the sacred Pak Ou Caves, journeys through traditional craft villages, and culminates
                     at the breathtaking Kuang Si Waterfalls.</p>
 
+                <section style="margin-bottom: 50px;">
+                    <div class="grid grid--2-col" style="gap: 30px;">
+                        <div
+                            style="background: white; padding: 25px; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.05);">
+                            <h3
+                                style="margin-top: 0; color: var(--primary); display: flex; align-items: center; gap: 10px;">
+                                <i class="fas fa-info-circle"></i> Quick Info
+                            </h3>
+                            <ul style="list-style: none; padding: 0;">
+                                <li style="margin-bottom: 12px; display: flex; align-items: center; gap: 10px;">
+                                    <i class="fas fa-clock" style="color: #64748b;"></i> <span><strong>Time:</strong>
+                                        08:30 AM - 04:30 PM Full Day</span>
+                                </li>
+                                <li style="margin-bottom: 12px; display: flex; align-items: center; gap: 10px;">
+                                    <i class="fas fa-map-marker-alt" style="color: #64748b;"></i>
+                                    <span><strong>Route:</strong> Pak Ou Caves → Whiskey Village → Kuang Si Falls</span>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div
+                            style="background: white; padding: 25px; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.05);">
+                            <h3 style="margin-top: 0; color: #f59e0b; display: flex; align-items: center; gap: 10px;">
+                                <i class="fas fa-suitcase"></i> Prepare for Trip
+                            </h3>
+                            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; font-size: 0.9rem;">
+                                <span>👗 Modest clothing (for temples)</span>
+                                <span>🩱 Swimwear & Towel</span>
+                                <span>🕶️ Sunglasses & Sunblock</span>
+                                <span>👟 Walking shoes</span>
+                                <span>🧴 Insect repellent</span>
+                                <span>📷 Fully charged camera</span>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
                 <h2 style="margin-top: 40px;">Pricing & Details</h2>
+                <section style="margin-bottom: 50px;">
+                    <div class="grid grid--2-col" style="gap: 30px;">
+                        <div
+                            style="background: white; padding: 25px; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.05);">
+                            <h3
+                                style="margin-top: 0; color: var(--primary); display: flex; align-items: center; gap: 10px;">
+                                <i class="fas fa-info-circle"></i> Quick Info
+                            </h3>
+                            <ul style="list-style: none; padding: 0;">
+                                <li style="margin-bottom: 12px; display: flex; align-items: center; gap: 10px;">
+                                    <i class="fas fa-clock" style="color: #64748b;"></i> <span><strong>Time:</strong>
+                                        08:30 - 18:30 Full Day</span>
+                                </li>
+                                <li style="margin-bottom: 12px; display: flex; align-items: center; gap: 10px;">
+                                    <i class="fas fa-map-marker-alt" style="color: #64748b;"></i>
+                                    <span><strong>Highlights:</strong> Elephant Camp + Kuang Si Waterfalls</span>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div
+                            style="background: white; padding: 25px; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.05);">
+                            <h3 style="margin-top: 0; color: #f59e0b; display: flex; align-items: center; gap: 10px;">
+                                <i class="fas fa-suitcase"></i> What to Bring
+                            </h3>
+                            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; font-size: 0.9rem;">
+                                <span>🩱 Swimwear & Towel</span>
+                                <span>👟 Proper walking shoes (for stairs)</span>
+                                <span>🕶️ Sunglasses & Sunblock</span>
+                                <span>🧴 Insect repellent</span>
+                                <span>📷 Fully charged camera</span>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
                 <div style="overflow-x: auto; margin-bottom: 30px;">
                     <table
                         style="width: 100%; border-collapse: collapse; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 12px rgba(0,0,0,0.05);">
@@ -211,7 +284,17 @@
                         <input type="number" id="book-guests" min="1" value="2" required
                             style="width: 100%; padding: 10px; border-radius: 5px; border: 1px solid #ddd;">
                     </div>
-                    <button type="submit" class="btn" style="width: 100%; margin-top: 15px;">Inquire Now</button>
+                    <button type="submit" class="btn" style="width: 100%; margin-top: 15px;">Inquiry & Book</button>
+
+                    <div style="text-align: center; margin-top: 15px;">
+                        <span style="font-size: 0.8rem; color: #64748b; display: block; margin-bottom: 10px;">— OR
+                            —</span>
+                        <a href="https://wa.me/8562098457614?text=Sabaidee! 👋 I am interested in the Heritage %26 Waterfalls tour. Can you please help me with more information?"
+                            target="_blank" class="btn btn-outline"
+                            style="width: 100%; border-color: #25D366; color: #25D366; display: flex; align-items: center; justify-content: center; gap: 8px;">
+                            <i class="fab fa-whatsapp"></i> Inquiry via WhatsApp
+                        </a>
+                    </div>
                 </form>
             </aside>
         </div>
@@ -254,11 +337,9 @@
     <script>
         document.getElementById('booking-form').addEventListener('submit', function (e) {
             e.preventDefault();
-            const name = document.getElementById('book-name').value;
             const date = document.getElementById('book-date').value;
             const guests = document.getElementById('book-guests').value;
-            const text = `Hello Laos Smile Trip,%0A%0AI am interested in the "Pak Ou Caves & Kuang Si Falls Full-Day Tour".%0A%0AName: ${name}%0ADate: ${date}%0AGuests: ${guests}%0A%0APlease provide availability.`;
-            window.open(`https://wa.me/8562098457614?text=${text}`, '_blank');
+            bookProduct('Heritage & Waterfalls Tour', '$52', date, guests);
         });
     </script>
 </body>

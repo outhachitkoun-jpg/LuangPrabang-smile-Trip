@@ -122,8 +122,11 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // ========== 🛒 CHECKOUT LOGIC ==========
-function bookProduct(name, price) {
+function bookProduct(name, price, date = '', guests = 1) {
     localStorage.setItem('selected_product_name', name);
     localStorage.setItem('selected_product_price', price);
+    localStorage.setItem('selected_product_date', date);
+    localStorage.setItem('selected_product_guests', guests);
     window.location.href = 'checkout.html';
 }
+

@@ -103,6 +103,43 @@
                     the falls, we witness how the water irrigates local rice paddies before concluding the day with a
                     peaceful sunset cruise back to town along the Mekong River.</p>
 
+                <section style="margin-bottom: 50px;">
+                    <div class="grid grid--2-col" style="gap: 30px;">
+                        <div
+                            style="background: white; padding: 25px; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.05);">
+                            <h3
+                                style="margin-top: 0; color: var(--primary); display: flex; align-items: center; gap: 10px;">
+                                <i class="fas fa-info-circle"></i> Quick Info
+                            </h3>
+                            <ul style="list-style: none; padding: 0;">
+                                <li style="margin-bottom: 12px; display: flex; align-items: center; gap: 10px;">
+                                    <i class="fas fa-clock" style="color: #64748b;"></i> <span><strong>Time:</strong>
+                                        flexible timing for private tours</span>
+                                </li>
+                                <li style="margin-bottom: 12px; display: flex; align-items: center; gap: 10px;">
+                                    <i class="fas fa-map-marker-alt" style="color: #64748b;"></i>
+                                    <span><strong>Route:</strong> Historical Temples → Royal Palace → Local
+                                        Markets</span>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div
+                            style="background: white; padding: 25px; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.05);">
+                            <h3 style="margin-top: 0; color: #f59e0b; display: flex; align-items: center; gap: 10px;">
+                                <i class="fas fa-suitcase"></i> What to Bring
+                            </h3>
+                            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; font-size: 0.9rem;">
+                                <span>👗 Proper temple attire (knees/shoulders covered)</span>
+                                <span>👟 Comfortable walking shoes</span>
+                                <span>🕶️ Sunglasses & Sunblock</span>
+                                <span>📷 Camera</span>
+                                <span>💊 Personal medicine</span>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
                 <h2 style="margin-top: 40px;">Pricing & Inclusions</h2>
                 <div style="overflow-x: auto; margin-bottom: 30px;">
                     <table
@@ -207,7 +244,17 @@
                         <input type="number" id="book-guests" min="1" value="2" required
                             style="width: 100%; padding: 10px; border-radius: 5px; border: 1px solid #ddd;">
                     </div>
-                    <button type="submit" class="btn" style="width: 100%; margin-top: 15px;">Inquire Now</button>
+                    <button type="submit" class="btn" style="width: 100%; margin-top: 15px;">Inquiry & Book</button>
+
+                    <div style="text-align: center; margin-top: 15px;">
+                        <span style="font-size: 0.8rem; color: #64748b; display: block; margin-bottom: 10px;">— OR
+                            —</span>
+                        <a href="https://wa.me/8562098457614?text=Sabaidee! 👋 I am interested in the Classic Laos tour. Can you please help me with more information?"
+                            target="_blank" class="btn btn-outline"
+                            style="width: 100%; border-color: #25D366; color: #25D366; display: flex; align-items: center; justify-content: center; gap: 8px;">
+                            <i class="fab fa-whatsapp"></i> Inquiry via WhatsApp
+                        </a>
+                    </div>
                 </form>
             </aside>
         </div>
@@ -250,11 +297,9 @@
     <script>
         document.getElementById('booking-form').addEventListener('submit', function (e) {
             e.preventDefault();
-            const name = document.getElementById('book-name').value;
             const date = document.getElementById('book-date').value;
             const guests = document.getElementById('book-guests').value;
-            const text = `Hello LuangPrabang smile Trip,%0A%0AI am interested in the "Afternoon Kuang Si Waterfalls & Sunset Cruise" tour.%0A%0ADetails:%0AName: ${name}%0ADate: ${date}%0ANumber of Guests: ${guests}%0A%0APlease send me a quote and availability.`;
-            window.open(`https://wa.me/8562098457614?text=${text}`, '_blank');
+            bookProduct('Afternoon Kuang Si & Sunset Cruise', '$35', date, guests);
         });
     </script>
 </body>

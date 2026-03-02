@@ -163,6 +163,73 @@
                 grid-template-columns: 1fr;
             }
         }
+
+        /* PROCESSING OVERLAY */
+        #processing-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(11, 26, 35, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 9999;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-align: center;
+        }
+
+        .loader-box {
+            max-width: 400px;
+            padding: 40px;
+        }
+
+        .spinner {
+            width: 60px;
+            height: 60px;
+            border: 4px solid rgba(255, 255, 255, 0.1);
+            border-top: 4px solid var(--primary-soft);
+            border-radius: 50%;
+            margin: 0 auto 30px;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        .auth-steps {
+            list-style: none;
+            padding: 0;
+            margin-top: 20px;
+            text-align: left;
+        }
+
+        .auth-step {
+            margin-bottom: 12px;
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.5);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .auth-step.active {
+            color: white;
+            font-weight: 500;
+        }
+
+        .auth-step.done {
+            color: #10b981;
+        }
+
+        .auth-step i {
+            font-size: 0.8rem;
+        }
     </style>
 </head>
 
@@ -203,39 +270,111 @@
         </div>
     </header>
 
+    <!-- PROCESSING OVERLAY -->
+    <div id="processing-overlay">
+        <div class="loader-box">
+            <div class="spinner"></div>
+            <h2 id="process-title" style="margin-bottom: 10px;">Sending Inquiry</h2>
+            <p id="process-msg" style="color: rgba(255,255,255,0.7);">We are securing your request with our system.</p>
+
+            <ul class="auth-steps">
+                <li class="auth-step active" id="step-1"><i class="fas fa-circle-notch fa-spin"></i> Initializing
+                    Request...</li>
+                <li class="auth-step" id="step-2"><i class="far fa-circle"></i> Checking Staff Availability...</li>
+                <li class="auth-step" id="step-3"><i class="far fa-circle"></i> Creating Booking Record...</li>
+                <li class="auth-step" id="step-4"><i class="far fa-circle"></i> Redirecting to Success...</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- HIDDEN EMAIL NOTIFICATION FORM -->
+    <form id="notify-form" action="https://formsubmit.co/ajax/LaosSmileTrip@gmail.com" method="POST"
+        style="display: none;">
+        <input type="hidden" name="booking_id" id="email-id">
+        <input type="hidden" name="tour_name" id="email-name">
+        <input type="hidden" name="customer_details" id="email-details">
+        <input type="hidden" name="_next" value="https://laossmiletrip.com/success.html">
+        <input type="hidden" name="_subject" value="New Booking Received!">
+    </form>
+
     <main class="checkout-container">
         <div class="container">
             <h1 class="mb-40" data-i18n="checkout_title">Complete Your Booking</h1>
 
             <div class="checkout-grid">
                 <div class="checkout-main">
-                    <h3 class="mb-30" data-i18n="checkout_payment_method">Select Payment Method</h3>
+                    <!-- CONTACT INFORMATION SECTION -->
+                    <div
+                        style="background: white; padding: 30px; border-radius: 12px; margin-bottom: 30px; box-shadow: var(--shadow-sm); border: 1px solid #e2e8f0;">
+                        <h3
+                            style="margin-bottom: 20px; font-size: 1.1rem; display: flex; align-items: center; gap: 10px;">
+                            <i class="fas fa-user-circle" style="color: var(--primary);"></i>
+                            <span>Your Contact Information</span>
+                        </h3>
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                            <div>
+                                <label
+                                    style="display:block; font-size: 0.8rem; font-weight: 600; color: #64748b; margin-bottom: 8px;">Full
+                                    Name *</label>
+                                <input type="text" id="cust-name" placeholder="Enter your name"
+                                    style="width: 100%; padding: 12px; border: 1px solid #e2e8f0; border-radius: 8px; font-size: 0.9rem;">
+                            </div>
+                            <div>
+                                <label
+                                    style="display:block; font-size: 0.8rem; font-weight: 600; color: #64748b; margin-bottom: 8px;">WhatsApp
+                                    / Phone *</label>
+                                <input type="text" id="cust-whatsapp" placeholder="+856 20..."
+                                    style="width: 100%; padding: 12px; border: 1px solid #e2e8f0; border-radius: 8px; font-size: 0.9rem;">
+                            </div>
+                        </div>
+                    </div>
 
-                    <div class="payment-methods">
-                        <label class="payment-option active" data-method="bcel">
-                            <input type="radio" name="payment" value="bcel" checked>
-                            <div class="payment-icon"><i class="fas fa-qrcode"></i></div>
-                            <div class="payment-info">
-                                <div style="display: flex; align-items: center; gap: 10px;">
-                                    <h4 data-i18n="checkout_bcel_one">BCEL One QR</h4>
-                                    <span data-i18n="checkout_bcel_badge"
-                                        style="background: #10b981; color: white; font-size: 0.65rem; padding: 2px 8px; border-radius: 20px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px;">Best
-                                        Rate</span>
+                    <!-- BOOKING REQUEST MODE SELECTION -->
+                    <div class="payment-mode-box"
+                        style="background: white; padding: 25px; border-radius: 12px; margin-bottom: 30px; box-shadow: var(--shadow-sm); border: 1px solid #e2e8f0;">
+                        <h3
+                            style="margin-bottom: 20px; font-size: 1.1rem; display: flex; align-items: center; gap: 10px;">
+                            <i class="fas fa-concierge-bell" style="color: var(--primary);"></i>
+                            <span>Select Your Booking Type</span>
+                        </h3>
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+                            <div class="pay-mode-option active" data-mode="inquiry"
+                                style="padding:15px; border:2px solid var(--primary); border-radius:10px; cursor:pointer; text-align:center;">
+                                <div style="font-weight:700; color:var(--primary); margin-bottom:5px;">Check
+                                    Availability</div>
+                                <div style="font-size:0.8rem; color:var(--text-muted);">Inquiry first, pay later</div>
+                            </div>
+                            <div class="pay-mode-option" data-mode="full"
+                                style="padding:15px; border:2px solid #e2e8f0; border-radius:10px; cursor:pointer; text-align:center;">
+                                <div style="font-weight:700; color:var(--text-main); margin-bottom:5px;">Secure with
+                                    Payment</div>
+                                <div style="font-size:0.8rem; color:var(--text-muted);">Pay now to lock date</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="payment-methods-section" style="display: none;">
+                        <h3 class="mb-30" data-i18n="checkout_payment_method">Select Payment Method</h3>
+                        <div class="payment-methods">
+                            <label class="payment-option active" data-method="bcel">
+                                <input type="radio" name="payment" value="bcel" checked>
+                                <div class="payment-icon"><i class="fas fa-qrcode"></i></div>
+                                <div class="payment-info">
+                                    <div style="display: flex; align-items: center; gap: 10px;">
+                                        <h4 data-i18n="checkout_bcel_one">BCEL One QR</h4>
+                                    </div>
+                                    <p>Standard in Laos. Instant confirmation.</p>
                                 </div>
-                                <p>Standard in Laos. Instant confirmation.</p>
-                            </div>
-                        </label>
-
-
-
-                        <label class="payment-option" data-method="paypal">
-                            <input type="radio" name="payment" value="paypal">
-                            <div class="payment-icon"><i class="fab fa-paypal"></i></div>
-                            <div class="payment-info">
-                                <h4 data-i18n="checkout_paypal">PayPal</h4>
-                                <p>Pay securely with your PayPal account.</p>
-                            </div>
-                        </label>
+                            </label>
+                            <label class="payment-option" data-method="paypal">
+                                <input type="radio" name="payment" value="paypal">
+                                <div class="payment-icon"><i class="fab fa-paypal"></i></div>
+                                <div class="payment-info">
+                                    <h4 data-i18n="checkout_paypal">PayPal</h4>
+                                    <p>Pay securely with Credit Card or PayPal.</p>
+                                </div>
+                            </label>
+                        </div>
                     </div>
 
                     <!-- BCEL QR Preview -->
@@ -246,8 +385,19 @@
                         </div>
                         <p><strong>Scan this QR code with your BCEL One app</strong></p>
                         <p class="text-muted" style="font-size: 0.8rem;">Merchant: KOUN OUTHACHITH MR</p>
-                        <p class="text-muted" style="font-size: 0.8rem;">After payment, our team will confirm your
-                            booking via WhatsApp.</p>
+
+                        <div class="upload-receipt-box"
+                            style="margin-top: 25px; padding: 20px; background: #f1f5f9; border-radius: 12px; text-align: left; border: 2px dashed #cbd5e1;">
+                            <h4
+                                style="margin: 0 0 10px 0; font-size: 0.95rem; display: flex; align-items: center; gap: 8px;">
+                                <i class="fas fa-camera" style="color: var(--primary);"></i>
+                                <span>Upload Payment Proof</span>
+                            </h4>
+                            <input type="file" id="receipt-upload" accept="image/*"
+                                style="width: 100%; font-size: 0.85rem;">
+                            <p style="font-size: 0.75rem; color: #64748b; margin: 8px 0 0 0;">Please upload a screenshot
+                                of your successful BCEL transfer.</p>
+                        </div>
                     </div>
 
 
@@ -257,8 +407,8 @@
                         <div id="paypal-button-root"></div>
                     </div>
 
-                    <button id="main-checkout-btn" class="btn btn-primary btn-xl" style="width: 100%; margin-top: 40px;"
-                        data-i18n="checkout_confirm">Secure Checkout</button>
+                    <button id="main-checkout-btn" class="btn btn-primary btn-xl"
+                        style="width: 100%; margin-top: 40px;">Send Booking Inquiry</button>
 
                     <div class="secure-badge">
                         <i class="fas fa-lock"></i>
@@ -283,9 +433,15 @@
                         <strong>$0.00</strong>
                     </div>
 
-                    <div class="summary-total">
-                        <span data-i18n="checkout_total">Total Amount</span>
+                    <div class="summary-total" style="margin-bottom: 10px;">
+                        <span id="label-due-now" data-i18n="checkout_total">Total Amount</span>
                         <span id="summary-total-price">$45.00</span>
+                    </div>
+
+                    <div id="balance-row"
+                        style="display: none; justify-content: space-between; padding-top: 10px; border-top: 1px dashed #cbd5e1; font-size: 0.9rem; color: #64748b;">
+                        <span>Remaining (Cash)</span>
+                        <strong id="summary-balance">$0.00</strong>
                     </div>
 
                     <p style="margin-top: 30px; font-size: 0.85rem; color: var(--text-muted);">
@@ -299,98 +455,254 @@
     <script src="js/main.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
+            // 1. Generate unique Booking ID if it doesn't exist for this session
+            let bookingId = localStorage.getItem('current_booking_id');
+            if (!bookingId) {
+                bookingId = 'LST-' + Date.now().toString().slice(-6) + Math.floor(Math.random() * 100);
+                localStorage.setItem('current_booking_id', bookingId);
+            }
+
             // Load selected product info from localStorage
             const selectedName = localStorage.getItem('selected_product_name');
             const selectedPrice = localStorage.getItem('selected_product_price');
+            const selectedDate = localStorage.getItem('selected_product_date');
+            const selectedGuests = localStorage.getItem('selected_product_guests') || 1;
 
             if (selectedName && selectedPrice) {
                 const nameEl = document.getElementById('summary-product-name');
                 const priceEl = document.getElementById('summary-product-price');
                 const totalEl = document.getElementById('summary-total-price');
+                const guestsEl = document.querySelector('.summary-item:nth-child(2) strong');
+                const dateContainer = document.createElement('div');
 
                 if (nameEl) {
                     nameEl.textContent = selectedName;
-                    nameEl.removeAttribute('data-i18n'); // Override i18n
+                    nameEl.removeAttribute('data-i18n');
                 }
-                if (priceEl) priceEl.textContent = selectedPrice;
-                if (totalEl) totalEl.textContent = selectedPrice;
+                if (selectedDate && nameEl) {
+                    dateContainer.className = 'summary-item';
+                    dateContainer.style.fontSize = '0.85rem';
+                    dateContainer.style.color = 'var(--text-muted)';
+                    dateContainer.style.marginTop = '-10px';
+                    dateContainer.innerHTML = `<span>Travel Date</span><strong>${selectedDate}</strong>`;
+                    nameEl.parentElement.after(dateContainer);
+                }
+                if (guestsEl) {
+                    guestsEl.textContent = `x${selectedGuests}`;
+                    guestsEl.previousElementSibling.textContent = `Participants (${selectedGuests})`;
+                }
+
+                if (priceEl && totalEl) {
+                    const modeOptions = document.querySelectorAll('.pay-mode-option');
+                    const labelDueNow = document.getElementById('label-due-now');
+                    const balanceRow = document.getElementById('balance-row');
+                    const balanceEl = document.getElementById('summary-balance');
+                    const paySection = document.getElementById('payment-methods-section');
+                    const qrPreview = document.getElementById('qr-section');
+                    const checkoutBtn = document.getElementById('main-checkout-btn');
+
+                    function updateCalculations() {
+                        const mode = document.querySelector('.pay-mode-option.active').getAttribute('data-mode');
+                        const isPayNow = mode === 'full';
+
+                        // Price logic
+                        let isMilli = selectedPrice.toLowerCase().includes('m');
+                        let cleanStr = selectedPrice.replace(/[^\d.]/g, '');
+                        let numericPrice = parseFloat(cleanStr);
+                        if (isMilli) numericPrice = numericPrice * 1000000;
+                        if (isNaN(numericPrice)) numericPrice = 45;
+
+                        const unit = selectedPrice.includes('KIP') ? ' KIP' : '$';
+                        const isKip = selectedPrice.includes('KIP');
+                        priceEl.textContent = isKip ? (numericPrice).toLocaleString() + unit : unit + numericPrice.toFixed(2);
+
+                        const fullTotal = numericPrice * parseInt(selectedGuests);
+
+                        if (!isPayNow) {
+                            labelDueNow.textContent = "Estimated Total";
+                            balanceRow.style.display = 'none';
+                            paySection.style.display = 'none';
+                            qrPreview.style.display = 'none';
+                            checkoutBtn.style.display = 'block';
+                            checkoutBtn.textContent = 'Send Booking Inquiry';
+                            localStorage.setItem('payment_mode', 'inquiry');
+                        } else {
+                            labelDueNow.textContent = "Total Amount Due";
+                            balanceRow.style.display = 'none';
+                            paySection.style.display = 'block';
+                            qrPreview.style.display = (document.querySelector('.payment-option.active').dataset.method === 'bcel' ? 'block' : 'none');
+                            checkoutBtn.textContent = 'Confirm Payment & Book';
+                            localStorage.setItem('payment_mode', 'full');
+                        }
+
+                        totalEl.textContent = isKip ? (fullTotal).toLocaleString() + unit : unit + fullTotal.toFixed(2);
+                        localStorage.setItem('due_now_value', totalEl.textContent);
+                    }
+
+                    modeOptions.forEach(opt => {
+                        opt.addEventListener('click', () => {
+                            modeOptions.forEach(o => {
+                                o.classList.remove('active');
+                                o.style.borderColor = '#e2e8f0';
+                                o.querySelector('div:first-child').style.color = 'var(--text-main)';
+                            });
+                            opt.classList.add('active');
+                            opt.style.borderColor = 'var(--primary)';
+                            opt.querySelector('div:first-child').style.color = 'var(--primary)';
+                            updateCalculations();
+                        });
+                    });
+
+                    updateCalculations();
+                }
             }
 
             const options = document.querySelectorAll('.payment-option');
             const qrSection = document.getElementById('qr-section');
-            const cardSection = document.getElementById('card-section');
             const paypalSection = document.getElementById('paypal-section');
             const mainCheckoutBtn = document.getElementById('main-checkout-btn');
 
             options.forEach(option => {
                 option.addEventListener('click', () => {
-                    // Remove active class from all
                     options.forEach(opt => opt.classList.remove('active'));
-                    // Add to clicked
                     option.classList.add('active');
-
                     const method = option.getAttribute('data-method');
-
-                    // Toggle sections
-                    qrSection.classList.toggle('active', method === 'bcel');
-                    paypalSection.classList.toggle('active', method === 'paypal');
-
-                    // Hide main button if PayPal is active (PayPal has its own buttons)
+                    qrSection.style.display = (method === 'bcel') ? 'block' : 'none';
+                    paypalSection.style.display = (method === 'paypal') ? 'block' : 'none';
                     mainCheckoutBtn.style.display = (method === 'paypal') ? 'none' : 'block';
                 });
             });
 
-            // Handle BCEL / Card Simulated Checkout
-            mainCheckoutBtn.addEventListener('click', () => {
-                // Here you would normally validate inputs or send to a server
-                // For now, we simulate success
+            mainCheckoutBtn.addEventListener('click', async () => {
+                const nameInput = document.getElementById('cust-name');
+                const waInput = document.getElementById('cust-whatsapp');
+                const mode = localStorage.getItem('payment_mode');
+
+                if (!nameInput.value || !waInput.value) {
+                    alert('Please enter your Name and WhatsApp so we can contact you!');
+                    return;
+                }
+
+                if (mode === 'full') {
+                    const method = document.querySelector('.payment-option.active').getAttribute('data-method');
+                    const receiptInput = document.getElementById('receipt-upload');
+                    if (method === 'bcel' && (!receiptInput.files || receiptInput.files.length === 0)) {
+                        alert('Please upload your payment screenshot first.');
+                        return;
+                    }
+                }
+
+                const overlay = document.getElementById('processing-overlay');
+                overlay.style.display = 'flex';
+                await runAuthSteps();
+
+                const receiptInput = document.getElementById('receipt-upload');
+                if (mode === 'full' && receiptInput && receiptInput.files && receiptInput.files[0]) {
+                    localStorage.setItem('receipt_uploaded', 'true');
+                    const reader = new FileReader();
+                    reader.onloadend = function () {
+                        localStorage.setItem('temp_receipt_base64', reader.result);
+                        sendNotification().then(() => { window.location.href = 'success.html'; });
+                    }
+                    reader.readAsDataURL(receiptInput.files[0]);
+                    return;
+                } else {
+                    localStorage.removeItem('receipt_uploaded');
+                }
+
+                await sendNotification();
                 window.location.href = 'success.html';
             });
 
-            // PayPal Button Initialization
+            async function runAuthSteps() {
+                const steps = ['step-1', 'step-2', 'step-3', 'step-4'];
+                for (let i = 0; i < steps.length; i++) {
+                    const el = document.getElementById(steps[i]);
+                    if (!el) continue;
+                    el.classList.add('active');
+                    el.querySelector('i').className = 'fas fa-circle-notch fa-spin';
+                    await new Promise(r => setTimeout(r, 600 + Math.random() * 800));
+                    el.classList.remove('active');
+                    el.classList.add('done');
+                    el.querySelector('i').className = 'fas fa-check-circle';
+                }
+            }
+
+            async function sendNotification() {
+                try {
+                    const id = localStorage.getItem('current_booking_id');
+                    const prodName = localStorage.getItem('selected_product_name');
+                    const guests = localStorage.getItem('selected_product_guests');
+                    const date = localStorage.getItem('selected_product_date');
+                    const custName = document.getElementById('cust-name').value;
+                    const custWA = document.getElementById('cust-whatsapp').value;
+                    const mode = localStorage.getItem('payment_mode');
+
+                    // 1. Send Email via FormSubmit
+                    document.getElementById('email-id').value = id;
+                    document.getElementById('email-name').value = prodName;
+                    document.getElementById('email-details').value = `Customer: ${custName}, WhatsApp: ${custWA}, Date: ${date}, Guests: ${guests}, Mode: ${mode}`;
+
+                    // Also store for success message
+                    localStorage.setItem('cust_name', custName);
+                    localStorage.setItem('cust_whatsapp', custWA);
+
+                    const form = document.getElementById('notify-form');
+                    const formData = new FormData(form);
+                    const emailTask = fetch(form.action, { method: 'POST', body: formData, headers: { 'Accept': 'application/json' } });
+
+                    // 2. Send Data to Google Sheets (Improved Method)
+                    const scriptURL = 'https://script.google.com/macros/s/AKfycbwUrH3bQHyyWvZakpyizEh_RTlHqQTYFXCrh5tvZDvqkpWURQs8QLjcd2908JcS5-cg/exec';
+
+                    // We send as a simple GET/Query string for highest reliability with static sites
+                    const queryParams = new URLSearchParams({
+                        booking_id: id,
+                        tour_name: prodName,
+                        guests: guests,
+                        travel_date: date || 'Not selected',
+                        customer_name: custName,
+                        whatsapp: custWA,
+                        payment_mode: mode
+                    }).toString();
+
+                    const sheetTask = fetch(`${scriptURL}?${queryParams}`, {
+                        method: 'POST', // Still a POST but with standard params
+                        mode: 'no-cors'
+                    });
+
+                    // Wait for both tasks to complete
+                    await Promise.allSettled([emailTask, sheetTask]);
+                } catch (e) { console.warn('Notification error:', e); }
+            }
+
             if (window.paypal) {
                 paypal.Buttons({
                     createOrder: function (data, actions) {
-                        // 1. Get raw price from localStorage
-                        let rawPrice = localStorage.getItem('selected_product_price') || '45';
-
-                        // 2. Extract numeric value (remove $, M, KIP, and spaces)
-                        let cleanPrice = rawPrice.replace(/[$\s]|M|KIP/g, '');
-                        let finalAmount = parseFloat(cleanPrice);
-
-                        // 3. Handle Currency Conversion (Estimate)
-                        // PayPal doesn't do Lao Kip. We convert to USD for payment.
-                        if (rawPrice.toLowerCase().includes('kip') || finalAmount > 1000) {
-                            if (finalAmount <= 2.5) {
-                                // Handles formats like "1.5M KIP"
-                                if (finalAmount === 1.5) finalAmount = 70.00;
-                                else if (finalAmount === 1.8) finalAmount = 85.00;
-                                else if (finalAmount === 2.5) finalAmount = 115.00;
-                            } else if (finalAmount > 1000) {
-                                // Handles raw KIP if passed as "1500000"
-                                finalAmount = finalAmount / 21000;
-                            }
-                        }
-
-                        // 4. Verify we have a safe number
-                        if (isNaN(finalAmount) || finalAmount <= 0) finalAmount = 45.00;
+                        let finalAmount = parseFloat(document.getElementById('summary-total-price').textContent.replace(/[^\d.]/g, ''));
+                        const isKip = localStorage.getItem('selected_product_price').includes('KIP');
+                        if (isKip || finalAmount > 1000) finalAmount = finalAmount / 21000;
+                        if (isNaN(finalAmount) || finalAmount <= 0) finalAmount = 10.00;
 
                         return actions.order.create({
+                            intent: 'AUTHORIZE',
                             purchase_units: [{
-                                amount: {
-                                    currency_code: 'USD',
-                                    value: finalAmount.toFixed(2)
-                                }
+                                description: `Booking ${bookingId}: ${selectedName} (Paid Upfront)`,
+                                amount: { currency_code: 'USD', value: finalAmount.toFixed(2) }
                             }]
                         });
                     },
                     onApprove: function (data, actions) {
-                        return actions.order.capture().then(function (details) {
+                        document.getElementById('processing-overlay').style.display = 'flex';
+                        return actions.order.authorize().then(async function (authorization) {
+                            await runAuthSteps();
+                            await sendNotification();
                             window.location.href = 'success.html';
                         });
                     },
-                    onError: function (err) {
+                    onError: err => {
                         console.error('PayPal Error:', err);
+                        alert('Payment failed. Try another method.');
+                        document.getElementById('processing-overlay').style.display = 'none';
                     }
                 }).render('#paypal-button-root');
             }
