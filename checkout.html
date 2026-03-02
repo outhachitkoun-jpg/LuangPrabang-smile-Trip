@@ -288,10 +288,11 @@
     </div>
 
     <!-- HIDDEN EMAIL NOTIFICATION FORM -->
-    <form id="notify-form" action="https://formsubmit.co/ajax/LaosSmileTrip@gmail.com" method="POST"
+    <form id="notify-form" action="https://formsubmit.co/ajax/luangprabangsmiletrip@gmail.com" method="POST"
         style="display: none;">
         <input type="hidden" name="booking_id" id="email-id">
         <input type="hidden" name="tour_name" id="email-name">
+        <input type="hidden" name="email" id="email-address">
         <input type="hidden" name="customer_details" id="email-details">
         <input type="hidden" name="_next" value="https://laossmiletrip.com/success.html">
         <input type="hidden" name="_subject" value="New Booking Received!">
@@ -324,6 +325,22 @@
                                     style="display:block; font-size: 0.8rem; font-weight: 600; color: #64748b; margin-bottom: 8px;">WhatsApp
                                     / Phone *</label>
                                 <input type="text" id="cust-whatsapp" placeholder="+856 20..."
+                                    style="width: 100%; padding: 12px; border: 1px solid #e2e8f0; border-radius: 8px; font-size: 0.9rem;">
+                            </div>
+                        </div>
+                        <div style="margin-top: 20px; display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                            <div>
+                                <label
+                                    style="display:block; font-size: 0.8rem; font-weight: 600; color: #64748b; margin-bottom: 8px;">Email
+                                    Address *</label>
+                                <input type="email" id="cust-email" placeholder="email@example.com"
+                                    style="width: 100%; padding: 12px; border: 1px solid #e2e8f0; border-radius: 8px; font-size: 0.9rem;">
+                            </div>
+                            <div>
+                                <label
+                                    style="display:block; font-size: 0.8rem; font-weight: 600; color: #64748b; margin-bottom: 8px;">Travel
+                                    Date *</label>
+                                <input type="date" id="travel-date"
                                     style="width: 100%; padding: 12px; border: 1px solid #e2e8f0; border-radius: 8px; font-size: 0.9rem;">
                             </div>
                         </div>
@@ -468,6 +485,19 @@
             const selectedDate = localStorage.getItem('selected_product_date');
             const selectedGuests = localStorage.getItem('selected_product_guests') || 1;
 
+            // Initialize date picker if date exists
+            const travelDateInput = document.getElementById('travel-date');
+            if (travelDateInput && selectedDate) {
+                // If it's a standard date string, attempt to set it
+                travelDateInput.value = selectedDate;
+            }
+
+            // Set min date to today
+            if (travelDateInput) {
+                const today = new Date().toISOString().split('T')[0];
+                travelDateInput.setAttribute('min', today);
+            }
+
             if (selectedName && selectedPrice) {
                 const nameEl = document.getElementById('summary-product-name');
                 const priceEl = document.getElementById('summary-product-price');
@@ -576,10 +606,18 @@
             mainCheckoutBtn.addEventListener('click', async () => {
                 const nameInput = document.getElementById('cust-name');
                 const waInput = document.getElementById('cust-whatsapp');
+                const emailInput = document.getElementById('cust-email');
+                const dateInput = document.getElementById('travel-date');
                 const mode = localStorage.getItem('payment_mode');
 
-                if (!nameInput.value || !waInput.value) {
-                    alert('Please enter your Name and WhatsApp so we can contact you!');
+                if (!nameInput.value || !waInput.value || !emailInput.value || !dateInput.value) {
+                    showToast('Missing Info', 'Please fill in all required fields, including your Travel Date!', 'warning');
+                    return;
+                }
+
+                // Simple email validation
+                if (!emailInput.value.includes('@')) {
+                    showToast('Invalid Email', 'Please enter a valid email address.', 'warning');
                     return;
                 }
 
@@ -587,7 +625,7 @@
                     const method = document.querySelector('.payment-option.active').getAttribute('data-method');
                     const receiptInput = document.getElementById('receipt-upload');
                     if (method === 'bcel' && (!receiptInput.files || receiptInput.files.length === 0)) {
-                        alert('Please upload your payment screenshot first.');
+                        showToast('Payment Proof Needed', 'Please upload your payment screenshot first.', 'warning');
                         return;
                     }
                 }
@@ -630,22 +668,24 @@
 
             async function sendNotification() {
                 try {
-                    const id = localStorage.getItem('current_booking_id');
                     const prodName = localStorage.getItem('selected_product_name');
                     const guests = localStorage.getItem('selected_product_guests');
-                    const date = localStorage.getItem('selected_product_date');
+                    const date = document.getElementById('travel-date').value;
                     const custName = document.getElementById('cust-name').value;
                     const custWA = document.getElementById('cust-whatsapp').value;
+                    const custEmail = document.getElementById('cust-email').value;
                     const mode = localStorage.getItem('payment_mode');
 
                     // 1. Send Email via FormSubmit
                     document.getElementById('email-id').value = id;
                     document.getElementById('email-name').value = prodName;
-                    document.getElementById('email-details').value = `Customer: ${custName}, WhatsApp: ${custWA}, Date: ${date}, Guests: ${guests}, Mode: ${mode}`;
+                    document.getElementById('email-address').value = custEmail;
+                    document.getElementById('email-details').value = `Customer: ${custName}, WhatsApp: ${custWA}, Email: ${custEmail}, Date: ${date}, Guests: ${guests}, Mode: ${mode}`;
 
                     // Also store for success message
                     localStorage.setItem('cust_name', custName);
                     localStorage.setItem('cust_whatsapp', custWA);
+                    localStorage.setItem('cust_email', custEmail);
 
                     const form = document.getElementById('notify-form');
                     const formData = new FormData(form);
@@ -670,8 +710,36 @@
                         mode: 'no-cors'
                     });
 
-                    // Wait for both tasks to complete
-                    await Promise.allSettled([emailTask, sheetTask]);
+                    // 3. Send Telegram Notification (Admin Alert)
+                    // Replace these with your real bot token and chat id
+                    const TELEGRAM_TOKEN = 'YOUR_BOT_TOKEN_HERE';
+                    const TELEGRAM_CHAT_ID = 'YOUR_CHAT_ID_HERE';
+
+                    let tgTask = Promise.resolve();
+                    if (TELEGRAM_TOKEN !== 'YOUR_BOT_TOKEN_HERE') {
+                        const tgMsg = `🔔 *New Booking Request!*\n\n` +
+                            `🆔 ID: ${id}\n` +
+                            `🌍 Tour: ${prodName}\n` +
+                            `👤 Guest: ${custName}\n` +
+                            `📱 WhatsApp: ${custWA}\n` +
+                            `📧 Email: ${custEmail}\n` +
+                            `📅 Date: ${date || 'TBC'}\n` +
+                            `👥 Group: ${guests}\n` +
+                            `💳 Mode: ${mode.toUpperCase()}`;
+
+                        tgTask = fetch(`https://api.telegram.org/bot${TELEGRAM_TOKEN}/sendMessage`, {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify({
+                                chat_id: TELEGRAM_CHAT_ID,
+                                text: tgMsg,
+                                parse_mode: 'Markdown'
+                            })
+                        });
+                    }
+
+                    // Wait for all tasks to complete
+                    await Promise.allSettled([emailTask, sheetTask, tgTask]);
                 } catch (e) { console.warn('Notification error:', e); }
             }
 
@@ -701,7 +769,7 @@
                     },
                     onError: err => {
                         console.error('PayPal Error:', err);
-                        alert('Payment failed. Try another method.');
+                        showToast('Payment Error', 'Payment failed. Try another method.', 'error');
                         document.getElementById('processing-overlay').style.display = 'none';
                     }
                 }).render('#paypal-button-root');

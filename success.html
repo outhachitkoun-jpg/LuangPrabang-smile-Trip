@@ -236,6 +236,15 @@
 
             // 3. Update WhatsApp button
             const custName = localStorage.getItem('cust_name') || 'Guest';
+            const custEmail = localStorage.getItem('cust_email') || '';
+
+            if (custEmail) {
+                const msgEl = document.querySelector('[data-i18n="success_msg"]');
+                if (msgEl) {
+                    msgEl.innerHTML = `Your request is being checked by our team. We will contact you shortly via WhatsApp or email (<strong>${custEmail}</strong>) to confirm availability and finalize the details.`;
+                }
+            }
+
             let message = `Sabaidee! 🙏 My Booking ID is: ${bookingID}.\n\nI am ${custName} and I just sent a Booking Inquiry for:\nTour: ${name}\nDate: ${date}\nGuests: ${guests}\n\n`;
 
             if (mode === 'full') {
@@ -259,6 +268,11 @@
             }
             waBtn.href = `https://wa.me/8562098457614?text=${encodeURIComponent(message)}`;
 
+            // 5. Show Final Confirmation Toast
+            setTimeout(() => {
+                showToast('Success!', 'Your booking inquiry was sent successfully.', 'success', 5000);
+            }, 800);
+
             // 4. Clear booking session
             localStorage.removeItem('current_booking_id');
             localStorage.removeItem('receipt_uploaded');
@@ -268,6 +282,7 @@
             localStorage.removeItem('balance_value');
             localStorage.removeItem('cust_name');
             localStorage.removeItem('cust_whatsapp');
+            localStorage.removeItem('cust_email');
         });
     </script>
 </body>

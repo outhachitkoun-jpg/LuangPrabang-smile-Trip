@@ -127,6 +127,55 @@ function bookProduct(name, price, date = '', guests = 1) {
     localStorage.setItem('selected_product_price', price);
     localStorage.setItem('selected_product_date', date);
     localStorage.setItem('selected_product_guests', guests);
-    window.location.href = 'checkout.html';
+    
+    showToast('Ready to book!', `Added ${name} to your inquiry.`, 'success');
+    
+    setTimeout(() => {
+        window.location.href = 'checkout.html';
+    }, 1500);
+}
+
+// ========== 🔔 NOTIFICATION SYSTEM (TOASTS) ==========
+function showToast(title, message, type = 'info', duration = 4000) {
+    let container = document.querySelector('.toast-container');
+    if (!container) {
+        container = document.createElement('div');
+        container.className = 'toast-container';
+        document.body.appendChild(container);
+    }
+
+    const toast = document.createElement('div');
+    toast.className = `toast ${type}`;
+    
+    const icons = {
+        success: 'fa-check-circle',
+        error: 'fa-exclamation-circle',
+        warning: 'fa-exclamation-triangle',
+        info: 'fa-info-circle'
+    };
+    
+    const icon = icons[type] || icons.info;
+
+    toast.innerHTML = `
+        <div class="toast-icon"><i class="fas ${icon}"></i></div>
+        <div class="toast-content">
+            <strong class="toast-title">${title}</strong>
+            <span class="toast-message">${message}</span>
+        </div>
+        <button class="toast-close"><i class="fas fa-times"></i></button>
+        <div class="toast-progress" style="animation: progress-load ${duration}ms linear forwards"></div>
+    `;
+
+    container.appendChild(toast);
+
+    const closeBtn = toast.querySelector('.toast-close');
+    const dismissToast = () => {
+        toast.style.animation = 'toast-out 0.5s ease forwards';
+        setTimeout(() => toast.remove(), 500);
+    };
+
+    closeBtn.onclick = dismissToast;
+
+    setTimeout(dismissToast, duration);
 }
 
