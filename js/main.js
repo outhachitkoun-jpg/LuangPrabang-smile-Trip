@@ -84,7 +84,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // ========== 📱 MOBILE DROPDOWNS ==========
-    const dropdowns = document.querySelectorAll('.has-dropdown');
+    const dropdowns = document.querySelectorAll('.has-dropdown, .has-subdropdown');
     dropdowns.forEach(dropdown => {
         const link = dropdown.querySelector('a');
         link.addEventListener('click', (e) => {
