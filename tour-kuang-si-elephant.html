@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -20,6 +20,8 @@
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.min.css">
     <link rel='stylesheet' href='https://cdn.jsdelivr.net/gh/lipis/flag-icons@7.0.0/css/flag-icons.min.css'>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/themes/light.css">
     <link rel="stylesheet" href="css/style.css">
     <script src="js/i18n.js" defer></script>
 </head>
@@ -267,39 +269,36 @@
                     forest walking. Suitable for active travelers and children who can climb comfortably.</p>
             </div>
 
-            <aside class="booking-sidebar">
-                <h3 data-i18n="book_now">Tour Information</h3>
-                <p style="font-size: 1.5rem; color: #25D366; font-weight: 800; margin: 10px 0;">EUR 35</p>
+                        <aside class="booking-sidebar">
+                <h3 data-i18n="book_now">Book This Activity</h3>
+                <p style="font-size: 1.5rem; color: #25D366; font-weight: 800; margin: 10px 0;">Inquire for price</p>
+                <p style="font-size: 0.85rem; color: #888; margin-bottom: 20px;">Please fill out the form below to inquire or book. Our team will contact you instantly.</p>
 
-                <div style="background: #eef2ff; padding: 15px; border-radius: 10px; margin-bottom: 20px;">
-                    <h4 style="margin-top: 0; color: #4338ca;">Tour Details</h4>
-                    <ul style="list-style: none; padding: 0; font-size: 0.9rem;">
-                        <li style="margin-bottom: 5px;">📍 Departure: Luang Prabang</li>
-                        <li style="margin-bottom: 5px;">🕙 Time: 8:30 - 18:30</li>
-                        <li style="margin-bottom: 5px;">👶 Age: 4+</li>
-                    </ul>
-                    <h4 style="margin: 15px 0 5px; color: #4338ca; font-size: 0.9rem;">What's Included:</h4>
-                    <ul style="list-style: none; padding: 0; font-size: 0.85rem; color: #555;">
-                        <li style="margin-bottom: 4px;">✓ Local Lunch & Drinking Water</li>
-                        <li style="margin-bottom: 4px;">✓ Manifa Elephant Camp Experience</li>
-                        <li style="margin-bottom: 4px;">✓ Kuang Si Falls Entrance Fee</li>
-                        <li style="margin-bottom: 4px;">✓ All Transportation (AC Vehicle)</li>
-                        <li style="margin-bottom: 4px;">✓ English Speaking Guide</li>
-                    </ul>
-                </div>
-
-                <a href="https://wa.me/8562098457614?text=Sabaidee! 👋 I am interested in the F03 Elephant and Waterfall tour. Can you please help me with more information?"
-                    target="_blank" class="btn btn-outline"
-                    style="width: 100%; border-color: #25D366; color: #25D366; display: flex; align-items: center; justify-content: center; gap: 8px; margin-bottom: 20px;">
-                    <svg width="20" height="20" viewBox="0 0 32 32" fill="#25D366">
-                        <path
-                            d="M16.003 2.667c-7.363 0-13.333 5.97-13.333 13.333 0 2.35.613 4.646 1.781 6.674L2.667 29.333l6.84-1.76c1.96 1.07 4.17 1.63 6.493 1.63 7.364 0 13.333-5.97 13.333-13.333s-5.969-13.333-13.333-13.333zm0 24c-2.073 0-4.1-.523-5.897-1.514l-.423-.239-4.06 1.046 1.083-3.951-.275-.406c-1.112-1.646-1.699-3.563-1.699-5.478 0-5.546 4.514-10.06 10.06-10.06s10.06 4.514 10.06 10.06-4.514 10.06-10.06 10.06zm5.523-7.526c-.302-.151-1.79-.883-2.068-.984-.278-.101-.48-.151-.681.151-.201.302-.782.984-.959 1.186-.177.201-.353.227-.655.076-.302-.151-1.275-.471-2.429-1.503-.898-.8-1.503-1.789-1.68-2.091-.177-.302-.019-.466.133-.617.137-.136.302-.353.453-.53.151-.177.201-.302.302-.504.101-.201.051-.378-.025-.529-.076-.151-.681-1.64-.933-2.247-.245-.587-.494-.508-.681-.517-.176-.008-.378-.01-.58-.01-.201 0-.53.076-.806.378-.277.302-1.057 1.032-1.057 2.515 0 1.483 1.081 2.914 1.232 3.117.151.201 2.129 3.252 5.164 4.558.722.312 1.284.498 1.722.639.723.23 1.38.197 1.9.119.579-.086 1.79-.731 2.043-1.437.252-.706.252-1.31.176-1.437-.076-.126-.277-.201-.58-.353z" />
-                    </svg>
-                    Inquiry via WhatsApp
-                </a>
-
-                <p style="text-align: center; font-size: 0.85rem; color: #999;">Currently accepting inquiries for future
-                    bookings only.</p>
+                <form id="booking-form">
+                    <div style='margin-bottom: 12px;'>
+                        <input type='text' id='book-name' placeholder='Your Name *' required style='width: 100%; padding: 10px; border-radius: 5px; border: 1px solid #ddd;'>
+                    </div>
+                    <div style='margin-bottom: 12px;'>
+                        <input type='text' id='book-phone' placeholder='WhatsApp / Phone Number *' required style='width: 100%; padding: 10px; border-radius: 5px; border: 1px solid #ddd;'>
+                    </div>
+                    <div style="margin-bottom: 12px;">
+                        <div style="margin-bottom: 5px; font-size: 0.75rem; color: #666; padding-left: 5px;">Travel Date *</div><input type="date" id="book-date" required style="width: 100%; padding: 10px; border-radius: 5px; border: 1px solid #ddd;">
+                    </div>                    <div style="margin-bottom: 12px;">
+                        <div style="margin-bottom: 5px; font-size: 0.75rem; color: #666; padding-left: 5px;">Number of Guests *</div><input type="number" id="book-guests" min="1" value="1" required style="width: 100%; padding: 10px; border-radius: 5px; border: 1px solid #ddd;">
+                    </div>
+                    
+                                        <div style='margin-bottom: 12px;'>
+                        <textarea id='book-notes' placeholder='Special Requirements / Description (Optional)' style='width: 100%; padding: 10px; border-radius: 5px; border: 1px solid #ddd; min-height: 80px; font-family: inherit;'></textarea>
+                    </div>
+                    <div style='display: flex; flex-direction: column; gap: 10px; margin-top: 20px;'>
+                        <button type='button' onclick="handleInquiry('whatsapp', 'Full-Day Kuang Si Falls, Elephant Walk &amp; Mekong Sunset Cruise (F03)')" class='btn' style='width: 100%; background: #25D366; color: white !important; border-color: #25D366; display: flex; align-items: center; justify-content: center; gap: 8px;'>
+                            <i class='fab fa-whatsapp'></i> Inquiry via WhatsApp
+                        </button>
+                        <button type='button' onclick="handleInquiry('email', 'Full-Day Kuang Si Falls, Elephant Walk &amp; Mekong Sunset Cruise (F03)')" class='btn btn-outline' style='width: 100%; display: flex; align-items: center; justify-content: center; gap: 8px;'>
+                            <i class='fas fa-envelope'></i> Inquiry via Email
+                        </button>
+                    </div>
+                </form>
             </aside>
         </div>
     </main>

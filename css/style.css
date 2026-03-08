@@ -2,7 +2,7 @@
 
 /* ========== 🌴 PREMIUM DESIGN SYSTEM ========== */
 :root {
-    /* Tropical & Premium Palette */
+    /* Tropical & Premium Palette - Light Focused */
     --primary: #065f46;
     /* Jungle Emerald */
     --primary-alt: #0d4f40;
@@ -28,35 +28,35 @@
     --gold: #eab308;
     /* Temple Gold */
 
-    /* Neutrals */
-    --bg-main: #fcfdfe;
-    /* Morning Cloud */
-    --bg-alt: #f1f5f9;
-    /* Light Slate */
+    /* Neutrals - Lightened for Premium Feel */
+    --bg-main: #ffffff;
+    /* Pure White */
+    --bg-alt: #f8fafc;
+    /* Soft Slate Blue/Gray */
     --surface: #ffffff;
     --text-main: #0f172a;
     /* Midnight Slate */
-    --text-muted: #475569;
-    /* Slate Gray */
+    --text-muted: #64748b;
+    /* Refined Slate Gray */
     --text-light: #94a3b8;
 
     /* ✨ Premium Gradients */
     --gradient-primary: linear-gradient(135deg, #065f46 0%, #0d9488 100%);
     --gradient-sunset: linear-gradient(135deg, #fb923c 0%, #f43f5e 100%);
     --gradient-gold: linear-gradient(135deg, #fbbf24 0%, #eab308 100%);
-    --gradient-glass: linear-gradient(135deg, rgba(255, 255, 255, 0.4) 0%, rgba(255, 255, 255, 0.1) 100%);
-    --gradient-dark: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.8) 100%);
+    --gradient-glass: linear-gradient(135deg, rgba(255, 255, 255, 0.7) 0%, rgba(255, 255, 255, 0.3) 100%);
+    --gradient-dark: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.4) 100%);
 
     /* 🌟 Refined Shadows */
-    --shadow-soft: 0 4px 20px rgba(0, 0, 0, 0.04);
-    --shadow-md: 0 10px 30px -5px rgba(0, 0, 0, 0.08);
-    --shadow-lg: 0 20px 50px -10px rgba(6, 95, 70, 0.15);
-    --shadow-premium: 0 30px 60px -12px rgba(0, 0, 0, 0.12);
-    --shadow-glow: 0 0 20px rgba(251, 146, 60, 0.3);
+    --shadow-soft: 0 4px 20px rgba(0, 0, 0, 0.03);
+    --shadow-md: 0 10px 30px -5px rgba(0, 0, 0, 0.05);
+    --shadow-lg: 0 20px 50px -10px rgba(6, 95, 70, 0.1);
+    --shadow-premium: 0 30px 60px -12px rgba(0, 0, 0, 0.08);
+    --shadow-glow: 0 0 20px rgba(251, 146, 60, 0.2);
 
     /* Surfaces & Radius */
-    --glass-blur: blur(12px);
-    --glass-border: rgba(255, 255, 255, 0.2);
+    --glass-blur: blur(16px);
+    --glass-border: rgba(255, 255, 255, 0.4);
     --radius-sm: 12px;
     --radius-md: 20px;
     --radius-lg: 32px;
@@ -1775,58 +1775,53 @@ img {
     display: none !important;
 }
 
-/* Dark Theme Overrides for Premium Feel */
-body.dark-theme,
-[data-theme="dark"] {
-    --bg-main: #0a0f1e;
-    --text-main: #f8fafc;
-    --text-muted: #94a3b8;
-    --surface: #1e293b;
-    --glass-border: rgba(255, 255, 255, 0.1);
+/* Light Premium Theme Final Adjustments */
+body {
     background-color: var(--bg-main);
+}
+
+.checkout-card.glass-card {
+    background: rgba(255, 255, 255, 0.85);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    backdrop-filter: blur(20px);
+}
+
+.checkout-section,
+.type-btn,
+.payment-option {
+    background: #ffffff;
+    border-color: #e2e8f0;
     color: var(--text-main);
 }
 
-.dark-theme .checkout-card.glass-card {
-    background: rgba(15, 23, 42, 0.82);
-}
-
-.dark-theme .checkout-section,
-.dark-theme .type-btn,
-.dark-theme .payment-option {
-    background: #111827;
-    border-color: #1f2937;
-    color: #f8fafc;
-}
-
-.dark-theme .type-btn.active,
-.dark-theme .payment-option.active {
-    background: rgba(6, 95, 70, 0.25);
+.type-btn.active,
+.payment-option.active {
+    background: var(--primary-light);
     border-color: var(--primary);
 }
 
-.dark-theme .summary-item {
-    border-bottom: 1px solid #1f2937;
+.summary-item {
+    border-bottom: 1px solid #f1f5f9;
 }
 
-.dark-theme label {
-    color: #94a3b8 !important;
+label {
+    color: var(--text-muted) !important;
 }
 
-.dark-theme input {
-    background: #1f2937;
-    border-color: #374151 !important;
-    color: white;
+input {
+    background: #ffffff;
+    border-color: #cbd5e1 !important;
+    color: var(--text-main);
 }
 
-.dark-theme .badge-paylater {
-    background: #451a03;
-    color: #fbbf24;
-    border-color: #78350f;
+.badge-paylater {
+    background: #fef3c7;
+    color: #92400e;
+    border: 1px solid #fcd34d;
 }
 
-.dark-theme .badge-paynow {
-    background: #064e3b;
-    color: #4ade80;
-    border-color: #065f46;
+.badge-paynow {
+    background: #dcfce7;
+    color: #166534;
+    border: 1px solid #86efac;
 }

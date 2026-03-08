@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -39,6 +39,8 @@
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.min.css">
     <link rel='stylesheet' href='https://cdn.jsdelivr.net/gh/lipis/flag-icons@7.0.0/css/flag-icons.min.css'>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/themes/light.css">
     <link rel="stylesheet" href="css/style.css">
     <script src="js/i18n.js" defer></script>
 </head>
@@ -281,39 +283,34 @@
                 </div>
             </div>
 
-            <aside class="booking-sidebar">
+                        <aside class="booking-sidebar">
                 <h3 data-i18n="book_now">Book This Activity</h3>
-                <p style="font-size: 1.5rem; color: #25D366; font-weight: 800; margin: 10px 0;">From $35</p>
-
-                <a href="https://wa.me/8562098457614?text=Hello+Laos+Smile+Trip,+I+am+interested+in+the+Afternoon+Kuang+Si+Waterfalls+and+Sunset+Cruise+tour"
-                    target="_blank" class="btn"
-                    style="width: 100%; margin-bottom: 20px; background: white; color: #25D366 !important; border: 2px solid #25D366; gap: 10px;">
-                    Chat to Book
-                </a>
+                <p style="font-size: 1.5rem; color: #25D366; font-weight: 800; margin: 10px 0;">$35</p>
+                <p style="font-size: 0.85rem; color: #888; margin-bottom: 20px;">Please fill out the form below to inquire or book. Our team will contact you instantly.</p>
 
                 <form id="booking-form">
-                    <div style="margin-bottom: 12px;">
-                        <input type="text" id="book-name" placeholder="Your Name" required
-                            style="width: 100%; padding: 10px; border-radius: 5px; border: 1px solid #ddd;">
+                    <div style='margin-bottom: 12px;'>
+                        <input type='text' id='book-name' placeholder='Your Name *' required style='width: 100%; padding: 10px; border-radius: 5px; border: 1px solid #ddd;'>
+                    </div>
+                    <div style='margin-bottom: 12px;'>
+                        <input type='text' id='book-phone' placeholder='WhatsApp / Phone Number *' required style='width: 100%; padding: 10px; border-radius: 5px; border: 1px solid #ddd;'>
                     </div>
                     <div style="margin-bottom: 12px;">
-                        <input type="date" id="book-date" required
-                            style="width: 100%; padding: 10px; border-radius: 5px; border: 1px solid #ddd;">
+                        <div style="margin-bottom: 5px; font-size: 0.75rem; color: #666; padding-left: 5px;">Travel Date *</div><input type="date" id="book-date" required style="width: 100%; padding: 10px; border-radius: 5px; border: 1px solid #ddd;">
+                    </div>                    <div style="margin-bottom: 12px;">
+                        <div style="margin-bottom: 5px; font-size: 0.75rem; color: #666; padding-left: 5px;">Number of Guests *</div><input type="number" id="book-guests" min="1" value="1" required style="width: 100%; padding: 10px; border-radius: 5px; border: 1px solid #ddd;">
                     </div>
-                    <div style="margin-bottom: 12px;">
-                        <input type="number" id="book-guests" min="1" value="2" required
-                            style="width: 100%; padding: 10px; border-radius: 5px; border: 1px solid #ddd;">
+                    
+                                        <div style='margin-bottom: 12px;'>
+                        <textarea id='book-notes' placeholder='Special Requirements / Description (Optional)' style='width: 100%; padding: 10px; border-radius: 5px; border: 1px solid #ddd; min-height: 80px; font-family: inherit;'></textarea>
                     </div>
-                    <button type="submit" class="btn" style="width: 100%; margin-top: 15px;">Inquiry & Book</button>
-
-                    <div style="text-align: center; margin-top: 15px;">
-                        <span style="font-size: 0.8rem; color: #64748b; display: block; margin-bottom: 10px;">— OR
-                            —</span>
-                        <a href="https://wa.me/8562098457614?text=Sabaidee! 👋 I am interested in the Classic Laos tour. Can you please help me with more information?"
-                            target="_blank" class="btn btn-outline"
-                            style="width: 100%; border-color: #25D366; color: #25D366; display: flex; align-items: center; justify-content: center; gap: 8px;">
-                            <i class="fab fa-whatsapp"></i> Inquiry via WhatsApp
-                        </a>
+                    <div style='display: flex; flex-direction: column; gap: 10px; margin-top: 20px;'>
+                        <button type='button' onclick="handleInquiry('whatsapp', 'Afternoon Kuang Si &amp; Sunset Cruise')" class='btn' style='width: 100%; background: #25D366; color: white !important; border-color: #25D366; display: flex; align-items: center; justify-content: center; gap: 8px;'>
+                            <i class='fab fa-whatsapp'></i> Inquiry via WhatsApp
+                        </button>
+                        <button type='button' onclick="handleInquiry('email', 'Afternoon Kuang Si &amp; Sunset Cruise')" class='btn btn-outline' style='width: 100%; display: flex; align-items: center; justify-content: center; gap: 8px;'>
+                            <i class='fas fa-envelope'></i> Inquiry via Email
+                        </button>
                     </div>
                 </form>
             </aside>
@@ -375,14 +372,7 @@
     </a>
 
     <script src="js/main.js"></script>
-    <script>
-        document.getElementById('booking-form').addEventListener('submit', function (e) {
-            e.preventDefault();
-            const date = document.getElementById('book-date').value;
-            const guests = document.getElementById('book-guests').value;
-            bookProduct('Afternoon Kuang Si & Sunset Cruise', '$35', date, guests);
-        });
-    </script>
+    <!-- Inquiry handled by main.js -->
 </body>
 
 </html>

@@ -206,7 +206,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     <span class="label">Now Booking</span>
                     <span class="price">${priceText}</span>
                 </div>
-                <button class="btn btn-primary btn-sm" onclick="window.bookFromSticky('${h1}', '${priceText}')">Book Now</button>
+                <button class="btn btn-primary btn-sm" onclick="window.bookFromSticky('${h1}', '${priceText}')">Inquire & Book</button>
             `;
             document.body.appendChild(stickyCta);
         }
@@ -267,6 +267,66 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
+// ========== 📩 FORM-FIRST INQUIRY LOGIC ==========
+window.handleInquiry = async (mode, tourName) => {
+    const name = document.getElementById('book-name')?.value;
+    const phone = document.getElementById('book-phone')?.value;
+    const date = document.getElementById('book-date')?.value;
+    const packageVal = document.getElementById('book-package')?.value;
+    const guests = document.getElementById('book-guests')?.value;
+    const notes = document.getElementById('book-notes')?.value || '';
+
+    if (!name || !phone || !date) {
+        showToast('Missing Info', 'Please fill in your name, phone, and date.', 'warning');
+        return;
+    }
+
+    let message = `Sabaidee! 👋 I'm ${name}. I'm interested in the ${tourName}${packageVal ? ' (' + packageVal + ')' : ''}.
+📅 Date: ${date}
+👥 Guests: ${guests}
+📱 Contact: ${phone}`;
+
+    if (notes) {
+        message += `\n📝 Message: ${notes}`;
+    }
+
+    if (mode === 'whatsapp') {
+        const encodedMsg = encodeURIComponent(message);
+        const waUrl = `https://wa.me/8562098457614?text=${encodedMsg}`;
+        window.open(waUrl, '_blank');
+        showToast('Opening WhatsApp...', 'Connecting you to our team.', 'success');
+    } else {
+        // Email Flow via FormSubmit
+        showToast('Sending Inquiry...', 'Please wait a moment.', 'info');
+
+        try {
+            const formData = new FormData();
+            formData.append('Tour', tourName);
+            formData.append('Package', packageVal || 'Standard');
+            formData.append('Name', name);
+            formData.append('WhatsApp/Phone', phone);
+            formData.append('Travel Date', date);
+            formData.append('Guests', guests);
+            formData.append('Message/Notes', notes);
+            formData.append('_subject', `New Inquiry: ${tourName} from ${name}`);
+
+            const response = await fetch('https://formsubmit.co/ajax/luangprabangsmiletrip@gmail.com', {
+                method: 'POST',
+                body: formData
+            });
+
+            if (response.ok) {
+                showToast('Inquiry Sent!', "We'll contact you shortly via WhatsApp or Email.", 'success');
+                document.getElementById('booking-form')?.reset();
+            } else {
+                throw new Error('Submission failed');
+            }
+        } catch (error) {
+            showToast('Submission Error', 'Please try WhatsApp instead.', 'error');
+        }
+    }
+};
+
 // ========== 🛒 CHECKOUT LOGIC ==========
 function bookProduct(name, price, date = '', guests = 1) {
     localStorage.setItem('selected_product_name', name);
@@ -323,3 +383,18 @@ function showToast(title, message, type = 'info', duration = 4000) {
     if (closeBtn) closeBtn.onclick = dismissToast;
     setTimeout(dismissToast, duration);
 }
+
+// ========== 📅 PREMIUM DATE PICKER (FLATPICKR) ==========
+document.addEventListener('DOMContentLoaded', () => {
+    const dateInput = document.getElementById('book-date');
+    if (dateInput && typeof flatpickr !== 'undefined') {
+        flatpickr(dateInput, {
+            altInput: true,
+            altFormat: "F j, Y",
+            dateFormat: "Y-m-d",
+            minDate: "today",
+            theme: "emerald",
+            disableMobile: "true" // Force flatpickr on mobile for consistency
+        });
+    }
+});
