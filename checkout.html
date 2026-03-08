@@ -244,9 +244,9 @@
     </style>
 </head>
 
-<body class="premium-theme">
+<body class="premium-theme dark-theme">
 
-        <header class="site-header site-header--glass">
+    <header class="site-header site-header--glass">
         <div class="container nav-bar">
             <div class="logo-block">
                 <a href="index.html" class="logo">
@@ -358,13 +358,11 @@
         <div class="container">
             <h1 class="mb-40" data-i18n="checkout_title">Complete Your Booking</h1>
 
-            <div class="checkout-grid">
+            <div class="checkout-card glass-card">
                 <div class="checkout-main">
                     <!-- CONTACT INFORMATION SECTION -->
-                    <div
-                        style="background: white; padding: 30px; border-radius: 12px; margin-bottom: 30px; box-shadow: var(--shadow-sm); border: 1px solid #e2e8f0;">
-                        <h3
-                            style="margin-bottom: 20px; font-size: 1.1rem; display: flex; align-items: center; gap: 10px;">
+                    <div class="checkout-section">
+                        <h3 class="section-title">
                             <i class="fas fa-user-circle" style="color: var(--primary);"></i>
                             <span>Your Contact Information</span>
                         </h3>
@@ -387,7 +385,14 @@
                                     enter a valid phone number</div>
                             </div>
                         </div>
-                        <div style="margin-top: 20px; display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                    </div>
+
+                    <div class="checkout-section">
+                        <h3 class="section-title">
+                            <i class="fas fa-calendar-alt" style="color: var(--primary);"></i>
+                            <span>Travel Details</span>
+                        </h3>
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
                             <div>
                                 <label
                                     style="display:block; font-size: 0.8rem; font-weight: 600; color: #64748b; margin-bottom: 8px;">Email
@@ -406,30 +411,23 @@
                     </div>
 
                     <!-- BOOKING REQUEST MODE SELECTION -->
-                    <div class="payment-mode-box"
-                        style="background: white; padding: 25px; border-radius: 12px; margin-bottom: 30px; box-shadow: var(--shadow-sm); border: 1px solid #e2e8f0;">
-                        <h3
-                            style="margin-bottom: 20px; font-size: 1.1rem; display: flex; align-items: center; gap: 10px;">
-                            <i class="fas fa-concierge-bell" style="color: var(--primary);"></i>
+                    <section class="booking-type">
+                        <h3 class="section-title"><i class="fas fa-concierge-bell" style="color: var(--primary);"></i>
                             <span>Select Your Booking Type</span>
                         </h3>
-                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
-                            <div class="pay-mode-option active" data-mode="inquiry"
-                                style="padding:15px; border:2px solid var(--primary); border-radius:10px; cursor:pointer; text-align:center;">
-                                <div style="font-weight:700; color:var(--primary); margin-bottom:5px;">Check
-                                    Availability</div>
-                                <div style="font-size:0.8rem; color:var(--text-muted);">Inquiry first, pay later</div>
-                            </div>
-                            <div class="pay-mode-option" data-mode="full"
-                                style="padding:15px; border:2px solid #e2e8f0; border-radius:10px; cursor:pointer; text-align:center;">
-                                <div style="font-weight:700; color:var(--text-main); margin-bottom:5px;">Secure with
-                                    Payment</div>
-                                <div style="font-size:0.8rem; color:var(--text-muted);">Pay now to lock date</div>
-                            </div>
+                        <div class="type-options">
+                            <button class="type-btn active" data-mode="inquiry">
+                                <span class="badge badge-paylater">Pay Later</span>
+                                <span>Check Availability</span>
+                            </button>
+                            <button class="type-btn" data-mode="full">
+                                <span class="badge badge-paynow">Pay Now</span>
+                                <span>Secure Payment</span>
+                            </button>
                         </div>
-                    </div>
+                    </section>
 
-                    <div id="payment-methods-section" style="display: none;">
+                    <div id="payment-methods-section" class="hidden">
                         <h3 class="mb-30" data-i18n="checkout_payment_method">Select Payment Method</h3>
                         <div class="payment-methods">
                             <label class="payment-option active" data-method="bcel">
@@ -454,7 +452,7 @@
                     </div>
 
                     <!-- BCEL QR Preview -->
-                    <div id="qr-section" class="qr-placeholder active">
+                    <div id="qr-section" class="qr-placeholder">
                         <div class="qr-image" style="width: 250px; height: auto; border: none;">
                             <img src="images/becel-one -qr.jpeg" alt="BCEL One QR"
                                 style="width: 100%; height: auto; border-radius: 8px;">
@@ -647,67 +645,65 @@
                 }
 
                 if (priceEl && totalEl) {
-                    const modeOptions = document.querySelectorAll('.pay-mode-option');
-                    const labelDueNow = document.getElementById('label-due-now');
-                    const balanceRow = document.getElementById('balance-row');
-                    const balanceEl = document.getElementById('summary-balance');
-                    const paySection = document.getElementById('payment-methods-section');
-                    const qrPreview = document.getElementById('qr-section');
-                    const checkoutBtn = document.getElementById('main-checkout-btn');
+                    if (priceEl && totalEl) {
+                        const modeOptions = document.querySelectorAll('.type-btn');
+                        const labelDueNow = document.getElementById('label-due-now');
+                        const balanceRow = document.getElementById('balance-row');
+                        const paySection = document.getElementById('payment-methods-section');
+                        const qrPreview = document.getElementById('qr-section');
+                        const checkoutBtn = document.getElementById('main-checkout-btn');
 
-                    function updateCalculations() {
-                        const mode = document.querySelector('.pay-mode-option.active').getAttribute('data-mode');
-                        const isPayNow = mode === 'full';
+                        function updateCalculations() {
+                            const activeBtn = document.querySelector('.type-btn.active');
+                            if (!activeBtn) return;
+                            const mode = activeBtn.getAttribute('data-mode');
+                            const isPayNow = mode === 'full';
 
-                        // Price logic
-                        let isMilli = selectedPrice.toLowerCase().includes('m');
-                        let cleanStr = selectedPrice.replace(/[^\d.]/g, '');
-                        let numericPrice = parseFloat(cleanStr);
-                        if (isMilli) numericPrice = numericPrice * 1000000;
-                        if (isNaN(numericPrice)) numericPrice = 45;
+                            // Price logic
+                            let isMilli = selectedPrice.toLowerCase().includes('m');
+                            let cleanStr = selectedPrice.replace(/[^\d.]/g, '');
+                            let numericPrice = parseFloat(cleanStr);
+                            if (isMilli) numericPrice = numericPrice * 1000000;
+                            if (isNaN(numericPrice)) numericPrice = 45;
 
-                        const unit = selectedPrice.includes('KIP') ? ' KIP' : '$';
-                        const isKip = selectedPrice.includes('KIP');
-                        priceEl.textContent = isKip ? (numericPrice).toLocaleString() + unit : unit + numericPrice.toFixed(2);
+                            const unit = selectedPrice.includes('KIP') ? ' KIP' : '$';
+                            const isKip = selectedPrice.includes('KIP');
+                            priceEl.textContent = isKip ? (numericPrice).toLocaleString() + unit : unit + numericPrice.toFixed(2);
 
-                        const fullTotal = numericPrice * parseInt(selectedGuests);
+                            const fullTotal = numericPrice * parseInt(selectedGuests);
 
-                        if (!isPayNow) {
-                            labelDueNow.textContent = "Estimated Total";
-                            balanceRow.style.display = 'none';
-                            paySection.style.display = 'none';
-                            qrPreview.style.display = 'none';
-                            checkoutBtn.style.display = 'block';
-                            checkoutBtn.textContent = 'Send Booking Inquiry';
-                            localStorage.setItem('payment_mode', 'inquiry');
-                        } else {
-                            labelDueNow.textContent = "Total Amount Due";
-                            balanceRow.style.display = 'none';
-                            paySection.style.display = 'block';
-                            qrPreview.style.display = (document.querySelector('.payment-option.active').dataset.method === 'bcel' ? 'block' : 'none');
-                            checkoutBtn.textContent = 'Confirm Payment & Book';
-                            localStorage.setItem('payment_mode', 'full');
+                            if (!isPayNow) {
+                                labelDueNow.textContent = "Estimated Total";
+                                balanceRow.style.display = 'none';
+                                paySection.style.display = 'none';
+                                qrPreview.style.display = 'none';
+                                checkoutBtn.style.display = 'block';
+                                checkoutBtn.textContent = 'Send Booking Inquiry';
+                                localStorage.setItem('payment_mode', 'inquiry');
+                            } else {
+                                labelDueNow.textContent = "Total Amount Due";
+                                balanceRow.style.display = 'none';
+                                paySection.style.display = 'block';
+                                const activeMethod = document.querySelector('.payment-option.active')?.dataset.method;
+                                qrPreview.style.display = (activeMethod === 'bcel' ? 'block' : 'none');
+                                checkoutBtn.textContent = 'Confirm Payment & Book';
+                                localStorage.setItem('payment_mode', 'full');
+                            }
+
+                            totalEl.textContent = isKip ? (fullTotal).toLocaleString() + unit : unit + fullTotal.toFixed(2);
+                            localStorage.setItem('due_now_value', totalEl.textContent);
                         }
 
-                        totalEl.textContent = isKip ? (fullTotal).toLocaleString() + unit : unit + fullTotal.toFixed(2);
-                        localStorage.setItem('due_now_value', totalEl.textContent);
-                    }
-
-                    modeOptions.forEach(opt => {
-                        opt.addEventListener('click', () => {
-                            modeOptions.forEach(o => {
-                                o.classList.remove('active');
-                                o.style.borderColor = '#e2e8f0';
-                                o.querySelector('div:first-child').style.color = 'var(--text-main)';
+                        modeOptions.forEach(opt => {
+                            opt.addEventListener('click', () => {
+                                modeOptions.forEach(o => o.classList.remove('active'));
+                                opt.classList.add('active');
+                                updateCalculations();
                             });
-                            opt.classList.add('active');
-                            opt.style.borderColor = 'var(--primary)';
-                            opt.querySelector('div:first-child').style.color = 'var(--primary)';
-                            updateCalculations();
                         });
-                    });
 
-                    updateCalculations();
+                        updateCalculations();
+                    }
                 }
             }
 
